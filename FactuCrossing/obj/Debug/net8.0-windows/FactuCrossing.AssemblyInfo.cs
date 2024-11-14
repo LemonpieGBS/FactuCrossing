@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FactuCrossing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1ff63c3c6ac79a2491eee790ba77d944663f6ac")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79d2fe752da313c37de716224a4e2e108ca8bfd7")]
 [assembly: System.Reflection.AssemblyProductAttribute("FactuCrossing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FactuCrossing")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
