@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FactuCrossing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+056034244e44bca1950a9046e35cfb531f82f594")]
 [assembly: System.Reflection.AssemblyProductAttribute("FactuCrossing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FactuCrossing")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,8 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <ItemGroup>
-        <Compile Update="Form1.cs">
-            <SubType>Form</SubType>
-        </Compile>
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Formularios\Administrador\AdministrarPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Administrador\GeneradorDeReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Administrador\MenuAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Administrador\ResetearContraseñas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Facturación\AgregarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Facturación\Facturación.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Inventario\Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\MenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Reportes\GeneracionDeReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="InicioDeSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

@@ -50,6 +50,12 @@
       "frameworks": {
         "net9.0-windows7.0": {
           "targetAlias": "net9.0-windows",
+          "dependencies": {
+            "FastReport.DataVisualization": {
+              "target": "Package",
+              "version": "[2025.1.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
