@@ -15,6 +15,8 @@ namespace FactuCrossing.Formularios.Facturación
         public Facturación()
         {
             InitializeComponent();
+            if (Program.mFont is not null) Program.ApplyFont(Program.mFont, this);
+
             lblFacturador.Text = $"Facturador: {Program.nombreDeUsuario}";
         }
 

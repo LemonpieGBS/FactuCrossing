@@ -220,6 +220,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MenuPrincipal";
             Text = "Menu Principal";
+            TransparencyKey = Color.Fuchsia;
             FormClosing += MenuPrincipal_FormClosing;
             Load += MenuPrincipal_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

@@ -15,6 +15,7 @@ namespace FactuCrossing.Formularios.Inventario
         public Inventario()
         {
             InitializeComponent();
+            if (Program.mFont is not null) Program.ApplyFont(Program.mFont, this);
         }
     }
 }

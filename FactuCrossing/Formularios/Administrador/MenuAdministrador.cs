@@ -1,21 +1,11 @@
-﻿using FactuCrossing.Formularios.Facturación;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace FactuCrossing.Formularios.Administrador
+﻿namespace FactuCrossing.Formularios.Administrador
 {
     public partial class MenuAdministrador : Form
     {
         public MenuAdministrador()
         {
             InitializeComponent();
+            if (Program.mFont is not null) Program.ApplyFont(Program.mFont, this);
         }
 
         private void btnResetear_Click(object sender, EventArgs e)
@@ -29,6 +19,7 @@ namespace FactuCrossing.Formularios.Administrador
 
         private void btnAdministrar_Click(object sender, EventArgs e)
         {
+            
             this.Enabled = false;
             AdministrarPersonal frm = new();
             frm.Show();

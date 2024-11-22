@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "FactuCrossing/1.0.0": {
+        "dependencies": {
+          "ReaLTaiizor": "3.8.0.8"
+        },
+        "runtime": {
+          "FactuCrossing.dll": {}
+        }
+      },
+      "ReaLTaiizor/3.8.0.8": {
+        "runtime": {
+          "lib/net7.0-windows7.0/ReaLTaiizor.dll": {
+            "assemblyVersion": "3.8.0.8",
+            "fileVersion": "3.8.0.8"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FactuCrossing/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ReaLTaiizor/3.8.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FE30voqfqr4OjdT6TCCBIhwmsmkHUcqBk+ksKaBnKnV7bUXdTXVvc1MU6aTd5VfAlwPcuB3W7q+uc6c+VHQfUA==",
+      "path": "realtaiizor/3.8.0.8",
+      "hashPath": "realtaiizor.3.8.0.8.nupkg.sha512"
+    }
+  }
+}

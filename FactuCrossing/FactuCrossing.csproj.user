@@ -28,7 +28,7 @@
     <Compile Update="Formularios\Reportes\GeneracionDeReportes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="InicioDeSesion.cs">
+    <Compile Update="Formularios\InicioDeSesion.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
