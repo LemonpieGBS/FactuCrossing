@@ -85,6 +85,9 @@ namespace FactuCrossing
             sistemaCentral.EstablecerArchivoCuentas("cuentas.fcacc");
             sistemaCentral.CargarCuentas();
 
+            sistemaCentral.EstablecerArchivoInventario("inventario.fcinv");
+            sistemaCentral.CargarInventario();
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
@@ -96,6 +99,9 @@ namespace FactuCrossing
     {
         public List<Cuenta> cuentas = new();
         public string archivoCuentas = "";
+
+        public List<Producto> inventario = new();
+        public string archivoInventario = "";
 
         public SistemaCentral()
         {
@@ -118,6 +124,24 @@ namespace FactuCrossing
             List<Cuenta> cuentasCargadas = sac.CargarCuentas(archivoCuentas);
 
             cuentas = (cuentasCargadas.Count == 0) ? cuentas : cuentasCargadas;
+        }
+
+        public void EstablecerArchivoInventario(string rutaArchivo) { archivoInventario = rutaArchivo; }
+
+        public void GuardarInventario()
+        {
+            ServicioArchivoProductos sap = new();
+            sap.GuardarProductos(inventario, archivoInventario);
+        }
+
+        public void CargarInventario()
+        {
+            if (!File.Exists(archivoInventario)) return;
+
+            ServicioArchivoProductos sap = new();
+            List<Producto> productosCargados = sap.CargarProductos(archivoInventario);
+
+            inventario = (productosCargados.Count == 0) ? inventario : productosCargados;
         }
     }
 }

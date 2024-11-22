@@ -217,7 +217,7 @@
             Controls.Add(lblHola);
             Controls.Add(btnCerrarSesión);
             Controls.Add(pictureBox1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
+            Icon = (Icon)Properties.Resources.AppIcon;
             Name = "MenuPrincipal";
             Text = "Menu Principal";
             TransparencyKey = Color.Fuchsia;

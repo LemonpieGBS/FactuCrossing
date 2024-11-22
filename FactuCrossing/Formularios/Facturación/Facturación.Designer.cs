@@ -294,7 +294,7 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox3);
             Controls.Add(pictureBox1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
+            Icon = (Icon)Properties.Resources.AppIcon;
             Name = "Facturación";
             Text = "Facturación";
             groupBox1.ResumeLayout(false);

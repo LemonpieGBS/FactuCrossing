@@ -144,7 +144,7 @@
             Controls.Add(btnIniciarSesion);
             Controls.Add(groupBox1);
             Controls.Add(pictureBox1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
+            Icon = (Icon)Properties.Resources.AppIcon;
             Name = "InicioDeSesion";
             Text = "Inicio de Sesión";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

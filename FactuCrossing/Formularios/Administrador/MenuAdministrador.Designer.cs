@@ -268,7 +268,7 @@
             Controls.Add(button1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
+            Icon = (Icon)Properties.Resources.AppIcon;
             Name = "MenuAdministrador";
             Text = "Menu Administrador";
             groupBox1.ResumeLayout(false);

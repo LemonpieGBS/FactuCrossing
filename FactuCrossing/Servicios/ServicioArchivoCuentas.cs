@@ -87,7 +87,6 @@ namespace FactuCrossing.Servicios
                     string saltLeido = bReader.ReadString();
                     Roles rolLeido = (Roles)bReader.ReadUInt16();
                     bool habilitada = bReader.ReadBoolean();
-                    MessageBox.Show(habilitada.ToString());
 
                     int cantBytesHash = bReader.ReadInt32();
                     byte[] hashLeido = new byte[cantBytesHash];

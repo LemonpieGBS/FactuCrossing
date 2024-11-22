@@ -9,10 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Properties\Resources\332wArtboard 1 %281%29.ico" />
     <None Remove="Properties\Resources\Rubik-VariableFont_wght.ttf" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources\332wArtboard 1 (1).ico" />
     <EmbeddedResource Include="Properties\Resources\Rubik-VariableFont_wght.ttf" />
   </ItemGroup>
 

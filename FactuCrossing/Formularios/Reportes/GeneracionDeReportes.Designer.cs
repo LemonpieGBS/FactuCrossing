@@ -327,7 +327,7 @@
             Controls.Add(btnCerrarSesión);
             Controls.Add(groupBox1);
             Controls.Add(label1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
+            Icon = (Icon)Properties.Resources.AppIcon;
             Name = "GeneracionDeReportes";
             Text = "GeneracionDeReportes";
             groupBox1.ResumeLayout(false);
