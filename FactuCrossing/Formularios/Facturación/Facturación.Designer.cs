@@ -43,7 +43,7 @@
             label3 = new Label();
             button1 = new Button();
             button2 = new Button();
-            button4 = new Button();
+            btnFacturar = new Button();
             lblTotal = new Label();
             lblDescuento = new Label();
             lblSubtotal = new Label();
@@ -166,6 +166,7 @@
             rdbSeleccionar.TabIndex = 14;
             rdbSeleccionar.Text = "Seleccionar:";
             rdbSeleccionar.UseVisualStyleBackColor = true;
+            rdbSeleccionar.CheckedChanged += rdbSeleccionar_CheckedChanged;
             // 
             // rdbFechaActual
             // 
@@ -215,18 +216,19 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
-            // button4
+            // btnFacturar
             // 
-            button4.BackColor = Color.FromArgb(83, 96, 171);
-            button4.Cursor = Cursors.Hand;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.ForeColor = Color.White;
-            button4.Location = new Point(533, 478);
-            button4.Name = "button4";
-            button4.Size = new Size(316, 56);
-            button4.TabIndex = 19;
-            button4.Text = "Facturar";
-            button4.UseVisualStyleBackColor = false;
+            btnFacturar.BackColor = Color.FromArgb(83, 96, 171);
+            btnFacturar.Cursor = Cursors.Hand;
+            btnFacturar.FlatStyle = FlatStyle.Flat;
+            btnFacturar.ForeColor = Color.White;
+            btnFacturar.Location = new Point(533, 478);
+            btnFacturar.Name = "btnFacturar";
+            btnFacturar.Size = new Size(316, 56);
+            btnFacturar.TabIndex = 19;
+            btnFacturar.Text = "Facturar";
+            btnFacturar.UseVisualStyleBackColor = false;
+            btnFacturar.Click += btnFacturar_Click;
             // 
             // lblTotal
             // 
@@ -277,7 +279,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(875, 550);
             Controls.Add(btnAgregar);
-            Controls.Add(button4);
+            Controls.Add(btnFacturar);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(groupBox1);
@@ -310,7 +312,7 @@
         private Label lblFacturador;
         private Button button1;
         private Button button2;
-        private Button button4;
+        private Button btnFacturar;
         private Label lblTotal;
         private Label lblDescuento;
         private Label lblSubtotal;

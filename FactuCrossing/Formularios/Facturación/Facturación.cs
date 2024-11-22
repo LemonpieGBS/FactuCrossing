@@ -26,6 +26,8 @@ namespace FactuCrossing.Formularios.Facturación
             lblFacturador.Text = $"Facturador: {Program.nombreDeUsuario}";
             ActualizarDataGrid();
             RefrezcarTotales();
+
+            rdbFechaActual.Text = $"Fecha Actual: {DateTime.Now.ToString("yyyy-MM-dd")}";
         }
 
         private void ActualizarDataGrid()
@@ -107,6 +109,41 @@ namespace FactuCrossing.Formularios.Facturación
             frm.Show();
 
             frm.FormClosed += delegate { this.Enabled = true; };
+        }
+
+        private void rdbSeleccionar_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpFecha.Enabled = rdbSeleccionar.Checked;
+        }
+
+        private void btnFacturar_Click(object sender, EventArgs e)
+        {
+            if (txtNombreUsuario.Text == string.Empty)
+            {
+                MessageBox.Show("El campo 'Nombre de la Factura' esta vacío", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (txtSede.Text == string.Empty)
+            {
+                MessageBox.Show("El campo 'Sede/Local' esta vacío", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(productosFacturados.Count == 0)
+            {
+                MessageBox.Show("No hay productos facturados!", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            MessageBox.Show($"NOMBRE: {txtNombreUsuario.Text}" +
+                $"\nSUCURSAL: {txtSede.Text}" +
+                $"\nFECHA: {(rdbFechaActual.Checked ? DateTime.Now.ToString("yyyy-MM-dd") : dtpFecha.Value.ToString("yyyy-MM-dd"))}" +
+                $"\nSUBTOTAL: {Subtotal:0.00}$" +
+                $"\nDESCUENTO: {Descuento:0.00}%" +
+                $"\nTOTAL: {Total:0.00}$");
         }
     }
 }
