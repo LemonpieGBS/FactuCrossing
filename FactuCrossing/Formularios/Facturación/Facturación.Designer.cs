@@ -28,52 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Facturación));
             groupBox1 = new GroupBox();
-            dataGridView1 = new DataGridView();
+            dgvFacturado = new DataGridView();
             btnAgregar = new Button();
             label1 = new Label();
             txtNombreUsuario = new TextBox();
             label2 = new Label();
-            textBox1 = new TextBox();
+            txtSede = new TextBox();
             groupBox2 = new GroupBox();
             lblFacturador = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            dtpFecha = new DateTimePicker();
+            rdbSeleccionar = new RadioButton();
+            rdbFechaActual = new RadioButton();
             label3 = new Label();
             button1 = new Button();
             button2 = new Button();
             button4 = new Button();
-            label6 = new Label();
-            label4 = new Label();
-            label5 = new Label();
+            lblTotal = new Label();
+            lblDescuento = new Label();
+            lblSubtotal = new Label();
             groupBox3 = new GroupBox();
-            pictureBox1 = new PictureBox();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFacturado).BeginInit();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(dataGridView1);
+            groupBox1.Controls.Add(dgvFacturado);
             groupBox1.Location = new Point(26, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(501, 522);
+            groupBox1.Size = new Size(501, 398);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Productos Facturados";
             // 
-            // dataGridView1
+            // dgvFacturado
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 22);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(489, 494);
-            dataGridView1.TabIndex = 0;
+            dgvFacturado.AllowUserToAddRows = false;
+            dgvFacturado.AllowUserToDeleteRows = false;
+            dgvFacturado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvFacturado.Location = new Point(6, 22);
+            dgvFacturado.Name = "dgvFacturado";
+            dgvFacturado.ReadOnly = true;
+            dgvFacturado.Size = new Size(489, 370);
+            dgvFacturado.TabIndex = 0;
             // 
             // btnAgregar
             // 
@@ -91,7 +91,7 @@
             // 
             // label1
             // 
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(19, 34);
             label1.Name = "label1";
             label1.Size = new Size(165, 18);
@@ -107,29 +107,29 @@
             // 
             // label2
             // 
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(19, 102);
             label2.Name = "label2";
             label2.Size = new Size(165, 18);
             label2.TabIndex = 11;
             label2.Text = "Sede/Local";
             // 
-            // textBox1
+            // txtSede
             // 
-            textBox1.Location = new Point(19, 123);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(279, 23);
-            textBox1.TabIndex = 10;
+            txtSede.Location = new Point(19, 123);
+            txtSede.Name = "txtSede";
+            txtSede.Size = new Size(279, 23);
+            txtSede.TabIndex = 10;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(lblFacturador);
-            groupBox2.Controls.Add(dateTimePicker1);
-            groupBox2.Controls.Add(radioButton2);
-            groupBox2.Controls.Add(radioButton1);
+            groupBox2.Controls.Add(dtpFecha);
+            groupBox2.Controls.Add(rdbSeleccionar);
+            groupBox2.Controls.Add(rdbFechaActual);
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(txtSede);
             groupBox2.Controls.Add(txtNombreUsuario);
             groupBox2.Controls.Add(label1);
             groupBox2.Location = new Point(533, 12);
@@ -142,46 +142,46 @@
             // 
             // lblFacturador
             // 
-            lblFacturador.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblFacturador.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblFacturador.Location = new Point(19, 289);
             lblFacturador.Name = "lblFacturador";
             lblFacturador.Size = new Size(291, 33);
             lblFacturador.TabIndex = 16;
             lblFacturador.Text = "Facturista: {Empleado}";
             // 
-            // dateTimePicker1
+            // dtpFecha
             // 
-            dateTimePicker1.Enabled = false;
-            dateTimePicker1.Location = new Point(19, 235);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(279, 23);
-            dateTimePicker1.TabIndex = 15;
+            dtpFecha.Enabled = false;
+            dtpFecha.Location = new Point(19, 235);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(279, 23);
+            dtpFecha.TabIndex = 15;
             // 
-            // radioButton2
+            // rdbSeleccionar
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(19, 210);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(88, 19);
-            radioButton2.TabIndex = 14;
-            radioButton2.Text = "Seleccionar:";
-            radioButton2.UseVisualStyleBackColor = true;
+            rdbSeleccionar.AutoSize = true;
+            rdbSeleccionar.Location = new Point(19, 210);
+            rdbSeleccionar.Name = "rdbSeleccionar";
+            rdbSeleccionar.Size = new Size(88, 19);
+            rdbSeleccionar.TabIndex = 14;
+            rdbSeleccionar.Text = "Seleccionar:";
+            rdbSeleccionar.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rdbFechaActual
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Checked = true;
-            radioButton1.Location = new Point(19, 185);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(136, 19);
-            radioButton1.TabIndex = 13;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Fecha Actual: {fecha}";
-            radioButton1.UseVisualStyleBackColor = true;
+            rdbFechaActual.AutoSize = true;
+            rdbFechaActual.Checked = true;
+            rdbFechaActual.Location = new Point(19, 185);
+            rdbFechaActual.Name = "rdbFechaActual";
+            rdbFechaActual.Size = new Size(136, 19);
+            rdbFechaActual.TabIndex = 13;
+            rdbFechaActual.TabStop = true;
+            rdbFechaActual.Text = "Fecha Actual: {fecha}";
+            rdbFechaActual.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(19, 164);
             label3.Name = "label3";
             label3.Size = new Size(165, 18);
@@ -228,64 +228,54 @@
             button4.Text = "Facturar";
             button4.UseVisualStyleBackColor = false;
             // 
-            // label6
+            // lblTotal
             // 
-            label6.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(153, 63);
-            label6.Name = "label6";
-            label6.Size = new Size(202, 55);
-            label6.TabIndex = 18;
-            label6.Text = "Total: {Total}";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
+            lblTotal.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTotal.Location = new Point(153, 63);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(202, 55);
+            lblTotal.TabIndex = 18;
+            lblTotal.Text = "Total: {Total}";
+            lblTotal.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // lblDescuento
             // 
-            label4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.IndianRed;
-            label4.Location = new Point(153, 45);
-            label4.Name = "label4";
-            label4.Size = new Size(202, 18);
-            label4.TabIndex = 21;
-            label4.Text = "Descuento: {Descuento}";
-            label4.TextAlign = ContentAlignment.MiddleCenter;
+            lblDescuento.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDescuento.ForeColor = Color.IndianRed;
+            lblDescuento.Location = new Point(153, 45);
+            lblDescuento.Name = "lblDescuento";
+            lblDescuento.Size = new Size(202, 18);
+            lblDescuento.TabIndex = 21;
+            lblDescuento.Text = "Descuento: {Descuento}";
+            lblDescuento.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label5
+            // lblSubtotal
             // 
-            label5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(153, 27);
-            label5.Name = "label5";
-            label5.Size = new Size(202, 18);
-            label5.TabIndex = 17;
-            label5.Text = "Subtotal: {Subtotal}";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            lblSubtotal.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSubtotal.Location = new Point(153, 27);
+            lblSubtotal.Name = "lblSubtotal";
+            lblSubtotal.Size = new Size(202, 18);
+            lblSubtotal.TabIndex = 17;
+            lblSubtotal.Text = "Subtotal: {Subtotal}";
+            lblSubtotal.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(label4);
-            groupBox3.Controls.Add(label6);
-            groupBox3.Controls.Add(label5);
-            groupBox3.Location = new Point(26, 540);
+            groupBox3.Controls.Add(lblDescuento);
+            groupBox3.Controls.Add(lblTotal);
+            groupBox3.Controls.Add(lblSubtotal);
+            groupBox3.Location = new Point(26, 416);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(501, 120);
             groupBox3.TabIndex = 22;
             groupBox3.TabStop = false;
             groupBox3.Text = "Información de Pago";
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(586, 555);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(291, 129);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 23;
-            pictureBox1.TabStop = false;
-            // 
             // Facturación
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(875, 673);
+            ClientSize = new Size(875, 550);
             Controls.Add(btnAgregar);
             Controls.Add(button4);
             Controls.Add(button2);
@@ -293,40 +283,37 @@
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox3);
-            Controls.Add(pictureBox1);
-            Icon = (Icon)Properties.Resources.AppIcon;
+            Icon = Properties.Resources.AppIcon;
             Name = "Facturación";
             Text = "Facturación";
             groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFacturado).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
         private GroupBox groupBox1;
-        private DataGridView dataGridView1;
+        private DataGridView dgvFacturado;
         private Button btnAgregar;
         private Label label1;
         private TextBox txtNombreUsuario;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox txtSede;
         private GroupBox groupBox2;
-        private DateTimePicker dateTimePicker1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private DateTimePicker dtpFecha;
+        private RadioButton rdbSeleccionar;
+        private RadioButton rdbFechaActual;
         private Label label3;
         private Label lblFacturador;
         private Button button1;
         private Button button2;
         private Button button4;
-        private Label label6;
-        private Label label4;
-        private Label label5;
+        private Label lblTotal;
+        private Label lblDescuento;
+        private Label lblSubtotal;
         private GroupBox groupBox3;
-        private PictureBox pictureBox1;
     }
 }

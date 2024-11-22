@@ -25,13 +25,13 @@ namespace FactuCrossing.Formularios.Inventario
             dgvInventario.DataSource = null;
 
             DataTable dt = new();
-            dt.Columns.AddRange([new("ID"), new("Nombre"), new("Proveedor"), new("Descripción"),
-                new("Precio"), new("Stock"), new("Fecha de Ingreso")]);
+            dt.Columns.AddRange(new DataColumn[]{ new("ID"), new("Nombre"), new("Proveedor"), new("Descripción"),
+                new("Precio"), new("Stock"), new("Fecha de Ingreso")});
 
             foreach (Producto producto in Program.sistemaCentral.inventario)
             {
-                dt.Rows.Add([producto.Id, producto.Nombre, producto.Proveedor, producto.Descripcion,
-                    producto.Precio, producto.CantidadEnStock, producto.FechaIngreso.ToString("yyyy-MM-dd")]);
+                dt.Rows.Add(new object[]{ producto.Id, producto.Nombre, producto.Proveedor, producto.Descripcion,
+                    producto.Precio, producto.CantidadEnStock, producto.FechaIngreso.ToString("yyyy-MM-dd")});
             }
 
             dgvInventario.DataSource = dt;
@@ -59,13 +59,6 @@ namespace FactuCrossing.Formularios.Inventario
                 return;
             }
 
-            if (rtxtDescripcion.Text == string.Empty)
-            {
-                MessageBox.Show("El campo 'Descripción' esta vacío", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             if(!decimal.TryParse(txtPrecio.Text, out decimal nuevoPrecio))
             {
                 MessageBox.Show("El campo 'Precio' no se pudo convertir a decimal", "Error",
@@ -87,6 +80,12 @@ namespace FactuCrossing.Formularios.Inventario
             ActualizarDataGrid();
 
             Program.sistemaCentral.GuardarInventario();
+
+            txtNombre.Text = string.Empty;
+            rtxtDescripcion.Text = string.Empty;
+            txtProveedor.Text = string.Empty;
+            nudStock.Value = 0;
+            txtPrecio.Text = string.Empty;
         }
     }
 }

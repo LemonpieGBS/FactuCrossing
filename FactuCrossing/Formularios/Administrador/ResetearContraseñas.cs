@@ -17,11 +17,11 @@ namespace FactuCrossing.Formularios.Administrador
             dgvPersonal.DataSource = null;
 
             DataTable dt = new();
-            dt.Columns.AddRange([new("ID"), new("Nombre"), new("Usuario"), new("Rol"), new("Temporal")]);
+            dt.Columns.AddRange(new DataColumn[]{new("ID"), new("Nombre"), new("Usuario"), new("Rol"), new("Temporal")});
 
             foreach (Cuenta cuenta in Program.sistemaCentral.cuentas)
             {
-                dt.Rows.Add([cuenta.Id, $"{cuenta.NombreDisplay}", cuenta.NombreUsuario, cuenta.Rol, cuenta.Temporal ? "Si" : "No"]);
+                dt.Rows.Add(new object[] { cuenta.Id, $"{cuenta.NombreDisplay}", cuenta.NombreUsuario, cuenta.Rol, cuenta.Temporal ? "Si" : "No" });
             }
 
             dgvPersonal.DataSource = dt;

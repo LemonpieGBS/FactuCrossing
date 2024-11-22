@@ -58,11 +58,11 @@ namespace FactuCrossing.Servicios
             {
                 fStream = new(rutaArchivo, FileMode.Open, FileAccess.Read);
                 bReader = new(fStream);
-            } catch(Exception ex)
+            } catch (Exception ex)
             {
                 MessageBox.Show($"Error cargando el archivo: {ex}", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return [];
+                return new List<Cuenta>() { };
             }
 
             try
@@ -71,7 +71,7 @@ namespace FactuCrossing.Servicios
                 {
                     MessageBox.Show("El archivo cargado no pertenece a un archivo de cuentas FactuCrossing", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return [];
+                    return new List<Cuenta>() { };
                 }
 
                 int cantidadCuentas = bReader.ReadInt32();

@@ -19,12 +19,12 @@ namespace FactuCrossing.Formularios.Administrador
             dgvPersonal.DataSource = null;
 
             DataTable dt = new();
-            dt.Columns.AddRange([new("ID"), new("Activo/a"), new("Nombre"), new("Usuario"), new("Rol"), new("Temporal")]);
+            dt.Columns.AddRange(new DataColumn[] { new("ID"), new("Activo/a"), new("Nombre"), new("Usuario"), new("Rol"), new("Temporal") });
 
             foreach (Cuenta cuenta in Program.sistemaCentral.cuentas)
             {
                 if (!mostrarDeshabilitadas && !cuenta.Habilitada) continue;
-                dt.Rows.Add([cuenta.Id, cuenta.Habilitada ? "Si" : "No", $"{cuenta.NombreDisplay}", cuenta.NombreUsuario, cuenta.Rol, cuenta.Temporal ? "Si" : "No"]);
+                dt.Rows.Add(new object[]{ cuenta.Id, cuenta.Habilitada ? "Si" : "No", $"{cuenta.NombreDisplay}", cuenta.NombreUsuario, cuenta.Rol, cuenta.Temporal ? "Si" : "No"});
             }
 
             dgvPersonal.DataSource = dt;

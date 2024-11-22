@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            label2 = new Label();
+            lblNombre = new Label();
             groupBox1 = new GroupBox();
-            label7 = new Label();
+            lblStock = new Label();
             label8 = new Label();
-            label5 = new Label();
+            lblPrecio = new Label();
             label6 = new Label();
-            label3 = new Label();
+            lblProveedor = new Label();
             label4 = new Label();
             groupBox2 = new GroupBox();
-            dataGridView1 = new DataGridView();
-            numericUpDown1 = new NumericUpDown();
+            dgvInventario = new DataGridView();
+            nudCantidad = new NumericUpDown();
             label9 = new Label();
             btnAgregar = new Button();
             btnCancelar = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCantidad).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -58,25 +58,25 @@
             label1.TabIndex = 0;
             label1.Text = "Nombre del Producto:";
             // 
-            // label2
+            // lblNombre
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(24, 51);
-            label2.Name = "label2";
-            label2.Size = new Size(212, 32);
-            label2.TabIndex = 1;
-            label2.Text = "{NombreProducto}";
+            lblNombre.AutoSize = true;
+            lblNombre.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNombre.Location = new Point(24, 51);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(116, 32);
+            lblNombre.TabIndex = 1;
+            lblNombre.Text = "{Nombre}";
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(lblStock);
             groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(lblPrecio);
             groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(lblProveedor);
             groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(lblNombre);
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(15, 13);
             groupBox1.Name = "groupBox1";
@@ -85,15 +85,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Información del Producto";
             // 
-            // label7
+            // lblStock
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(24, 257);
-            label7.Name = "label7";
-            label7.Size = new Size(189, 32);
-            label7.TabIndex = 7;
-            label7.Text = "{Stock} unidades";
+            lblStock.AutoSize = true;
+            lblStock.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            lblStock.Location = new Point(24, 257);
+            lblStock.Name = "lblStock";
+            lblStock.Size = new Size(189, 32);
+            lblStock.TabIndex = 7;
+            lblStock.Text = "{Stock} unidades";
             // 
             // label8
             // 
@@ -104,15 +104,15 @@
             label8.TabIndex = 6;
             label8.Text = "Cantidad en Stock";
             // 
-            // label5
+            // lblPrecio
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(24, 190);
-            label5.Name = "label5";
-            label5.Size = new Size(106, 32);
-            label5.TabIndex = 5;
-            label5.Text = "{Precio}$";
+            lblPrecio.AutoSize = true;
+            lblPrecio.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPrecio.Location = new Point(24, 190);
+            lblPrecio.Name = "lblPrecio";
+            lblPrecio.Size = new Size(106, 32);
+            lblPrecio.TabIndex = 5;
+            lblPrecio.Text = "{Precio}$";
             // 
             // label6
             // 
@@ -123,28 +123,28 @@
             label6.TabIndex = 4;
             label6.Text = "Precio";
             // 
-            // label3
+            // lblProveedor
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(24, 120);
-            label3.Name = "label3";
-            label3.Size = new Size(105, 32);
-            label3.TabIndex = 3;
-            label3.Text = "{Código}";
+            lblProveedor.AutoSize = true;
+            lblProveedor.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            lblProveedor.Location = new Point(24, 120);
+            lblProveedor.Name = "lblProveedor";
+            lblProveedor.Size = new Size(137, 32);
+            lblProveedor.TabIndex = 3;
+            lblProveedor.Text = "{Proveedor}";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Location = new Point(24, 105);
             label4.Name = "label4";
-            label4.Size = new Size(49, 15);
+            label4.Size = new Size(64, 15);
             label4.TabIndex = 2;
-            label4.Text = "Código:";
+            label4.Text = "Proveedor:";
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(dataGridView1);
+            groupBox2.Controls.Add(dgvInventario);
             groupBox2.Location = new Point(388, 13);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(367, 431);
@@ -152,20 +152,24 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Inventario";
             // 
-            // dataGridView1
+            // dgvInventario
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 21);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(355, 404);
-            dataGridView1.TabIndex = 0;
+            dgvInventario.AllowUserToAddRows = false;
+            dgvInventario.AllowUserToDeleteRows = false;
+            dgvInventario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvInventario.Location = new Point(6, 21);
+            dgvInventario.Name = "dgvInventario";
+            dgvInventario.ReadOnly = true;
+            dgvInventario.Size = new Size(355, 404);
+            dgvInventario.TabIndex = 0;
+            dgvInventario.CellClick += dgvInventario_CellClick;
             // 
-            // numericUpDown1
+            // nudCantidad
             // 
-            numericUpDown1.Location = new Point(15, 421);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(367, 23);
-            numericUpDown1.TabIndex = 9;
+            nudCantidad.Location = new Point(15, 421);
+            nudCantidad.Name = "nudCantidad";
+            nudCantidad.Size = new Size(367, 23);
+            nudCantidad.TabIndex = 9;
             // 
             // label9
             // 
@@ -212,7 +216,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnAgregar);
             Controls.Add(label9);
-            Controls.Add(numericUpDown1);
+            Controls.Add(nudCantidad);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "AgregarProducto";
@@ -220,8 +224,8 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvInventario).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -229,17 +233,17 @@
         #endregion
 
         private Label label1;
-        private Label label2;
+        private Label lblNombre;
         private GroupBox groupBox1;
-        private Label label7;
+        private Label lblStock;
         private Label label8;
-        private Label label5;
+        private Label lblPrecio;
         private Label label6;
-        private Label label3;
+        private Label lblProveedor;
         private Label label4;
         private GroupBox groupBox2;
-        private DataGridView dataGridView1;
-        private NumericUpDown numericUpDown1;
+        private DataGridView dgvInventario;
+        private NumericUpDown nudCantidad;
         private Label label9;
         private Button btnAgregar;
         private Button btnCancelar;

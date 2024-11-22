@@ -60,7 +60,7 @@ namespace FactuCrossing
 
         public static List<Control> GetControls(Form f)
         {
-            List<Control> returnList = [];
+            List<Control> returnList = new List<Control>() { };
             foreach(Control c in f.Controls)
             {
                 returnList.Add(c);
