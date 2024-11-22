@@ -138,9 +138,17 @@ namespace FactuCrossing.Formularios.Facturación
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            string TodosProductos = "";
+            foreach (Tuple<Producto, int> pareja in productosFacturados)
+            {
+                TodosProductos += $"\n{pareja.Item1.Nombre}-(x{pareja.Item2})-----------S:{pareja.Item1.Precio}--T:{pareja.Item1.Precio * pareja.Item2:0.00}";
+            }
+
             MessageBox.Show($"NOMBRE: {txtNombreUsuario.Text}" +
                 $"\nSUCURSAL: {txtSede.Text}" +
                 $"\nFECHA: {(rdbFechaActual.Checked ? DateTime.Now.ToString("yyyy-MM-dd") : dtpFecha.Value.ToString("yyyy-MM-dd"))}" +
+                $"{TodosProductos}" +
                 $"\nSUBTOTAL: {Subtotal:0.00}$" +
                 $"\nDESCUENTO: {Descuento:0.00}%" +
                 $"\nTOTAL: {Total:0.00}$");
