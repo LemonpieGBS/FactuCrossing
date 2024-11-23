@@ -97,6 +97,7 @@ namespace FactuCrossing
 
     internal class SistemaCentral
     {
+        public Cuenta? cuentaEnSesion = null;
         public List<Cuenta> cuentas = new();
         public string archivoCuentas = "";
 

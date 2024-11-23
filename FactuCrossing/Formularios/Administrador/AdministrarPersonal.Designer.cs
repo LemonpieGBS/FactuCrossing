@@ -31,7 +31,7 @@
             groupBox1 = new GroupBox();
             dgvPersonal = new DataGridView();
             btnAgregar = new Button();
-            button2 = new Button();
+            btnEditar = new Button();
             btnDeshabilitar = new Button();
             groupBox2 = new GroupBox();
             cmbAcceso = new ComboBox();
@@ -85,18 +85,19 @@
             btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
-            // button2
+            // btnEditar
             // 
-            button2.BackColor = Color.FromArgb(83, 96, 171);
-            button2.Cursor = Cursors.Hand;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(408, 332);
-            button2.Name = "button2";
-            button2.Size = new Size(249, 40);
-            button2.TabIndex = 15;
-            button2.Text = "Editar";
-            button2.UseVisualStyleBackColor = false;
+            btnEditar.BackColor = Color.FromArgb(83, 96, 171);
+            btnEditar.Cursor = Cursors.Hand;
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.ForeColor = Color.White;
+            btnEditar.Location = new Point(408, 332);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(249, 40);
+            btnEditar.TabIndex = 15;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnDeshabilitar
             // 
@@ -129,6 +130,7 @@
             // 
             // cmbAcceso
             // 
+            cmbAcceso.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAcceso.FlatStyle = FlatStyle.System;
             cmbAcceso.FormattingEnabled = true;
             cmbAcceso.Items.AddRange(new object[] { "Facturista", "Gestor de Inventario", "Analista", "Administrador", "Gerente" });
@@ -213,7 +215,7 @@
             Controls.Add(chbHabilitada);
             Controls.Add(groupBox2);
             Controls.Add(btnDeshabilitar);
-            Controls.Add(button2);
+            Controls.Add(btnEditar);
             Controls.Add(btnAgregar);
             Controls.Add(groupBox1);
             Name = "AdministrarPersonal";
@@ -233,7 +235,7 @@
         private GroupBox groupBox1;
         private DataGridView dgvPersonal;
         private Button btnAgregar;
-        private Button button2;
+        private Button btnEditar;
         private Button btnDeshabilitar;
         private GroupBox groupBox2;
         private TextBox txtNombreUsuario;

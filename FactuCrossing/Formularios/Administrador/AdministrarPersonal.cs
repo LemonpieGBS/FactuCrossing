@@ -7,11 +7,46 @@ namespace FactuCrossing.Formularios.Administrador
     {
         int cuentaSeleccionada = -1;
 
+        Dictionary<string, Roles> camposDeAcceso = new()
+        {
+            {"Facturista", Roles.FACTURISTA},
+            {"Gestor de Inventario", Roles.GESTORDEINVENTARIO},
+            {"Analista",Roles.ANALISTA},
+            {"Administrador",Roles.ADMINISTRADOR},
+            {"Gerente", Roles.GERENTE}
+        };
+
         public AdministrarPersonal()
         {
+            if (Program.sistemaCentral.cuentaEnSesion is null)
+            {
+                MessageBox.Show("Hubo un problema de autenticación, porfavor inicie sesión de nuevo", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
             InitializeComponent();
             ActualizarDataGrid();
             if (Program.mFont is not null) Program.ApplyFont(Program.mFont, this);
+            statusLabel.Text = "No hay ningun empleado seleccionado";
+
+            cmbAcceso.Items.Clear();
+
+            cmbAcceso.Items.AddRange(new object[]
+            {
+                "Facturista",
+                "Gestor de Inventario",
+                "Analista",
+                "Administrador"
+            });
+
+            if(Program.sistemaCentral.cuentaEnSesion.Rol == Roles.GERENTE)
+            {
+                cmbAcceso.Items.Add( new string("Gerente") );
+            }
+
+            cmbAcceso.SelectedItem = null;
         }
 
         public void ActualizarDataGrid(bool mostrarDeshabilitadas = false)
@@ -24,56 +59,62 @@ namespace FactuCrossing.Formularios.Administrador
             foreach (Cuenta cuenta in Program.sistemaCentral.cuentas)
             {
                 if (!mostrarDeshabilitadas && !cuenta.Habilitada) continue;
-                dt.Rows.Add(new object[]{ cuenta.Id, cuenta.Habilitada ? "Si" : "No", $"{cuenta.NombreDisplay}", cuenta.NombreUsuario, cuenta.Rol, cuenta.Temporal ? "Si" : "No"});
+                dt.Rows.Add(new object[] { cuenta.Id, cuenta.Habilitada ? "Si" : "No", $"{cuenta.NombreDisplay}", cuenta.NombreUsuario, cuenta.Rol, cuenta.Temporal ? "Si" : "No" });
             }
 
             dgvPersonal.DataSource = dt;
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private bool ValidarCampos()
         {
             if (txtNombre.Text == string.Empty)
             {
                 MessageBox.Show("El campo 'Texto' esta vacío", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             if (txtNombreUsuario.Text == string.Empty)
             {
                 MessageBox.Show("El campo 'Nombre de Usuario' esta vacío", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
             else if (txtNombreUsuario.Text.Contains(' '))
             {
                 MessageBox.Show("El campo 'Nombre de Usuario' no puede contener espacios", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
-            Dictionary<string, Roles> camposDeAcceso = new()
-            {
-                {"Facturista", Roles.FACTURISTA},
-                {"Gestor de Inventario", Roles.GESTORDEINVENTARIO},
-                {"Analista",Roles.ANALISTA},
-                {"Administrador",Roles.ADMINISTRADOR},
-                {"Gerente", Roles.GERENTE}
-            };
-
-            Roles rol;
             if (cmbAcceso.SelectedItem is null)
             {
                 MessageBox.Show("El campo 'Nivel de Acceso' esta vacío", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
-            else if (!camposDeAcceso.TryGetValue(cmbAcceso.Text, out rol))
+            else if (!camposDeAcceso.TryGetValue(cmbAcceso.Text, out _))
             {
                 MessageBox.Show($"No se reconoce el nivel de acceso '{cmbAcceso.Text}'", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
+
+            return true;
+        }
+
+        private void VaciarCampos()
+        {
+            txtNombre.Text = "";
+            txtNombreUsuario.Text = "";
+            cmbAcceso.SelectedItem = null;
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (!ValidarCampos()) return;
+
+            Roles rol = camposDeAcceso[cmbAcceso.Text];
 
             string contrasenaTemporal;
 
@@ -104,6 +145,7 @@ namespace FactuCrossing.Formularios.Administrador
             MessageBox.Show("La cuenta está marcada como temporal, si no se inicia sesión antes de cerrar el programa, se borrará automaticamente", "Cuenta Creada",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            VaciarCampos();
             Program.sistemaCentral.GuardarCuentas();
 
             ActualizarDataGrid(chbHabilitada.Checked);
@@ -118,7 +160,8 @@ namespace FactuCrossing.Formularios.Administrador
         {
             int idConseguido = -1;
 
-            if(!int.TryParse((((DataTable)dgvPersonal.DataSource).Rows[e.RowIndex]["ID"]).ToString(), out idConseguido)) {
+            if (!int.TryParse((((DataTable)dgvPersonal.DataSource).Rows[e.RowIndex]["ID"]).ToString(), out idConseguido))
+            {
                 MessageBox.Show("Hubo un problema con la selección", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -132,15 +175,6 @@ namespace FactuCrossing.Formularios.Administrador
 
             txtNombre.Text = dbi.NombreDisplay;
             txtNombreUsuario.Text = dbi.NombreUsuario;
-
-            Dictionary<string, Roles> camposDeAcceso = new()
-            {
-                {"Facturista", Roles.FACTURISTA},
-                {"Gestor de Inventario", Roles.GESTORDEINVENTARIO},
-                {"Analista",Roles.ANALISTA},
-                {"Administrador",Roles.ADMINISTRADOR},
-                {"Gerente", Roles.GERENTE}
-            };
 
             foreach (KeyValuePair<string, Roles> kp in camposDeAcceso)
             {
@@ -158,7 +192,58 @@ namespace FactuCrossing.Formularios.Administrador
 
                 Program.sistemaCentral.GuardarCuentas();
                 btnDeshabilitar.Text = (cuenta.Habilitada) ? "Deshabilitar" : "Habilitar";
-            } else
+
+                cuentaSeleccionada = -1;
+                statusLabel.Text = "No hay ningun empleado seleccionado";
+
+                foreach (KeyValuePair<string, Roles> kp in camposDeAcceso)
+                {
+                    if (kp.Value == cuenta.Rol) cmbAcceso.Text = kp.Key;
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay ningun empleado seleccionado", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (cuentaSeleccionada != -1)
+            {
+                Cuenta cuenta = Program.sistemaCentral.cuentas[cuentaSeleccionada];
+
+                if (!ValidarCampos()) return;
+
+                Roles rol = camposDeAcceso[cmbAcceso.Text];
+
+                Cuenta nuevaCuenta = new Cuenta(
+                    _id: cuenta.Id,
+                    _nombredisplay: txtNombre.Text,
+                    _nombre: txtNombreUsuario.Text,
+                    _hash: cuenta.Hash,
+                    _salt: cuenta.Salt,
+                    _rol: rol
+                );
+
+                Program.sistemaCentral.cuentas[cuentaSeleccionada] = nuevaCuenta;
+
+                cuentaSeleccionada = -1;
+                statusLabel.Text = "No hay ningun empleado seleccionado";
+
+                Program.sistemaCentral.GuardarCuentas();
+
+                ActualizarDataGrid(chbHabilitada.Checked);
+
+                foreach (KeyValuePair<string, Roles> kp in camposDeAcceso)
+                {
+                    if (kp.Value == cuenta.Rol) cmbAcceso.Text = kp.Key;
+                }
+
+                VaciarCampos();
+            }
+            else
             {
                 MessageBox.Show("No hay ningun empleado seleccionado", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

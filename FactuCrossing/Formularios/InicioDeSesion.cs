@@ -65,6 +65,7 @@ public partial class InicioDeSesion : Form
             }
 
             Program.nombreDeUsuario = cuentaUsuario.NombreDisplay;
+            Program.sistemaCentral.cuentaEnSesion = cuentaUsuario;
 
             this.Hide();
             MenuPrincipal frm = new();

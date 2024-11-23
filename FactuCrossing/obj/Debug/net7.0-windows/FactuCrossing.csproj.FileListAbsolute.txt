@@ -26,3 +26,31 @@ C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.genruntimeconfig.cache
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\ref\FactuCrossing.dll
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.InicioDeSesion.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\bin\Debug\net7.0-windows\FactuCrossing.exe
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\bin\Debug\net7.0-windows\FactuCrossing.deps.json
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\bin\Debug\net7.0-windows\FactuCrossing.runtimeconfig.json
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\bin\Debug\net7.0-windows\FactuCrossing.dll
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\bin\Debug\net7.0-windows\FactuCrossing.pdb
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Administrador.AdministrarPersonal.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Administrador.Generador_de_Reportes.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Administrador.MenuAdministrador.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Administrador.ResetearContraseñas.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Facturación.AgregarProducto.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Facturación.EditarProducto.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Facturación.Facturación.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.InicioDeSesion.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Inventario.Inventario.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.MenuPrincipal.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Reportes.GeneracionDeReportes.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Properties.Resources.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.csproj.GenerateResource.cache
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.AssemblyInfoInputs.cache
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.AssemblyInfo.cs
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.csproj.CoreCompileInputs.cache
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.sourcelink.json
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.dll
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\refint\FactuCrossing.dll
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.pdb
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.genruntimeconfig.cache
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\ref\FactuCrossing.dll

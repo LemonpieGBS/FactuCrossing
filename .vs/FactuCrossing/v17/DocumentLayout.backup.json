@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "D:\\Documents\\Workspace - C#\\FactuCrossing\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\inventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\inventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\administrador\\administrarpersonal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\administrador\\administrarpersonal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\servicios\\servicioarchivoinventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\servicios\\servicioarchivoinventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\estructuras\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\estructuras\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\administrador\\administrarpersonal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\administrador\\administrarpersonal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\inventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\inventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\iniciodesesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\iniciodesesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\iniciodesesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\iniciodesesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -67,78 +63,64 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ServicioArchivoInventario.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Servicios\\ServicioArchivoInventario.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Servicios\\ServicioArchivoInventario.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Servicios\\ServicioArchivoInventario.cs",
-              "RelativeToolTip": "FactuCrossing\\Servicios\\ServicioArchivoInventario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHUAAAAFAAAAAAAAAA==",
+              "Title": "InicioDeSesion.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\InicioDeSesion.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\InicioDeSesion.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\InicioDeSesion.cs",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\InicioDeSesion.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAIwEMAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T11:23:29.455Z",
+              "WhenOpened": "2024-11-23T22:20:38.491Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdministrarPersonal.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAmwCQAAAAQAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "InicioDeSesion.cs [Design]",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\InicioDeSesion.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\InicioDeSesion.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\InicioDeSesion.cs [Design]",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\InicioDeSesion.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T11:14:21.42Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-23T22:20:34.947Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Inventario.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAwFgAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T11:13:32.573Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Program.cs",
               "RelativeDocumentMoniker": "FactuCrossing\\Program.cs",
               "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Program.cs",
               "RelativeToolTip": "FactuCrossing\\Program.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAA0wFcAAABLAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAIwGIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T11:07:10.203Z",
+              "WhenOpened": "2024-11-23T22:18:00.175Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Inventario.cs [Design]",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\Inventario.cs [Design]",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Inventario\\Inventario.cs [Design]",
+              "DocumentIndex": 2,
+              "Title": "AdministrarPersonal.cs [Design]",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs [Design]",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T11:03:23.125Z",
+              "WhenOpened": "2024-11-23T21:59:36.175Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Inventario.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Estructuras\\Inventario.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Estructuras\\Inventario.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Estructuras\\Inventario.cs",
-              "RelativeToolTip": "FactuCrossing\\Estructuras\\Inventario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwgAAAAEAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "AdministrarPersonal.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAowJ4AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T10:59:34.517Z",
+              "WhenOpened": "2024-11-22T11:14:21.42Z",
               "EditorCaption": ""
             }
           ]
