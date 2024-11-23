@@ -35,16 +35,16 @@ namespace FactuCrossing.Formularios.Facturación
             dgvFacturado.DataSource = null;
 
             DataTable dt = new();
-            dt.Columns.AddRange(new DataColumn[]{ new("Nombre"), new("Proveedor"), new("Descripción"),
-                new("Precio"), new("Stock"), new("Total")});
+            dt.Columns.AddRange(new DataColumn[]{ new("Cantiad"), new("Nombre"), new("Proveedor"), new("Descripción"),
+                new("Precio"), new("Total")});
 
             foreach (Tuple<Producto, int> pareja in productosFacturados)
             {
                 Producto producto = pareja.Item1;
                 int cantidad = pareja.Item2;
 
-                dt.Rows.Add(new object[]{ producto.Nombre, producto.Proveedor, producto.Descripcion,
-                    $"{producto.Precio:0.00}$", cantidad, $"{producto.Precio * cantidad:0.00}$"});
+                dt.Rows.Add(new object[]{ cantidad, producto.Nombre, producto.Proveedor, producto.Descripcion,
+                    $"{producto.Precio:0.00}$", $"{producto.Precio * cantidad:0.00}$"});
             }
 
             dgvFacturado.DataSource = dt;

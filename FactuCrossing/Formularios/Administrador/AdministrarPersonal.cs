@@ -58,8 +58,15 @@ namespace FactuCrossing.Formularios.Administrador
 
             foreach (Cuenta cuenta in Program.sistemaCentral.cuentas)
             {
+                string stringRol = "No Reconocido";
+                foreach (KeyValuePair<string, Roles> kp in camposDeAcceso)
+                {
+                    if (kp.Value == cuenta.Rol) stringRol = kp.Key;
+                }
+
                 if (!mostrarDeshabilitadas && !cuenta.Habilitada) continue;
-                dt.Rows.Add(new object[] { cuenta.Id, cuenta.Habilitada ? "Si" : "No", $"{cuenta.NombreDisplay}", cuenta.NombreUsuario, cuenta.Rol, cuenta.Temporal ? "Si" : "No" });
+                dt.Rows.Add(new object[] { cuenta.Id, cuenta.Habilitada ? "Si" : "No", cuenta.NombreDisplay,
+                    cuenta.NombreUsuario, stringRol, cuenta.Temporal ? "Si" : "No" });
             }
 
             dgvPersonal.DataSource = dt;
