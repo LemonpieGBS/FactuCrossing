@@ -221,7 +221,7 @@
             Controls.Add(btnAgregar);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Icon = Properties.Resources.AppIcon;
+            Icon = (Icon)Properties.Resources.AppIcon;
             Name = "Inventario";
             Text = "Inventario";
             groupBox1.ResumeLayout(false);

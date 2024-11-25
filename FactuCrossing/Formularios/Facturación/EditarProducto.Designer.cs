@@ -209,6 +209,7 @@
             Controls.Add(numericUpDown1);
             Controls.Add(groupBox1);
             Name = "EditarProducto";
+            Icon = (Icon)Properties.Resources.AppIcon;
             Text = "Editar Producto";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

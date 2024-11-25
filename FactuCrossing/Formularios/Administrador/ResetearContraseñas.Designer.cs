@@ -113,6 +113,7 @@
             Controls.Add(groupBox1);
             Name = "ResetearContraseñas";
             Text = "ResetearContraseñas";
+            Icon = (Icon)Properties.Resources.AppIcon;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvPersonal).EndInit();
             statusStrip1.ResumeLayout(false);

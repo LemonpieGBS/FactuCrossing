@@ -220,6 +220,7 @@
             Controls.Add(groupBox1);
             Name = "AdministrarPersonal";
             Text = "AdministrarPersonal";
+            Icon = (Icon)Properties.Resources.AppIcon;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvPersonal).EndInit();
             groupBox2.ResumeLayout(false);

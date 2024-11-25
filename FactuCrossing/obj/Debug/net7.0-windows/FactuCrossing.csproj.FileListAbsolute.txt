@@ -54,3 +54,5 @@ D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows
 D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.pdb
 D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.genruntimeconfig.cache
 D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\ref\FactuCrossing.dll
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Utilidades.InputForm.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Utilidades.CreacionDeContraseña.resources

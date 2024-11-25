@@ -31,5 +31,11 @@
     <Compile Update="Formularios\InicioDeSesion.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\Utilidades\CreacionDeContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Utilidades\InputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

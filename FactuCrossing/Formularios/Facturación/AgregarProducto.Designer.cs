@@ -219,6 +219,7 @@
             Controls.Add(nudCantidad);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Icon = (Icon)Properties.Resources.AppIcon;
             Name = "AgregarProducto";
             Text = "Agregar Producto";
             groupBox1.ResumeLayout(false);

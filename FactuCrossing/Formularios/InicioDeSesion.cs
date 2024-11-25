@@ -48,15 +48,12 @@ public partial class InicioDeSesion : Form
             {
                 string contrasena;
 
-                do
-                {
-                    contrasena = Microsoft.VisualBasic.Interaction.InputBox("Es tu primera vez iniciando sesión, crea la contraseña para tu usuario", "Crear Contraseña", "");
-                    if (contrasena == string.Empty)
-                    {
-                        MessageBox.Show("La contraseña no puede estar vacía", "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                } while (contrasena == string.Empty);
+                Utilidades.CreacionDeContraseña iform = new Utilidades.CreacionDeContraseña();
+
+                if (iform.ShowDialog(this) != DialogResult.OK) return;
+                contrasena = iform.Contrasena;
+
+                iform.Dispose();
 
                 cuentaUsuario.EstablecerContrasena(contrasena);
                 cuentaUsuario.EstablecerTemporal(false);

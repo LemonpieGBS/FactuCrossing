@@ -125,15 +125,27 @@ namespace FactuCrossing.Formularios.Administrador
 
             string contrasenaTemporal;
 
-            do
+            Utilidades.InputForm iform =
+                new Utilidades.InputForm("Crear Cuenta", "Ingrese la contraseña temporal para el usuario");
+
+            Func<string, bool> validationRule = (string _input) =>
             {
-                contrasenaTemporal = Microsoft.VisualBasic.Interaction.InputBox("Ingrese la contraseña temporal para el usuario", "Crear Cuenta", "1234");
-                if (contrasenaTemporal == string.Empty)
+                if (_input == string.Empty)
                 {
-                    MessageBox.Show("La contraseña temporal no puede estar vacía", "Error",
+                    MessageBox.Show("Porfavor rellenar el campo de input", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
-            } while (contrasenaTemporal == string.Empty);
+                else return true;
+            };
+
+            iform.setValidationRule(validationRule);
+            iform.getInputBox().PasswordChar = '*';
+
+            if (iform.ShowDialog(this) != DialogResult.OK) return;
+            contrasenaTemporal = iform.InputtedString;
+
+            iform.Dispose();
 
             Cuenta cuentaNueva = new(
                     _id: Program.sistemaCentral.cuentas.Count,

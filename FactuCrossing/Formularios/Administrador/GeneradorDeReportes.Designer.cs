@@ -179,6 +179,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(340, 432);
             Controls.Add(groupBox2);
+            Icon = (Icon)Properties.Resources.AppIcon;
             Name = "Generador_de_Reportes";
             Text = "Generador_de_Reportes";
             groupBox2.ResumeLayout(false);
