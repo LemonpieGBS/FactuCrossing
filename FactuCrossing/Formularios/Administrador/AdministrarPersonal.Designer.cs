@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdministrarPersonal));
             groupBox1 = new GroupBox();
             dgvPersonal = new DataGridView();
             btnAgregar = new Button();
@@ -43,6 +44,7 @@
             chbHabilitada = new CheckBox();
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
+            btnDeseleccionar = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPersonal).BeginInit();
             groupBox2.SuspendLayout();
@@ -142,7 +144,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(6, 152);
+            label2.Location = new Point(6, 151);
             label2.Name = "label2";
             label2.Size = new Size(94, 15);
             label2.TabIndex = 22;
@@ -158,7 +160,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 34);
+            label1.Location = new Point(6, 33);
             label1.Name = "label1";
             label1.Size = new Size(126, 15);
             label1.TabIndex = 18;
@@ -174,7 +176,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(6, 93);
+            label4.Location = new Point(6, 92);
             label4.Name = "label4";
             label4.Size = new Size(113, 15);
             label4.TabIndex = 19;
@@ -206,11 +208,27 @@
             statusLabel.Size = new Size(175, 17);
             statusLabel.Text = "Ningun empleado seleccionado";
             // 
+            // btnDeseleccionar
+            // 
+            btnDeseleccionar.BackColor = Color.FromArgb(83, 96, 171);
+            btnDeseleccionar.BackgroundImage = (Image)resources.GetObject("btnDeseleccionar.BackgroundImage");
+            btnDeseleccionar.BackgroundImageLayout = ImageLayout.Stretch;
+            btnDeseleccionar.Cursor = Cursors.Hand;
+            btnDeseleccionar.FlatStyle = FlatStyle.Flat;
+            btnDeseleccionar.ForeColor = Color.White;
+            btnDeseleccionar.Location = new Point(364, 426);
+            btnDeseleccionar.Name = "btnDeseleccionar";
+            btnDeseleccionar.Size = new Size(38, 39);
+            btnDeseleccionar.TabIndex = 20;
+            btnDeseleccionar.UseVisualStyleBackColor = false;
+            btnDeseleccionar.Click += btnDeseleccionar_Click;
+            // 
             // AdministrarPersonal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(672, 498);
+            Controls.Add(btnDeseleccionar);
             Controls.Add(statusStrip1);
             Controls.Add(chbHabilitada);
             Controls.Add(groupBox2);
@@ -218,9 +236,9 @@
             Controls.Add(btnEditar);
             Controls.Add(btnAgregar);
             Controls.Add(groupBox1);
+            Icon = Properties.Resources.AppIcon;
             Name = "AdministrarPersonal";
             Text = "AdministrarPersonal";
-            Icon = (Icon)Properties.Resources.AppIcon;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvPersonal).EndInit();
             groupBox2.ResumeLayout(false);
@@ -248,5 +266,6 @@
         private CheckBox chbHabilitada;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabel;
+        private Button btnDeseleccionar;
     }
 }

@@ -79,6 +79,7 @@
             // 
             // InputForm
             // 
+            AcceptButton = btnOK;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(425, 161);
@@ -86,8 +87,8 @@
             Controls.Add(btnOK);
             Controls.Add(txtInput);
             Controls.Add(lblText);
+            Icon = Properties.Resources.AppIcon;
             Name = "InputForm";
-            Icon = (Icon)Properties.Resources.AppIcon;
             ShowIcon = false;
             Text = "InputForm";
             ResumeLayout(false);

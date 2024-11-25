@@ -5,11 +5,25 @@ namespace FactuCrossing.Formularios.Administrador
 {
     public partial class ResetearContraseñas : Form
     {
+        int idSeleccionado = -1;
+        Cuenta cuentaEnSesion =
+            new Cuenta(-1, "default", "default", Roles.GERENTE, new HashSalt("1234"));
+
         public ResetearContraseñas()
         {
+            if (Program.sistemaCentral.cuentaEnSesion is null)
+            {
+                MessageBox.Show("Hubo un problema de autenticación, porfavor inicie sesión de nuevo", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+            this.cuentaEnSesion = Program.sistemaCentral.cuentaEnSesion;
+
             InitializeComponent();
             ActualizarDataGrid();
             if (Program.mFont is not null) Program.ApplyFont(Program.mFont, this);
+            statusLabel.Text = "No hay ningun empleado seleccionado";
         }
 
         public void ActualizarDataGrid(bool mostrarDeshabilitadas = false)
@@ -17,7 +31,7 @@ namespace FactuCrossing.Formularios.Administrador
             dgvPersonal.DataSource = null;
 
             DataTable dt = new();
-            dt.Columns.AddRange(new DataColumn[]{new("ID"), new("Nombre"), new("Usuario"), new("Rol"), new("Temporal")});
+            dt.Columns.AddRange(new DataColumn[]{new("ID"), new("Nombre"), new("Usuario"), new("Rol"), new("Contraseña Temporal")});
 
             foreach (Cuenta cuenta in Program.sistemaCentral.cuentas)
             {
@@ -37,7 +51,52 @@ namespace FactuCrossing.Formularios.Administrador
             }
 
             Cuenta dbi = Program.sistemaCentral.cuentas[idConseguido];
+            idSeleccionado = dbi.Id;
             statusLabel.Text = $"Cuenta seleccionada: {dbi.NombreDisplay}";
+        }
+
+        private void btnResetear_Click(object sender, EventArgs e)
+        {
+            if (idSeleccionado == -1)
+            {
+                MessageBox.Show("Porfavor selecciona una cuenta", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Cuenta cuenta = Program.sistemaCentral.cuentas[idSeleccionado];
+            cuenta.ContraseñaTemporal = true;
+
+            string contrasenaTemporal;
+
+            Utilidades.InputForm iform =
+                new Utilidades.InputForm("Crear Cuenta", "Ingrese la contraseña temporal para el usuario");
+
+            Func<string, bool> validationRule = (string _input) =>
+            {
+                if (_input == string.Empty)
+                {
+                    MessageBox.Show("Porfavor rellenar el campo de input", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                else return true;
+            };
+
+            iform.setValidationRule(validationRule);
+
+            if (iform.ShowDialog(this) != DialogResult.OK) return;
+            contrasenaTemporal = iform.InputtedString;
+
+            iform.Dispose();
+            cuenta.CambiarContraseña(new HashSalt(contrasenaTemporal));
+
+            Program.sistemaCentral.cuentas[idSeleccionado] = cuenta;
+            ActualizarDataGrid();
+
+            MessageBox.Show("Contraseña reseteada con éxito", "Resetear Contraseña",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            statusLabel.Text = "No hay ningun empleado seleccionado";
+            idSeleccionado = -1;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

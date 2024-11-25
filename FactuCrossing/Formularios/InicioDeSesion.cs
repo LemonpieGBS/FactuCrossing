@@ -63,6 +63,7 @@ public partial class InicioDeSesion : Form
                     _contraseña: new HashSalt(contrasena)
                     );
 
+                Program.sistemaCentral.cuentas[cuentaUsuario.Id] = cuentaUsuario;
                 Program.sistemaCentral.GuardarCuentas();
             }
 

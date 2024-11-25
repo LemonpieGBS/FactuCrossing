@@ -59,6 +59,7 @@
             dgvPersonal.ReadOnly = true;
             dgvPersonal.Size = new Size(378, 434);
             dgvPersonal.TabIndex = 0;
+            dgvPersonal.CellDoubleClick += dgvPersonal_CellDoubleClick;
             // 
             // button3
             // 
@@ -72,6 +73,7 @@
             button3.TabIndex = 12;
             button3.Text = "Resetear";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += btnResetear_Click;
             // 
             // btnSalir
             // 
@@ -111,9 +113,9 @@
             Controls.Add(btnSalir);
             Controls.Add(button3);
             Controls.Add(groupBox1);
+            Icon = Properties.Resources.AppIcon;
             Name = "ResetearContraseñas";
             Text = "ResetearContraseñas";
-            Icon = (Icon)Properties.Resources.AppIcon;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvPersonal).EndInit();
             statusStrip1.ResumeLayout(false);

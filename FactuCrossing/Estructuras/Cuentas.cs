@@ -122,7 +122,7 @@ namespace FactuCrossing.Estructuras
         public string NombreDisplay { get; private set; }
 
         // Rol en la empresa, ver el enumerador de arriba
-        public Roles Rol { get; private set; }
+        public Roles Rol { get; set; }
 
         // Marca si la contraseña del usuario es temporal o no
         public bool ContraseñaTemporal { get; set; } = false;
@@ -131,7 +131,7 @@ namespace FactuCrossing.Estructuras
         public bool Habilitada { get; set; } = true;
 
         // Marca si el usuario ha iniciado sesión alguna vez
-        public bool SesionIniciada { get; set; } = false;
+        public bool SesionIniciada { get; set; } = true;
 
         // Contraseña :]
         public HashSalt Contraseña { get; private set; }
@@ -144,6 +144,12 @@ namespace FactuCrossing.Estructuras
             Id = _id;
             Rol = _rol;
             Contraseña = _contraseña;
+        }
+
+        // Método para cambiar la contraseña
+        public void CambiarContraseña(HashSalt _nuevaContraseña)
+        {
+            Contraseña = _nuevaContraseña;
         }
 
         // Método para comparar una contraseña con otra

@@ -72,7 +72,7 @@
             // 
             // lblHola
             // 
-            lblHola.Font = new Font("Segoe UI Semibold", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHola.Font = new Font("Segoe UI Semibold", 48F, FontStyle.Bold, GraphicsUnit.Point);
             lblHola.Location = new Point(12, 9);
             lblHola.Name = "lblHola";
             lblHola.Size = new Size(1162, 86);
@@ -82,7 +82,7 @@
             // 
             // lblTiempo
             // 
-            lblTiempo.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTiempo.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblTiempo.Location = new Point(12, 95);
             lblTiempo.Name = "lblTiempo";
             lblTiempo.Size = new Size(1162, 17);
@@ -217,10 +217,11 @@
             Controls.Add(lblHola);
             Controls.Add(btnCerrarSesión);
             Controls.Add(pictureBox1);
-            Icon = (Icon)Properties.Resources.AppIcon;
+            Icon = Properties.Resources.AppIcon;
             Name = "MenuPrincipal";
             Text = "Menu Principal";
             TransparencyKey = Color.Fuchsia;
+            Activated += MenuPrincipal_Activated;
             FormClosing += MenuPrincipal_FormClosing;
             Load += MenuPrincipal_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

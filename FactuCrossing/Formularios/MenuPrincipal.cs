@@ -1,13 +1,27 @@
-﻿namespace FactuCrossing.Formularios
+﻿using FactuCrossing.Estructuras;
+
+namespace FactuCrossing.Formularios
 {
     public partial class MenuPrincipal : Form
     {
+        Cuenta cuentaEnSesion =
+            new Cuenta(-1, "default", "default", Roles.GERENTE, new HashSalt("1234"));
+
         public MenuPrincipal()
         {
+            if (Program.sistemaCentral.cuentaEnSesion is null)
+            {
+                MessageBox.Show("Hubo un problema de autenticación, porfavor inicie sesión de nuevo", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+            this.cuentaEnSesion = Program.sistemaCentral.cuentaEnSesion;
+
             InitializeComponent();
             if (Program.mFont is not null) Program.ApplyFont(Program.mFont, this);
 
-            lblHola.Text = $"Hola, {Program.nombreDeUsuario}";
+            lblHola.Text = $"Hola, {cuentaEnSesion.NombreDisplay}";
 
             DateTime dt = DateTime.Now;
 
@@ -35,13 +49,28 @@
 
         }
 
+        private void OnShow()
+        {
+            if (Program.sistemaCentral.cuentaEnSesion is null)
+            {
+                MessageBox.Show("Hubo un problema de autenticación, porfavor inicie sesión de nuevo", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+            this.cuentaEnSesion = Program.sistemaCentral.cuentaEnSesion;
+
+            this.Show();
+            lblHola.Text = $"Hola, {cuentaEnSesion.NombreDisplay}";
+        }
+
         private void btnFacturación_Click(object sender, EventArgs e)
         {
             this.Hide();
             Facturación.Facturación frm = new();
             frm.Show();
 
-            frm.FormClosed += delegate { this.Show(); };
+            frm.FormClosed += delegate { this.OnShow(); };
         }
 
         private void btnInventario_Click(object sender, EventArgs e)
@@ -50,7 +79,7 @@
             Inventario.Inventario frm = new();
             frm.Show();
 
-            frm.FormClosed += delegate { this.Show(); };
+            frm.FormClosed += delegate { this.OnShow(); };
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
@@ -59,7 +88,7 @@
             Reportes.GeneracionDeReportes frm = new();
             frm.Show();
 
-            frm.FormClosed += delegate { this.Show(); };
+            frm.FormClosed += delegate { this.OnShow(); };
         }
 
         private void btnAdministradores_Click(object sender, EventArgs e)
@@ -68,7 +97,12 @@
             Administrador.MenuAdministrador frm = new();
             frm.Show();
 
-            frm.FormClosed += delegate { this.Show(); };
+            frm.FormClosed += delegate { this.OnShow(); };
+        }
+
+        private void MenuPrincipal_Activated(object sender, EventArgs e)
+        {
+            lblHola.Text = $"Hola, {Program.nombreDeUsuario}";
         }
     }
 }

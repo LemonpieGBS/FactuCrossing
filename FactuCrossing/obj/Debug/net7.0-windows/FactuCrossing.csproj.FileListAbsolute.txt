@@ -3,7 +3,6 @@ C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\bin\Debug\net7.0-windows\
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\bin\Debug\net7.0-windows\FactuCrossing.runtimeconfig.json
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\bin\Debug\net7.0-windows\FactuCrossing.dll
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\bin\Debug\net7.0-windows\FactuCrossing.pdb
-C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.csproj.AssemblyReference.cache
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Administrador.AdministrarPersonal.resources
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Administrador.Generador_de_Reportes.resources
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Administrador.MenuAdministrador.resources
@@ -56,3 +55,6 @@ D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows
 D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\ref\FactuCrossing.dll
 D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Utilidades.InputForm.resources
 D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Utilidades.CreacionDeContraseña.resources
+C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Utilidades.CreacionDeContraseña.resources
+C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Utilidades.InputForm.resources
+C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.sourcelink.json

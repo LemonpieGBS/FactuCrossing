@@ -36,7 +36,7 @@ namespace FactuCrossing
 
     internal static class Program
     {
-        public static SistemaCentral sistemaCentral = new();
+        public static SistemaCentral sistemaCentral = new SistemaCentral();
         public static string nombreDeUsuario = "";
 
         // Gracias a knighter en Stack Overflow, pueden ver su respuesta en como poner una fuente custom en WinForms:
@@ -147,7 +147,7 @@ namespace FactuCrossing
 
         public void GuardarCuentas()
         {
-            ServicioArchivoCuentas sac = new();
+            ServicioArchivoCuentas sac = new ServicioArchivoCuentas();
             sac.GuardarCuentas(cuentas, archivoCuentas);
         }
 
@@ -155,7 +155,7 @@ namespace FactuCrossing
         {
             if (!File.Exists(archivoCuentas)) return;
 
-            ServicioArchivoCuentas sac = new();
+            ServicioArchivoCuentas sac = new ServicioArchivoCuentas();
             List<Cuenta> cuentasCargadas = sac.CargarCuentas(archivoCuentas);
 
             cuentas = (cuentasCargadas.Count == 0) ? cuentas : cuentasCargadas;

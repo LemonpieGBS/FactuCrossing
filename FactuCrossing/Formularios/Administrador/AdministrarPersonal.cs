@@ -6,6 +6,8 @@ namespace FactuCrossing.Formularios.Administrador
     public partial class AdministrarPersonal : Form
     {
         int cuentaSeleccionada = -1;
+        Cuenta cuentaEnSesion =
+            new Cuenta(-1, "default", "default", Roles.GERENTE, new HashSalt("1234"));
 
         Dictionary<string, Roles> camposDeAcceso = new()
         {
@@ -25,6 +27,7 @@ namespace FactuCrossing.Formularios.Administrador
                 this.Close();
                 return;
             }
+            this.cuentaEnSesion = Program.sistemaCentral.cuentaEnSesion;
 
             InitializeComponent();
             ActualizarDataGrid();
@@ -41,9 +44,9 @@ namespace FactuCrossing.Formularios.Administrador
                 "Administrador"
             });
 
-            if(Program.sistemaCentral.cuentaEnSesion.Rol == Roles.GERENTE)
+            if (Program.sistemaCentral.cuentaEnSesion.Rol == Roles.GERENTE)
             {
-                cmbAcceso.Items.Add( new string("Gerente") );
+                cmbAcceso.Items.Add(new string("Gerente"));
             }
 
             cmbAcceso.SelectedItem = null;
@@ -140,7 +143,6 @@ namespace FactuCrossing.Formularios.Administrador
             };
 
             iform.setValidationRule(validationRule);
-            iform.getInputBox().PasswordChar = '*';
 
             if (iform.ShowDialog(this) != DialogResult.OK) return;
             contrasenaTemporal = iform.InputtedString;
@@ -155,13 +157,14 @@ namespace FactuCrossing.Formularios.Administrador
                     _rol: rol
                     );
             cuentaNueva.ContraseñaTemporal = true;
+            cuentaNueva.SesionIniciada = false;
 
             Program.sistemaCentral.cuentas.Add(cuentaNueva);
 
             MessageBox.Show("Cuenta creada con exito!", "Cuenta Creada",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            MessageBox.Show("La cuenta está marcada como temporal, si no se inicia sesión antes de cerrar el programa, se borrará automaticamente", "Cuenta Creada",
+            MessageBox.Show("La cuenta agregada es temporal, si no se inicia sesión antes de cerrar el programa, se borrará automaticamente", "Cuenta Creada",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             VaciarCampos();
@@ -198,6 +201,39 @@ namespace FactuCrossing.Formularios.Administrador
             foreach (KeyValuePair<string, Roles> kp in camposDeAcceso)
             {
                 if (kp.Value == dbi.Rol) cmbAcceso.Text = kp.Key;
+            }
+
+            if (dbi.Rol > cuentaEnSesion.Rol)
+            {
+                txtNombre.Enabled = false;
+                txtNombreUsuario.Enabled = false;
+                cmbAcceso.Enabled = false;
+                btnDeshabilitar.Enabled = false;
+                btnEditar.Enabled = false;
+                btnAgregar.Enabled = false;
+                MessageBox.Show("No puedes editar cuentas con un nivel de acceso mayor al tuyo", "Advertencia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (dbi.Id == this.cuentaEnSesion.Id)
+            {
+                txtNombre.Enabled = true;
+                txtNombreUsuario.Enabled = false;
+                cmbAcceso.Enabled = false;
+                btnDeshabilitar.Enabled = false;
+                btnEditar.Enabled = true;
+                btnAgregar.Enabled = true;
+
+                MessageBox.Show("Has seleccionado tu propia cuenta, no podras editar tu nombre de usuario, tu nivel de acceso o deshabilitar tu cuenta", "Advertencia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                txtNombre.Enabled = true;
+                txtNombreUsuario.Enabled = true;
+                cmbAcceso.Enabled = true;
+                btnDeshabilitar.Enabled = true;
+                btnEditar.Enabled = true;
+                btnAgregar.Enabled = true;
             }
         }
 
@@ -245,12 +281,41 @@ namespace FactuCrossing.Formularios.Administrador
                     _rol: rol
                 );
 
+                bool cambioGerente = false;
+                if (rol == Roles.GERENTE && cuenta.Id != cuentaEnSesion.Id)
+                {
+                    if (MessageBox.Show("¿Deseas transferir el nivel de acceso 'Gerente' a otra cuenta? (Esta pestaña se cerrará)", "Warning",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
+                    cambioGerente = true;
+                    cuentaEnSesion.Rol = Roles.ADMINISTRADOR;
+                    Program.sistemaCentral.cuentaEnSesion = cuentaEnSesion;
+                    Program.sistemaCentral.cuentas[cuentaEnSesion.Id] = cuentaEnSesion;
+                }
+
                 Program.sistemaCentral.cuentas[cuentaSeleccionada] = nuevaCuenta;
+
+                if (cuenta.Id == this.cuentaEnSesion.Id)
+                {
+                    Program.sistemaCentral.cuentaEnSesion = nuevaCuenta;
+                }
+
+                Program.sistemaCentral.GuardarCuentas();
+
+                if (cambioGerente)
+                {
+                    this.Close();
+                    return;
+                }
 
                 cuentaSeleccionada = -1;
                 statusLabel.Text = "No hay ningun empleado seleccionado";
 
-                Program.sistemaCentral.GuardarCuentas();
+                txtNombre.Enabled = true;
+                txtNombreUsuario.Enabled = true;
+                cmbAcceso.Enabled = true;
+                btnDeshabilitar.Enabled = true;
+                btnEditar.Enabled = true;
+                btnAgregar.Enabled = true;
 
                 ActualizarDataGrid(chbHabilitada.Checked);
 
@@ -266,6 +331,21 @@ namespace FactuCrossing.Formularios.Administrador
                 MessageBox.Show("No hay ningun empleado seleccionado", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnDeseleccionar_Click(object sender, EventArgs e)
+        {
+            cuentaSeleccionada = -1;
+            statusLabel.Text = "No hay ningun empleado seleccionado";
+
+            txtNombre.Enabled = true;
+            txtNombreUsuario.Enabled = true;
+            cmbAcceso.Enabled = true;
+            btnDeshabilitar.Enabled = true;
+            btnEditar.Enabled = true;
+            btnAgregar.Enabled = true;
+
+            VaciarCampos();
         }
     }
 }
