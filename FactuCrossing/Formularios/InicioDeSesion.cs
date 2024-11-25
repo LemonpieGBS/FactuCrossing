@@ -30,7 +30,7 @@ public partial class InicioDeSesion : Form
         {
             if (!cuenta.Habilitada) continue;
 
-            if(txtNombreUsuario.Text == cuenta.NombreUsuario && cuenta.ValidarContrasena(txtContraseña.Text))
+            if(txtNombreUsuario.Text == cuenta.NombreUsuario && cuenta.CompararContraseña(txtContraseña.Text))
             {
                 cuentaUsuario = cuenta;
                 break;
@@ -44,7 +44,7 @@ public partial class InicioDeSesion : Form
         }
         else
         {
-            if(cuentaUsuario.Temporal)
+            if(cuentaUsuario.ContraseñaTemporal)
             {
                 string contrasena;
 
@@ -55,8 +55,13 @@ public partial class InicioDeSesion : Form
 
                 iform.Dispose();
 
-                cuentaUsuario.EstablecerContrasena(contrasena);
-                cuentaUsuario.EstablecerTemporal(false);
+                cuentaUsuario = new Cuenta(
+                    _id: cuentaUsuario.Id,
+                    _nombre: cuentaUsuario.NombreUsuario,
+                    _nombredisplay: cuentaUsuario.NombreDisplay,
+                    _rol: cuentaUsuario.Rol,
+                    _contraseña: new HashSalt(contrasena)
+                    );
 
                 Program.sistemaCentral.GuardarCuentas();
             }

@@ -66,7 +66,7 @@ namespace FactuCrossing.Formularios.Administrador
 
                 if (!mostrarDeshabilitadas && !cuenta.Habilitada) continue;
                 dt.Rows.Add(new object[] { cuenta.Id, cuenta.Habilitada ? "Si" : "No", cuenta.NombreDisplay,
-                    cuenta.NombreUsuario, stringRol, cuenta.Temporal ? "Si" : "No" });
+                    cuenta.NombreUsuario, stringRol, cuenta.ContraseñaTemporal ? "Si" : "No" });
             }
 
             dgvPersonal.DataSource = dt;
@@ -151,10 +151,10 @@ namespace FactuCrossing.Formularios.Administrador
                     _id: Program.sistemaCentral.cuentas.Count,
                     _nombre: txtNombreUsuario.Text,
                     _nombredisplay: txtNombre.Text,
-                    _contrasena: contrasenaTemporal,
+                    _contraseña: new HashSalt(contrasenaTemporal),
                     _rol: rol
                     );
-            cuentaNueva.EstablecerTemporal(true);
+            cuentaNueva.ContraseñaTemporal = true;
 
             Program.sistemaCentral.cuentas.Add(cuentaNueva);
 
@@ -206,7 +206,7 @@ namespace FactuCrossing.Formularios.Administrador
             if (cuentaSeleccionada != -1)
             {
                 Cuenta cuenta = Program.sistemaCentral.cuentas[cuentaSeleccionada];
-                cuenta.EstablecerHabilitada(!cuenta.Habilitada);
+                cuenta.Habilitada = !cuenta.Habilitada;
                 ActualizarDataGrid(chbHabilitada.Checked);
 
                 Program.sistemaCentral.GuardarCuentas();
@@ -241,8 +241,7 @@ namespace FactuCrossing.Formularios.Administrador
                     _id: cuenta.Id,
                     _nombredisplay: txtNombre.Text,
                     _nombre: txtNombreUsuario.Text,
-                    _hash: cuenta.Hash,
-                    _salt: cuenta.Salt,
+                    _contraseña: new HashSalt(cuenta.Contraseña.Hash, cuenta.Contraseña.Salt),
                     _rol: rol
                 );
 

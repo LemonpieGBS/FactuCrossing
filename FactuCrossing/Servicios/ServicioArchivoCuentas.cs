@@ -32,12 +32,12 @@ namespace FactuCrossing.Servicios
                 bWriter.Write((Int32)cuenta.Id);
                 bWriter.Write(cuenta.NombreDisplay);
                 bWriter.Write(cuenta.NombreUsuario);
-                bWriter.Write(cuenta.Salt);
+                bWriter.Write(cuenta.Contraseña.Salt);
                 bWriter.Write((UInt16)cuenta.Rol);
                 bWriter.Write(cuenta.Habilitada);
 
-                bWriter.Write((Int32)cuenta.Hash.Length);
-                foreach(Byte b in cuenta.Hash) {
+                bWriter.Write((Int32)cuenta.Contraseña.Hash.Length);
+                foreach(Byte b in cuenta.Contraseña.Hash) {
                     bWriter.Write(b);
                 }
             }
@@ -120,15 +120,14 @@ namespace FactuCrossing.Servicios
                     }
 
                     nuevaCuenta = new(
-                        _hash: hashLeido,
-                        _salt: saltLeido,
                         _id: idLeido,
                         _nombredisplay: nombreDisplay,
                         _nombre: nombreUsuario,
-                        _rol: rolLeido
+                        _rol: rolLeido,
+                        _contraseña: new HashSalt(hashLeido, saltLeido)
                         );
 
-                    nuevaCuenta.EstablecerHabilitada(habilitada);
+                    nuevaCuenta.Habilitada = habilitada;
                     cuentasLeidas.Add(nuevaCuenta);
 
                     Debug.WriteLine($"-- Cuenta creada y añadida con éxito --");

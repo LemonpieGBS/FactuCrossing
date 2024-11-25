@@ -21,7 +21,7 @@ namespace FactuCrossing.Formularios.Administrador
 
             foreach (Cuenta cuenta in Program.sistemaCentral.cuentas)
             {
-                dt.Rows.Add(new object[] { cuenta.Id, $"{cuenta.NombreDisplay}", cuenta.NombreUsuario, cuenta.Rol, cuenta.Temporal ? "Si" : "No" });
+                dt.Rows.Add(new object[] { cuenta.Id, $"{cuenta.NombreDisplay}", cuenta.NombreUsuario, cuenta.Rol, cuenta.ContraseñaTemporal ? "Si" : "No" });
             }
 
             dgvPersonal.DataSource = dt;

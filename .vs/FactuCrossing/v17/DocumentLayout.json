@@ -3,68 +3,28 @@
   "WorkspaceRootPath": "D:\\Documents\\Workspace - C#\\FactuCrossing\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\utilidades\\creaciondecontrase\u00F1a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\utilidades\\creaciondecontrase\u00F1a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\estructuras\\cuentas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\estructuras\\cuentas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\utilidades\\creaciondecontrase\u00F1a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\utilidades\\creaciondecontrase\u00F1a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\administrador\\administrarpersonal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\administrador\\administrarpersonal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\administrador\\resetearcontrase\u00F1as.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\administrador\\resetearcontrase\u00F1as.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\administrador\\resetearcontrase\u00F1as.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\administrador\\resetearcontrase\u00F1as.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\administrador\\administrarpersonal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\administrador\\administrarpersonal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\administrador\\generadordereportes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\administrador\\generadordereportes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\servicios\\servicioarchivocuentas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\servicios\\servicioarchivocuentas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\administrador\\menuadministrador.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\administrador\\menuadministrador.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\facturaci\u00F3n\\agregarproducto.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\facturaci\u00F3n\\agregarproducto.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\facturaci\u00F3n\\editarproducto.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\facturaci\u00F3n\\editarproducto.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\facturaci\u00F3n\\facturaci\u00F3n.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\facturaci\u00F3n\\facturaci\u00F3n.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\inventario\\inventario.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\inventario\\inventario.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\reportes\\generaciondereportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\reportes\\generaciondereportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\reportes\\generaciondereportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\reportes\\generaciondereportes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\reportes\\generaciondereportes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\reportes\\generaciondereportes.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\utilidades\\creaciondecontrase\u00F1a.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\utilidades\\creaciondecontrase\u00F1a.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\utilidades\\inputform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\utilidades\\inputform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\iniciodesesion.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\iniciodesesion.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\iniciodesesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\iniciodesesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,188 +34,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 12,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreacionDeContrase\u00F1a.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAzwEAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T07:45:37.432Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CreacionDeContrase\u00F1a.cs [Design]",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.cs [Design]",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T07:45:28.433Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AdministrarPersonal.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.Designer.cs",
-              "ViewState": "AgIAAMEAAAAAAAAAAAAwwN4AAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:46:08.778Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ResetearContrase\u00F1as.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\ResetearContrase\u00F1as.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Administrador\\ResetearContrase\u00F1as.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\ResetearContrase\u00F1as.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Administrador\\ResetearContrase\u00F1as.Designer.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAqwGsAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:45:34.824Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GeneradorDeReportes.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\GeneradorDeReportes.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Administrador\\GeneradorDeReportes.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\GeneradorDeReportes.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Administrador\\GeneradorDeReportes.Designer.cs",
-              "ViewState": "AgIAAKIAAAAAAAAAAAAAALUAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:45:55.824Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MenuAdministrador.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\MenuAdministrador.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Administrador\\MenuAdministrador.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\MenuAdministrador.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Administrador\\MenuAdministrador.Designer.cs",
-              "ViewState": "AgIAAPcAAAAAAAAAAAAIwA0BAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:45:43.028Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AgregarProducto.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\AgregarProducto.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\AgregarProducto.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\AgregarProducto.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\AgregarProducto.Designer.cs",
-              "ViewState": "AgIAANAAAAAAAAAAAAAIwN0AAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:45:24.215Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "EditarProducto.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\EditarProducto.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\EditarProducto.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\EditarProducto.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\EditarProducto.Designer.cs",
-              "ViewState": "AgIAAL0AAAAAAAAAAAAAANMAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:45:14.669Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Facturaci\u00F3n.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.Designer.cs",
-              "ViewState": "AgIAAA8BAAAAAAAAAAAIwB8BAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:45:06.069Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Inventario.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\Inventario.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Inventario\\Inventario.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\Inventario.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Inventario\\Inventario.Designer.cs",
-              "ViewState": "AgIAANMAAAAAAAAAAAAIwN4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:44:53.432Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "GeneracionDeReportes.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:44:29.697Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "GeneracionDeReportes.cs [Design]",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.cs [Design]",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:44:27.131Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "GeneracionDeReportes.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Reportes\\GeneracionDeReportes.Designer.cs",
-              "ViewState": "AgIAADMBAAAAAAAAAAAIwEkBAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:44:16.872Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "CreacionDeContrase\u00F1a.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Utilidades\\CreacionDeContrase\u00F1a.Designer.cs",
-              "ViewState": "AgIAAKAAAAAAAAAAAAAIwL4AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:43:57.867Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
@@ -286,28 +66,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "InputForm.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Utilidades\\InputForm.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Utilidades\\InputForm.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Utilidades\\InputForm.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Utilidades\\InputForm.Designer.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAIwFkAAAA2AAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "ServicioArchivoCuentas.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Servicios\\ServicioArchivoCuentas.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Servicios\\ServicioArchivoCuentas.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Servicios\\ServicioArchivoCuentas.cs",
+              "RelativeToolTip": "FactuCrossing\\Servicios\\ServicioArchivoCuentas.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIEAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:43:58.336Z",
+              "WhenOpened": "2024-11-25T11:17:52.382Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "InicioDeSesion.Designer.cs",
-              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\InicioDeSesion.Designer.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\InicioDeSesion.Designer.cs",
-              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\InicioDeSesion.Designer.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\InicioDeSesion.Designer.cs",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAIwJIAAAA2AAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Program.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Program.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Program.cs",
+              "RelativeToolTip": "FactuCrossing\\Program.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAiwI0AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T06:43:34.997Z",
+              "WhenOpened": "2024-11-25T11:16:51.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InicioDeSesion.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\InicioDeSesion.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\InicioDeSesion.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\InicioDeSesion.cs",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\InicioDeSesion.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAQwD8AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T11:14:13.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ResetearContrase\u00F1as.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\ResetearContrase\u00F1as.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Administrador\\ResetearContrase\u00F1as.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\ResetearContrase\u00F1as.cs",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\Administrador\\ResetearContrase\u00F1as.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAACMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T11:14:03.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdministrarPersonal.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\Administrador\\AdministrarPersonal.cs",
+              "ViewState": "AgIAANoAAAAAAAAAAAAxwPMAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T11:11:39.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Cuentas.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Estructuras\\Cuentas.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Estructuras\\Cuentas.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Estructuras\\Cuentas.cs",
+              "RelativeToolTip": "FactuCrossing\\Estructuras\\Cuentas.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAxwAAAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T09:43:50.404Z",
               "EditorCaption": ""
             }
           ]

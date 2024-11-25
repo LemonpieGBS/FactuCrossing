@@ -134,7 +134,13 @@ namespace FactuCrossing
 
         public SistemaCentral()
         {
-            cuentas.Add( new(cuentas.Count,"admin","1234",Roles.GERENTE) );
+            cuentas.Add( new Cuenta(
+                _id: 0,
+                _nombre: "admin",
+                _nombredisplay: "Administrador",
+                _rol: Roles.GERENTE,
+                _contraseña: new HashSalt("1234")
+                ));
         }
 
         public void EstablecerArchivoCuentas(string rutaArchivo) { archivoCuentas = rutaArchivo; }
