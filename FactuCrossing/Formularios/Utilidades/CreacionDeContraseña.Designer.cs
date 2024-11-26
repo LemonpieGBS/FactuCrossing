@@ -50,7 +50,7 @@
             btnCancel.Cursor = Cursors.Hand;
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.ForeColor = Color.White;
-            btnCancel.Location = new Point(310, 388);
+            btnCancel.Location = new Point(310, 443);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(79, 50);
             btnCancel.TabIndex = 12;
@@ -64,7 +64,7 @@
             btnOK.Cursor = Cursors.Hand;
             btnOK.FlatStyle = FlatStyle.Flat;
             btnOK.ForeColor = Color.White;
-            btnOK.Location = new Point(225, 388);
+            btnOK.Location = new Point(225, 443);
             btnOK.Name = "btnOK";
             btnOK.Size = new Size(79, 50);
             btnOK.TabIndex = 11;
@@ -103,7 +103,7 @@
             groupBox1.Controls.Add(lblNueva);
             groupBox1.Location = new Point(28, 83);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(361, 287);
+            groupBox1.Size = new Size(361, 354);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "Input de Contraseña";
@@ -126,11 +126,13 @@
             // 
             // label3
             // 
+            label3.AutoSize = true;
             label3.Location = new Point(21, 134);
+            label3.MaximumSize = new Size(319, 0);
             label3.Name = "label3";
-            label3.Size = new Size(319, 46);
+            label3.Size = new Size(318, 60);
             label3.TabIndex = 20;
-            label3.Text = "Incluir caracteres como números, mayusculas, minusculas y simbolos especiales asegura que tu contraseña sea segura.";
+            label3.Text = resources.GetString("label3.Text");
             // 
             // lblSeguridad
             // 
@@ -146,14 +148,13 @@
             pgbSeguridad.ForeColor = Color.HotPink;
             pgbSeguridad.Location = new Point(21, 108);
             pgbSeguridad.MarqueeAnimationSpeed = 5;
-            pgbSeguridad.Maximum = 4;
             pgbSeguridad.Name = "pgbSeguridad";
             pgbSeguridad.Size = new Size(319, 23);
             pgbSeguridad.TabIndex = 18;
             // 
             // txtConfirmar
             // 
-            txtConfirmar.Location = new Point(21, 242);
+            txtConfirmar.Location = new Point(21, 276);
             txtConfirmar.Name = "txtConfirmar";
             txtConfirmar.PasswordChar = '*';
             txtConfirmar.Size = new Size(319, 23);
@@ -162,7 +163,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(21, 224);
+            label1.Location = new Point(21, 258);
             label1.Name = "label1";
             label1.Size = new Size(124, 15);
             label1.TabIndex = 16;
@@ -182,7 +183,7 @@
             AcceptButton = btnOK;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(419, 450);
+            ClientSize = new Size(419, 505);
             Controls.Add(groupBox1);
             Controls.Add(lblCreacion);
             Controls.Add(btnCancel);

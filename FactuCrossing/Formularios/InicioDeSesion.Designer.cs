@@ -44,6 +44,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(23, 12);
             pictureBox1.Name = "pictureBox1";
@@ -69,7 +70,7 @@
             // 
             // label2
             // 
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(17, 121);
             label2.Name = "label2";
             label2.Size = new Size(165, 18);
@@ -78,6 +79,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(checkBox1);
             groupBox1.Controls.Add(linkOlvidaste);
@@ -93,7 +95,7 @@
             // 
             // label1
             // 
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(17, 41);
             label1.Name = "label1";
             label1.Size = new Size(165, 18);
@@ -123,6 +125,7 @@
             // 
             // btnIniciarSesion
             // 
+            btnIniciarSesion.Anchor = AnchorStyles.Bottom;
             btnIniciarSesion.BackColor = Color.FromArgb(83, 96, 171);
             btnIniciarSesion.Cursor = Cursors.Hand;
             btnIniciarSesion.FlatStyle = FlatStyle.Flat;
@@ -144,7 +147,9 @@
             Controls.Add(btnIniciarSesion);
             Controls.Add(groupBox1);
             Controls.Add(pictureBox1);
-            Icon = (Icon)Properties.Resources.AppIcon;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = Properties.Resources.AppIcon;
+            MaximizeBox = false;
             Name = "InicioDeSesion";
             Text = "Inicio de Sesión";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

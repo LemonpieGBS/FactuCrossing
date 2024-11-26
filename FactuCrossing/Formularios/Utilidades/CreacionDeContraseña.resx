@@ -280,4 +280,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgLH9zM/8P6s4BljwrA9tAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Incluir caracteres como números, mayusculas, minusculas y simbolos especiales asegura que tu contraseña sea segura. Una contraseña se determina segura cuando tiene por lo menos 10 caracteres totales y 5 caracteres diferentes.</value>
+  </data>
 </root>

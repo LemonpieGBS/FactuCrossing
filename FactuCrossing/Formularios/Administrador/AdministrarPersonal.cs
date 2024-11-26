@@ -20,14 +20,14 @@ namespace FactuCrossing.Formularios.Administrador
 
         public AdministrarPersonal()
         {
-            if (Program.sistemaCentral.cuentaEnSesion is null)
+            if (SistemaCentral.cuentaEnSesion is null)
             {
                 MessageBox.Show("Hubo un problema de autenticación, porfavor inicie sesión de nuevo", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
-            this.cuentaEnSesion = Program.sistemaCentral.cuentaEnSesion;
+            this.cuentaEnSesion = SistemaCentral.cuentaEnSesion;
 
             InitializeComponent();
             ActualizarDataGrid();
@@ -44,7 +44,7 @@ namespace FactuCrossing.Formularios.Administrador
                 "Administrador"
             });
 
-            if (Program.sistemaCentral.cuentaEnSesion.Rol == Roles.GERENTE)
+            if (SistemaCentral.cuentaEnSesion.Rol == Roles.GERENTE)
             {
                 cmbAcceso.Items.Add(new string("Gerente"));
             }
@@ -59,7 +59,7 @@ namespace FactuCrossing.Formularios.Administrador
             DataTable dt = new();
             dt.Columns.AddRange(new DataColumn[] { new("ID"), new("Activo/a"), new("Nombre"), new("Usuario"), new("Rol"), new("Temporal") });
 
-            foreach (Cuenta cuenta in Program.sistemaCentral.cuentas)
+            foreach (Cuenta cuenta in SistemaCentral.cuentasEnMemoria)
             {
                 string stringRol = "No Reconocido";
                 foreach (KeyValuePair<string, Roles> kp in camposDeAcceso)
@@ -150,7 +150,7 @@ namespace FactuCrossing.Formularios.Administrador
             iform.Dispose();
 
             Cuenta cuentaNueva = new(
-                    _id: Program.sistemaCentral.cuentas.Count,
+                    _id: SistemaCentral.cuentasEnMemoria.Count,
                     _nombre: txtNombreUsuario.Text,
                     _nombredisplay: txtNombre.Text,
                     _contraseña: new HashSalt(contrasenaTemporal),
@@ -159,7 +159,7 @@ namespace FactuCrossing.Formularios.Administrador
             cuentaNueva.ContraseñaTemporal = true;
             cuentaNueva.SesionIniciada = false;
 
-            Program.sistemaCentral.cuentas.Add(cuentaNueva);
+            SistemaCentral.cuentasEnMemoria.Add(cuentaNueva);
 
             MessageBox.Show("Cuenta creada con exito!", "Cuenta Creada",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -168,7 +168,7 @@ namespace FactuCrossing.Formularios.Administrador
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             VaciarCampos();
-            Program.sistemaCentral.GuardarCuentas();
+            SistemaCentral.GuardarCuentas();
 
             ActualizarDataGrid(chbHabilitada.Checked);
         }
@@ -189,7 +189,7 @@ namespace FactuCrossing.Formularios.Administrador
                 return;
             }
 
-            Cuenta dbi = Program.sistemaCentral.cuentas[idConseguido];
+            Cuenta dbi = SistemaCentral.cuentasEnMemoria[idConseguido];
             cuentaSeleccionada = dbi.Id;
             statusLabel.Text = $"Cuenta seleccionada: {dbi.NombreDisplay}";
 
@@ -241,11 +241,11 @@ namespace FactuCrossing.Formularios.Administrador
         {
             if (cuentaSeleccionada != -1)
             {
-                Cuenta cuenta = Program.sistemaCentral.cuentas[cuentaSeleccionada];
+                Cuenta cuenta = SistemaCentral.cuentasEnMemoria[cuentaSeleccionada];
                 cuenta.Habilitada = !cuenta.Habilitada;
                 ActualizarDataGrid(chbHabilitada.Checked);
 
-                Program.sistemaCentral.GuardarCuentas();
+                SistemaCentral.GuardarCuentas();
                 btnDeshabilitar.Text = (cuenta.Habilitada) ? "Deshabilitar" : "Habilitar";
 
                 cuentaSeleccionada = -1;
@@ -267,7 +267,7 @@ namespace FactuCrossing.Formularios.Administrador
         {
             if (cuentaSeleccionada != -1)
             {
-                Cuenta cuenta = Program.sistemaCentral.cuentas[cuentaSeleccionada];
+                Cuenta cuenta = SistemaCentral.cuentasEnMemoria[cuentaSeleccionada];
 
                 if (!ValidarCampos()) return;
 
@@ -288,18 +288,18 @@ namespace FactuCrossing.Formularios.Administrador
                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) return;
                     cambioGerente = true;
                     cuentaEnSesion.Rol = Roles.ADMINISTRADOR;
-                    Program.sistemaCentral.cuentaEnSesion = cuentaEnSesion;
-                    Program.sistemaCentral.cuentas[cuentaEnSesion.Id] = cuentaEnSesion;
+                    SistemaCentral.cuentaEnSesion = cuentaEnSesion;
+                    SistemaCentral.cuentasEnMemoria[cuentaEnSesion.Id] = cuentaEnSesion;
                 }
 
-                Program.sistemaCentral.cuentas[cuentaSeleccionada] = nuevaCuenta;
+                SistemaCentral.cuentasEnMemoria[cuentaSeleccionada] = nuevaCuenta;
 
                 if (cuenta.Id == this.cuentaEnSesion.Id)
                 {
-                    Program.sistemaCentral.cuentaEnSesion = nuevaCuenta;
+                    SistemaCentral.cuentaEnSesion = nuevaCuenta;
                 }
 
-                Program.sistemaCentral.GuardarCuentas();
+                SistemaCentral.GuardarCuentas();
 
                 if (cambioGerente)
                 {

@@ -28,7 +28,7 @@ namespace FactuCrossing.Formularios.Inventario
             dt.Columns.AddRange(new DataColumn[]{ new("ID"), new("Nombre"), new("Proveedor"), new("Descripción"),
                 new("Precio"), new("Stock"), new("Fecha de Ingreso")});
 
-            foreach (Producto producto in Program.sistemaCentral.inventario)
+            foreach (Producto producto in SistemaCentral.inventarioEnMemoria)
             {
                 dt.Rows.Add(new object[]{ producto.Id, producto.Nombre, producto.Proveedor, producto.Descripcion,
                     producto.Precio, producto.CantidadEnStock, producto.FechaIngreso.ToString("yyyy-MM-dd")});
@@ -67,7 +67,7 @@ namespace FactuCrossing.Formularios.Inventario
             }
 
             Producto nuevoProducto = new(
-                _id: Program.sistemaCentral.inventario.Count,
+                _id: SistemaCentral.inventarioEnMemoria.Count,
                 _nombre: txtNombre.Text,
                 _descripcion: rtxtDescripcion.Text,
                 _precio: nuevoPrecio,
@@ -76,10 +76,10 @@ namespace FactuCrossing.Formularios.Inventario
                 _stock: (int) nudStock.Value
                 );
 
-            Program.sistemaCentral.inventario.Add(nuevoProducto);
+            SistemaCentral.inventarioEnMemoria.Add(nuevoProducto);
             ActualizarDataGrid();
 
-            Program.sistemaCentral.GuardarInventario();
+            SistemaCentral.GuardarInventario();
 
             txtNombre.Text = string.Empty;
             rtxtDescripcion.Text = string.Empty;

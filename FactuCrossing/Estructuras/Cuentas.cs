@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace FactuCrossing.Estructuras
@@ -44,9 +45,9 @@ namespace FactuCrossing.Estructuras
         {
             // Si alguno de los dos argumentos esta vacío o es nulo, entonces mandamos un error
             if (string.IsNullOrEmpty(_passkey))
-                throw new ArgumentException("Passkey cannot be null or empty.", nameof(_passkey));
+                throw new ArgumentException("Passkey no puede ser nulo o vacío.", nameof(_passkey));
             if (string.IsNullOrEmpty(_salt))
-                throw new ArgumentException("Salt cannot be null or empty.", nameof(_salt));
+                throw new ArgumentException("Salt no puede ser nulo o vacío.", nameof(_salt));
 
             // Generamos los bytes del string del salt + passkey
             byte[] inputBytes = Encoding.UTF8.GetBytes(_salt + _passkey);
@@ -69,9 +70,9 @@ namespace FactuCrossing.Estructuras
         {
             // Si alguno de los dos argumentos esta vacío o es nulo, entonces mandamos un error
             if (_hash == null || _hash.Length == 0)
-                throw new ArgumentException("Hash cannot be null or empty.", nameof(_hash));
+                throw new ArgumentException("Hash no puede ser nulo o vacío.", nameof(_hash));
             if (string.IsNullOrEmpty(_salt))
-                throw new ArgumentException("Salt cannot be null or empty.", nameof(_salt));
+                throw new ArgumentException("Salt no puede ser nulo o vacío.", nameof(_salt));
 
             // Aplicamos las dos propiedades
             Hash = _hash;
@@ -113,7 +114,8 @@ namespace FactuCrossing.Estructuras
     public class Cuenta
     {
         // Propiedad de ID, la llave primaria, siempre bueno tener una
-        public int Id { get; }
+        [Key]
+        public int Id { get; init; }
 
         // Nombre de Usuario, la credencial que se usa para iniciar sesión
         public string NombreUsuario { get; private set; }
@@ -139,6 +141,13 @@ namespace FactuCrossing.Estructuras
         // Constructor principal y único (por ahora)
         public Cuenta(int _id, string _nombre, string _nombredisplay, Roles _rol, HashSalt _contraseña)
         {
+            // Si alguno de los argumentos esta vacío o es nulo, entonces mandamos un error
+            if (_id < 0)
+                throw new ArgumentException("ID no puede ser negativo.", nameof(_id));
+            if (string.IsNullOrEmpty(_nombre))
+                throw new ArgumentException("Nombre no puede ser nulo o vacío.", nameof(_nombre));
+            if (string.IsNullOrEmpty(_nombredisplay))
+                throw new ArgumentException("Nombre Display no puede ser nulo o vacío.", nameof(_nombredisplay));
             NombreUsuario = _nombre;
             NombreDisplay = _nombredisplay;
             Id = _id;
@@ -155,6 +164,10 @@ namespace FactuCrossing.Estructuras
         // Método para comparar una contraseña con otra
         public bool CompararContraseña(string _comparativa)
         {
+            // Mandamos un error si el string dado esta vacío o es nulo.
+            if (string.IsNullOrEmpty(_comparativa))
+                throw new ArgumentException("La comparación no se puede dar con un string vacío.", nameof(_comparativa));
+
             // Ahora solo creamos un HashSalt con el salt de nuestra contraseña y el string comparativo
             HashSalt comparación = new HashSalt(_comparativa, Contraseña.Salt);
 

@@ -48,6 +48,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(896, 500);
             pictureBox1.Name = "pictureBox1";
@@ -58,6 +59,7 @@
             // 
             // btnCerrarSesión
             // 
+            btnCerrarSesión.Anchor = AnchorStyles.None;
             btnCerrarSesión.BackColor = Color.FromArgb(83, 96, 171);
             btnCerrarSesión.Cursor = Cursors.Hand;
             btnCerrarSesión.FlatStyle = FlatStyle.Flat;
@@ -72,6 +74,7 @@
             // 
             // lblHola
             // 
+            lblHola.Anchor = AnchorStyles.None;
             lblHola.Font = new Font("Segoe UI Semibold", 48F, FontStyle.Bold, GraphicsUnit.Point);
             lblHola.Location = new Point(12, 9);
             lblHola.Name = "lblHola";
@@ -82,6 +85,7 @@
             // 
             // lblTiempo
             // 
+            lblTiempo.Anchor = AnchorStyles.None;
             lblTiempo.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblTiempo.Location = new Point(12, 95);
             lblTiempo.Name = "lblTiempo";
@@ -92,6 +96,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.None;
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);

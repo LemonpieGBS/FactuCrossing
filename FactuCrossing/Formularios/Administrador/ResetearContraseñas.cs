@@ -11,14 +11,14 @@ namespace FactuCrossing.Formularios.Administrador
 
         public ResetearContraseñas()
         {
-            if (Program.sistemaCentral.cuentaEnSesion is null)
+            if (SistemaCentral.cuentaEnSesion is null)
             {
                 MessageBox.Show("Hubo un problema de autenticación, porfavor inicie sesión de nuevo", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
-            this.cuentaEnSesion = Program.sistemaCentral.cuentaEnSesion;
+            this.cuentaEnSesion = SistemaCentral.cuentaEnSesion;
 
             InitializeComponent();
             ActualizarDataGrid();
@@ -33,7 +33,7 @@ namespace FactuCrossing.Formularios.Administrador
             DataTable dt = new();
             dt.Columns.AddRange(new DataColumn[]{new("ID"), new("Nombre"), new("Usuario"), new("Rol"), new("Contraseña Temporal")});
 
-            foreach (Cuenta cuenta in Program.sistemaCentral.cuentas)
+            foreach (Cuenta cuenta in SistemaCentral.cuentasEnMemoria)
             {
                 dt.Rows.Add(new object[] { cuenta.Id, $"{cuenta.NombreDisplay}", cuenta.NombreUsuario, cuenta.Rol, cuenta.ContraseñaTemporal ? "Si" : "No" });
             }
@@ -50,7 +50,7 @@ namespace FactuCrossing.Formularios.Administrador
                 return;
             }
 
-            Cuenta dbi = Program.sistemaCentral.cuentas[idConseguido];
+            Cuenta dbi = SistemaCentral.cuentasEnMemoria[idConseguido];
             idSeleccionado = dbi.Id;
             statusLabel.Text = $"Cuenta seleccionada: {dbi.NombreDisplay}";
         }
@@ -63,7 +63,7 @@ namespace FactuCrossing.Formularios.Administrador
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Cuenta cuenta = Program.sistemaCentral.cuentas[idSeleccionado];
+            Cuenta cuenta = SistemaCentral.cuentasEnMemoria[idSeleccionado];
             cuenta.ContraseñaTemporal = true;
 
             string contrasenaTemporal;
@@ -90,7 +90,7 @@ namespace FactuCrossing.Formularios.Administrador
             iform.Dispose();
             cuenta.CambiarContraseña(new HashSalt(contrasenaTemporal));
 
-            Program.sistemaCentral.cuentas[idSeleccionado] = cuenta;
+            SistemaCentral.cuentasEnMemoria[idSeleccionado] = cuenta;
             ActualizarDataGrid();
 
             MessageBox.Show("Contraseña reseteada con éxito", "Resetear Contraseña",

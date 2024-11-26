@@ -32,7 +32,7 @@ namespace FactuCrossing.Formularios.Facturación
             dt.Columns.AddRange(new DataColumn[]{ new("ID"), new("Nombre"), new("Proveedor"), new("Descripción"),
                 new("Precio"), new("Stock"), new("Fecha de Ingreso")});
 
-            foreach (Producto producto in Program.sistemaCentral.inventario)
+            foreach (Producto producto in SistemaCentral.inventarioEnMemoria)
             {
                 dt.Rows.Add(new object[]{ producto.Id, producto.Nombre, producto.Proveedor, producto.Descripcion,
                     producto.Precio, producto.CantidadEnStock, producto.FechaIngreso.ToString("yyyy-MM-dd")});
@@ -55,14 +55,14 @@ namespace FactuCrossing.Formularios.Facturación
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             } else if (nudCantidad.Value >
-                Program.sistemaCentral.inventario[productoSeleccionado].CantidadEnStock)
+                SistemaCentral.inventarioEnMemoria[productoSeleccionado].CantidadEnStock)
             {
                 MessageBox.Show("No hay suficientes productos en stock para facturar", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             } else
             {
-                productoAFacturar = Program.sistemaCentral.inventario[productoSeleccionado];
+                productoAFacturar = SistemaCentral.inventarioEnMemoria[productoSeleccionado];
                 cantidadEnStock = (int)nudCantidad.Value;
                 this.Close();
             }
@@ -84,7 +84,7 @@ namespace FactuCrossing.Formularios.Facturación
                 return;
             }
 
-            Producto dbi = Program.sistemaCentral.inventario[idConseguido];
+            Producto dbi = SistemaCentral.inventarioEnMemoria[idConseguido];
             productoSeleccionado = dbi.Id;
 
             lblNombre.Text = dbi.Nombre;
