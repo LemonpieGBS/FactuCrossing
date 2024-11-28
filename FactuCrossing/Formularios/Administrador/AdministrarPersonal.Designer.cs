@@ -45,6 +45,7 @@
             statusStrip1 = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             btnDeseleccionar = new Button();
+            btnCoronar = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPersonal).BeginInit();
             groupBox2.SuspendLayout();
@@ -223,11 +224,27 @@
             btnDeseleccionar.UseVisualStyleBackColor = false;
             btnDeseleccionar.Click += btnDeseleccionar_Click;
             // 
+            // btnCoronar
+            // 
+            btnCoronar.BackColor = Color.FromArgb(83, 96, 171);
+            btnCoronar.BackgroundImage = (Image)resources.GetObject("btnCoronar.BackgroundImage");
+            btnCoronar.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCoronar.Cursor = Cursors.Hand;
+            btnCoronar.FlatStyle = FlatStyle.Flat;
+            btnCoronar.ForeColor = Color.White;
+            btnCoronar.Location = new Point(320, 426);
+            btnCoronar.Name = "btnCoronar";
+            btnCoronar.Size = new Size(38, 39);
+            btnCoronar.TabIndex = 21;
+            btnCoronar.UseVisualStyleBackColor = false;
+            btnCoronar.Click += btnCoronar_Click;
+            // 
             // AdministrarPersonal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(672, 498);
+            Controls.Add(btnCoronar);
             Controls.Add(btnDeseleccionar);
             Controls.Add(statusStrip1);
             Controls.Add(chbHabilitada);
@@ -267,5 +284,6 @@
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabel;
         private Button btnDeseleccionar;
+        private Button btnCoronar;
     }
 }

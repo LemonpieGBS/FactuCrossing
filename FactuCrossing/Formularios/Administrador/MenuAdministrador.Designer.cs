@@ -30,8 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuAdministrador));
             groupBox1 = new GroupBox();
-            dataGridView1 = new DataGridView();
+            dgvAccesos = new DataGridView();
             groupBox2 = new GroupBox();
+            btnGenerar = new Button();
+            btnAdministrar = new Button();
+            btnResetear = new Button();
             button1 = new Button();
             label1 = new Label();
             button2 = new Button();
@@ -40,15 +43,12 @@
             label5 = new Label();
             label3 = new Label();
             label2 = new Label();
-            btnResetear = new Button();
-            btnAdministrar = new Button();
-            btnGenerar = new Button();
             pictureBox1 = new PictureBox();
             dateTimePicker1 = new DateTimePicker();
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAccesos).BeginInit();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -56,7 +56,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(dataGridView1);
+            groupBox1.Controls.Add(dgvAccesos);
             groupBox1.Location = new Point(367, 24);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(421, 553);
@@ -64,13 +64,16 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Lista de Accesos";
             // 
-            // dataGridView1
+            // dgvAccesos
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 22);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(409, 525);
-            dataGridView1.TabIndex = 0;
+            dgvAccesos.AllowUserToAddRows = false;
+            dgvAccesos.AllowUserToDeleteRows = false;
+            dgvAccesos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAccesos.Location = new Point(6, 22);
+            dgvAccesos.Name = "dgvAccesos";
+            dgvAccesos.ReadOnly = true;
+            dgvAccesos.Size = new Size(409, 525);
+            dgvAccesos.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -83,6 +86,48 @@
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Opciones de Administrador";
+            // 
+            // btnGenerar
+            // 
+            btnGenerar.BackColor = Color.FromArgb(83, 96, 171);
+            btnGenerar.Cursor = Cursors.Hand;
+            btnGenerar.FlatStyle = FlatStyle.Flat;
+            btnGenerar.ForeColor = Color.White;
+            btnGenerar.Location = new Point(26, 131);
+            btnGenerar.Name = "btnGenerar";
+            btnGenerar.Size = new Size(296, 40);
+            btnGenerar.TabIndex = 13;
+            btnGenerar.Text = "Generar Reporte...";
+            btnGenerar.UseVisualStyleBackColor = false;
+            btnGenerar.Click += btnGenerar_Click;
+            // 
+            // btnAdministrar
+            // 
+            btnAdministrar.BackColor = Color.FromArgb(83, 96, 171);
+            btnAdministrar.Cursor = Cursors.Hand;
+            btnAdministrar.FlatStyle = FlatStyle.Flat;
+            btnAdministrar.ForeColor = Color.White;
+            btnAdministrar.Location = new Point(26, 85);
+            btnAdministrar.Name = "btnAdministrar";
+            btnAdministrar.Size = new Size(296, 40);
+            btnAdministrar.TabIndex = 12;
+            btnAdministrar.Text = "Administrar Personal...";
+            btnAdministrar.UseVisualStyleBackColor = false;
+            btnAdministrar.Click += btnAdministrar_Click;
+            // 
+            // btnResetear
+            // 
+            btnResetear.BackColor = Color.FromArgb(83, 96, 171);
+            btnResetear.Cursor = Cursors.Hand;
+            btnResetear.FlatStyle = FlatStyle.Flat;
+            btnResetear.ForeColor = Color.White;
+            btnResetear.Location = new Point(26, 39);
+            btnResetear.Name = "btnResetear";
+            btnResetear.Size = new Size(296, 40);
+            btnResetear.TabIndex = 11;
+            btnResetear.Text = "Resetear Contraseña(s)...";
+            btnResetear.UseVisualStyleBackColor = false;
+            btnResetear.Click += btnResetear_Click;
             // 
             // button1
             // 
@@ -99,7 +144,7 @@
             // 
             // label1
             // 
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(55, 246);
             label1.Name = "label1";
             label1.Size = new Size(263, 40);
@@ -135,7 +180,7 @@
             // 
             // label4
             // 
-            label4.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(188, 58);
             label4.Name = "label4";
             label4.Size = new Size(144, 48);
@@ -154,7 +199,7 @@
             // 
             // label3
             // 
-            label3.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(23, 58);
             label3.Name = "label3";
             label3.Size = new Size(175, 48);
@@ -170,48 +215,6 @@
             label2.TabIndex = 2;
             label2.Text = "Accesos";
             label2.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // btnResetear
-            // 
-            btnResetear.BackColor = Color.FromArgb(83, 96, 171);
-            btnResetear.Cursor = Cursors.Hand;
-            btnResetear.FlatStyle = FlatStyle.Flat;
-            btnResetear.ForeColor = Color.White;
-            btnResetear.Location = new Point(26, 39);
-            btnResetear.Name = "btnResetear";
-            btnResetear.Size = new Size(296, 40);
-            btnResetear.TabIndex = 11;
-            btnResetear.Text = "Resetear Contraseña(s)...";
-            btnResetear.UseVisualStyleBackColor = false;
-            btnResetear.Click += btnResetear_Click;
-            // 
-            // btnAdministrar
-            // 
-            btnAdministrar.BackColor = Color.FromArgb(83, 96, 171);
-            btnAdministrar.Cursor = Cursors.Hand;
-            btnAdministrar.FlatStyle = FlatStyle.Flat;
-            btnAdministrar.ForeColor = Color.White;
-            btnAdministrar.Location = new Point(26, 85);
-            btnAdministrar.Name = "btnAdministrar";
-            btnAdministrar.Size = new Size(296, 40);
-            btnAdministrar.TabIndex = 12;
-            btnAdministrar.Text = "Administrar Personal...";
-            btnAdministrar.UseVisualStyleBackColor = false;
-            btnAdministrar.Click += btnAdministrar_Click;
-            // 
-            // btnGenerar
-            // 
-            btnGenerar.BackColor = Color.FromArgb(83, 96, 171);
-            btnGenerar.Cursor = Cursors.Hand;
-            btnGenerar.FlatStyle = FlatStyle.Flat;
-            btnGenerar.ForeColor = Color.White;
-            btnGenerar.Location = new Point(26, 131);
-            btnGenerar.Name = "btnGenerar";
-            btnGenerar.Size = new Size(296, 40);
-            btnGenerar.TabIndex = 13;
-            btnGenerar.Text = "Generar Reporte...";
-            btnGenerar.UseVisualStyleBackColor = false;
-            btnGenerar.Click += btnGenerar_Click;
             // 
             // pictureBox1
             // 
@@ -268,11 +271,11 @@
             Controls.Add(button1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Icon = (Icon)Properties.Resources.AppIcon;
+            Icon = Properties.Resources.AppIcon;
             Name = "MenuAdministrador";
             Text = "Menu Administrador";
             groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAccesos).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -283,7 +286,7 @@
         #endregion
 
         private GroupBox groupBox1;
-        private DataGridView dataGridView1;
+        private DataGridView dgvAccesos;
         private GroupBox groupBox2;
         private Button button1;
         private Label label1;

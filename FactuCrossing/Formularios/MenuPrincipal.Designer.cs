@@ -63,10 +63,11 @@
             btnCerrarSesión.BackColor = Color.FromArgb(83, 96, 171);
             btnCerrarSesión.Cursor = Cursors.Hand;
             btnCerrarSesión.FlatStyle = FlatStyle.Flat;
+            btnCerrarSesión.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCerrarSesión.ForeColor = Color.White;
-            btnCerrarSesión.Location = new Point(503, 530);
+            btnCerrarSesión.Location = new Point(482, 516);
             btnCerrarSesión.Name = "btnCerrarSesión";
-            btnCerrarSesión.Size = new Size(142, 40);
+            btnCerrarSesión.Size = new Size(189, 48);
             btnCerrarSesión.TabIndex = 2;
             btnCerrarSesión.Text = "Cerrar Sesión";
             btnCerrarSesión.UseVisualStyleBackColor = false;
@@ -86,10 +87,10 @@
             // lblTiempo
             // 
             lblTiempo.Anchor = AnchorStyles.None;
-            lblTiempo.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTiempo.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblTiempo.Location = new Point(12, 95);
             lblTiempo.Name = "lblTiempo";
-            lblTiempo.Size = new Size(1162, 17);
+            lblTiempo.Size = new Size(1162, 33);
             lblTiempo.TabIndex = 4;
             lblTiempo.Text = "Sesión Iniciada: {Fecha}";
             lblTiempo.TextAlign = ContentAlignment.MiddleCenter;
@@ -114,36 +115,52 @@
             // 
             // label4
             // 
-            label4.Location = new Point(621, 290);
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(621, 277);
+            label4.MaximumSize = new Size(192, 0);
+            label4.MinimumSize = new Size(192, 0);
             label4.Name = "label4";
-            label4.Size = new Size(192, 28);
+            label4.Size = new Size(192, 20);
             label4.TabIndex = 7;
             label4.Text = "Menú de Administradores";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
-            label3.Location = new Point(423, 290);
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(423, 277);
+            label3.MaximumSize = new Size(192, 0);
+            label3.MinimumSize = new Size(192, 0);
             label3.Name = "label3";
-            label3.Size = new Size(192, 28);
+            label3.Size = new Size(192, 20);
             label3.TabIndex = 6;
             label3.Text = "Generación de Reportes";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            label2.Location = new Point(225, 290);
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(225, 277);
+            label2.MaximumSize = new Size(192, 0);
+            label2.MinimumSize = new Size(192, 0);
             label2.Name = "label2";
-            label2.Size = new Size(192, 28);
+            label2.Size = new Size(192, 20);
             label2.TabIndex = 5;
             label2.Text = "Control de Inventario";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
-            label1.Location = new Point(27, 290);
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(27, 277);
+            label1.MaximumSize = new Size(192, 0);
+            label1.MinimumSize = new Size(192, 0);
             label1.Name = "label1";
-            label1.Size = new Size(192, 28);
+            label1.Size = new Size(192, 20);
             label1.TabIndex = 4;
             label1.Text = "Facturación";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -231,6 +248,7 @@
             Load += MenuPrincipal_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 

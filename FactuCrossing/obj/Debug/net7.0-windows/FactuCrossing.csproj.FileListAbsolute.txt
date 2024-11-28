@@ -58,3 +58,4 @@ D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Utilidades.CreacionDeContraseña.resources
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Utilidades.InputForm.resources
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.sourcelink.json
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net7.0-windows\FactuCrossing.Formularios.Utilidades.DebugLog.resources

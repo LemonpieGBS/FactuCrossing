@@ -138,6 +138,10 @@ namespace FactuCrossing.Estructuras
         // Contraseña :]
         public HashSalt Contraseña { get; private set; }
 
+        // Cuenta por default
+        public static Cuenta CuentaDefault =
+            new Cuenta(9999, "def", "def", Roles.ADMINISTRADOR, new HashSalt("1234"));
+
         // Constructor principal y único (por ahora)
         public Cuenta(int _id, string _nombre, string _nombredisplay, Roles _rol, HashSalt _contraseña)
         {
@@ -167,10 +171,8 @@ namespace FactuCrossing.Estructuras
             // Mandamos un error si el string dado esta vacío o es nulo.
             if (string.IsNullOrEmpty(_comparativa))
                 throw new ArgumentException("La comparación no se puede dar con un string vacío.", nameof(_comparativa));
-
             // Ahora solo creamos un HashSalt con el salt de nuestra contraseña y el string comparativo
             HashSalt comparación = new HashSalt(_comparativa, Contraseña.Salt);
-
             // Si los hashes son iguales, será validado
             return Contraseña.Equals(comparación);
         }

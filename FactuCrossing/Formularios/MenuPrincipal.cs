@@ -3,27 +3,35 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace FactuCrossing.Formularios
 {
-    // Comentemos esta putisima mierda porque de paso tengo que refactorizar
+    /// <summary>
+    /// Clase parcial del formulario principal del menú
+    /// </summary>
     public partial class MenuPrincipal : Form
     {
-        // Propiedad cuentaEnSesion de la propia clase
+        /// <summary>
+        /// Propiedad cuentaEnSesion de la propia clase
+        /// </summary>
         Cuenta cuentaEnSesion;
 
-        // Constructor del formulario
+        /// <summary>
+        /// Constructor del formulario
+        /// </summary>
         public MenuPrincipal()
         {
-            // Si no se encuentra una cuentaEnSesion en el sistema central, MATAR
-            if (SistemaCentral.cuentaEnSesion is null)
+            // Si no se encuentra una cuentaEnSesion en el sistema central, cerrar el formulario
+            if (SistemaCentral.Cuentas.cuentaEnSesion is null)
             {
-                // Mostramos un mensajito diciendo que salió mal
-                MessageBox.Show("Hubo un problema de autenticación, porfavor inicie sesión de nuevo", "Error",
+                // Mostramos un mensaje diciendo que hubo un problema de autenticación
+                MessageBox.Show("Hubo un problema de autenticación, por favor inicie sesión de nuevo", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 // Cerramos el formulario
                 this.Close();
+                // Asignamos la cuenta default
+                cuentaEnSesion = Cuenta.CuentaDefault;
                 return;
             }
             // Si se encontró, asignamos a la propiedad de la clase
-            cuentaEnSesion = SistemaCentral.cuentaEnSesion;
+            cuentaEnSesion = SistemaCentral.Cuentas.cuentaEnSesion;
             // Inicializa el componente de Winforms
             InitializeComponent();
             // Aplicamos la tipografía del programa si existe
@@ -36,88 +44,112 @@ namespace FactuCrossing.Formularios
             lblTiempo.Text = (dt.Hour <= 12) ? $"Sesión Iniciada: {dt.Hour:00}:{dt.Minute:00}am" :
                 $"Sesión Iniciada: {(dt.Hour % 12):00}:{dt.Minute:00}pm";
         }
-        
-        // Si le damos a cerrar sesión cerramos
+
+        // Evento para cerrar sesión cuando se hace clic en el botón de cerrar sesión
         private void btnCerrarSesión_Click(object sender, EventArgs e)
         {
-            // Cerrar
+            // Cerrar el formulario
             this.Close();
         }
 
+        // Evento que se ejecuta cuando el formulario se carga
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-
+            // Aquí se puede agregar código que se ejecuta cuando el formulario se carga
         }
-        // Código para que cuando cierre el formulario pregunte al usuario si está seguro
+
+        // Evento para manejar el cierre del formulario y preguntar al usuario si está seguro
         private void MenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Mostrar un mensaje al usuario para saber si esta seguro
+            // Mostrar un mensaje al usuario para saber si está seguro de cerrar sesión
             if (MessageBox.Show("¿Está seguro de cerrar sesión?", "Cerrar Sesión",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
             {
-                // Si el resultado no es 'si' cancelar el evento
+                // Si el resultado no es 'sí', cancelar el evento de cierre
                 e.Cancel = true;
             }
-
+            else
+            {
+                // Añadimos el acceso de salida a la memoria
+                SistemaCentral.Accesos.accesosEnMemoria.Add(new Acceso(cuentaEnSesion.Id, DateTime.Now, TipoDeAcceso.SALIDA));
+                // Guardamos los accesos
+                SistemaCentral.Accesos.GuardarAccesos();
+            }
         }
 
+        /// <summary>
+        /// Método que se ejecuta cuando se muestra el formulario
+        /// </summary>
         private void OnShow()
         {
-            // Si no se encuentra una cuentaEnSesion en el sistema central, MATAR
-            if (SistemaCentral.cuentaEnSesion is null)
+            // Si no se encuentra una cuentaEnSesion en el sistema central, cerrar el formulario
+            if (SistemaCentral.Cuentas.cuentaEnSesion is null)
             {
-                // Mostramos un mensajito diciendo que salió mal
-                MessageBox.Show("Hubo un problema de autenticación, porfavor inicie sesión de nuevo", "Error",
+                // Mostramos un mensaje diciendo que hubo un problema de autenticación
+                MessageBox.Show("Hubo un problema de autenticación, por favor inicie sesión de nuevo", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 // Cerramos el formulario
                 this.Close();
                 return;
             }
-
-            this.cuentaEnSesion = SistemaCentral.cuentaEnSesion;
-
+            // Asignamos la cuenta en sesión
+            this.cuentaEnSesion = SistemaCentral.Cuentas.cuentaEnSesion;
+            // Actualizamos el texto del label de saludo
             lblHola.Text = $"Hola, {cuentaEnSesion.NombreDisplay}";
+            // Mostramos el formulario
             this.Show();
         }
 
+        /// <summary>
+        /// Método para abrir un formulario y ocultar el actual
+        /// </summary>
+        /// <param name="frm">Formulario a abrir</param>
+        private void AbrirOcultarDelegar(Form frm)
+        {
+            // Ocultamos el formulario actual
+            this.Hide();
+            // Mostramos el nuevo formulario
+            frm.Show();
+            // Cuando el nuevo formulario se cierra, volvemos a mostrar el formulario actual
+            frm.FormClosed += delegate { this.OnShow(); };
+        }
+
+        /// <summary>
+        /// Evento para abrir el formulario de facturación
+        /// </summary>
         private void btnFacturación_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Facturación.Facturación frm = new();
-            frm.Show();
-
-            frm.FormClosed += delegate { this.OnShow(); };
+            AbrirOcultarDelegar(new Facturación.Facturación());
         }
 
+        /// <summary>
+        /// Evento para abrir el formulario de inventario
+        /// </summary>
         private void btnInventario_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Inventario.Inventario frm = new();
-            frm.Show();
-
-            frm.FormClosed += delegate { this.OnShow(); };
+            AbrirOcultarDelegar(new Inventario.Inventario());
         }
 
+        /// <summary>
+        /// Evento para abrir el formulario de reportes
+        /// </summary>
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Reportes.GeneracionDeReportes frm = new();
-            frm.Show();
-
-            frm.FormClosed += delegate { this.OnShow(); };
+            AbrirOcultarDelegar(new Reportes.GeneracionDeReportes());
         }
 
+        /// <summary>
+        /// Evento para abrir el formulario de administradores
+        /// </summary>
         private void btnAdministradores_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Administrador.MenuAdministrador frm = new();
-            frm.Show();
-
-            frm.FormClosed += delegate { this.OnShow(); };
+            AbrirOcultarDelegar(new Administrador.MenuAdministrador());
         }
 
+        // Evento que se ejecuta cuando el formulario se activa
         private void MenuPrincipal_Activated(object sender, EventArgs e)
         {
+            // Aquí se puede agregar código que se ejecuta cuando el formulario se activa
         }
     }
 }

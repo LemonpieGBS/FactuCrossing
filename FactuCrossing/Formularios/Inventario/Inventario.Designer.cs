@@ -31,12 +31,12 @@
             groupBox1 = new GroupBox();
             dgvInventario = new DataGridView();
             groupBox2 = new GroupBox();
+            txtPrecio = new TextBox();
             rtxtDescripcion = new RichTextBox();
             label3 = new Label();
             txtProveedor = new TextBox();
             label2 = new Label();
             nudStock = new NumericUpDown();
-            txtPrecio = new TextBox();
             txtNombre = new TextBox();
             label8 = new Label();
             label1 = new Label();
@@ -44,6 +44,7 @@
             btnAgregar = new Button();
             button2 = new Button();
             button3 = new Button();
+            label4 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
             groupBox2.SuspendLayout();
@@ -73,12 +74,13 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label4);
+            groupBox2.Controls.Add(txtPrecio);
             groupBox2.Controls.Add(rtxtDescripcion);
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(txtProveedor);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(nudStock);
-            groupBox2.Controls.Add(txtPrecio);
             groupBox2.Controls.Add(txtNombre);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(label1);
@@ -90,8 +92,16 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Información del Producto";
             // 
+            // txtPrecio
+            // 
+            txtPrecio.Location = new Point(15, 169);
+            txtPrecio.Name = "txtPrecio";
+            txtPrecio.Size = new Size(245, 23);
+            txtPrecio.TabIndex = 19;
+            // 
             // rtxtDescripcion
             // 
+            rtxtDescripcion.BorderStyle = BorderStyle.FixedSingle;
             rtxtDescripcion.Location = new Point(15, 282);
             rtxtDescripcion.Name = "rtxtDescripcion";
             rtxtDescripcion.Size = new Size(271, 90);
@@ -129,13 +139,7 @@
             nudStock.Name = "nudStock";
             nudStock.Size = new Size(271, 23);
             nudStock.TabIndex = 14;
-            // 
-            // txtPrecio
-            // 
-            txtPrecio.Location = new Point(15, 169);
-            txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(271, 23);
-            txtPrecio.TabIndex = 12;
+            nudStock.ThousandsSeparator = true;
             // 
             // txtNombre
             // 
@@ -211,6 +215,17 @@
             button3.Text = "Marcar/Desmarcar como Descontinuado";
             button3.UseVisualStyleBackColor = false;
             // 
+            // label4
+            // 
+            label4.BackColor = SystemColors.Window;
+            label4.BorderStyle = BorderStyle.Fixed3D;
+            label4.Location = new Point(266, 169);
+            label4.Name = "label4";
+            label4.Size = new Size(20, 23);
+            label4.TabIndex = 20;
+            label4.Text = "$";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Inventario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -221,7 +236,7 @@
             Controls.Add(btnAgregar);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Icon = (Icon)Properties.Resources.AppIcon;
+            Icon = Properties.Resources.AppIcon;
             Name = "Inventario";
             Text = "Inventario";
             groupBox1.ResumeLayout(false);
@@ -238,7 +253,6 @@
         private DataGridView dgvInventario;
         private GroupBox groupBox2;
         private NumericUpDown nudStock;
-        private TextBox txtPrecio;
         private TextBox txtNombre;
         private Label label8;
         private Label label1;
@@ -250,5 +264,7 @@
         private TextBox txtProveedor;
         private Label label2;
         private RichTextBox rtxtDescripcion;
+        private TextBox txtPrecio;
+        private Label label4;
     }
 }

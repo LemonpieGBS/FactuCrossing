@@ -44,7 +44,7 @@ public partial class InicioDeSesion : Form
         // Empezamos con una cuenta nula
         Cuenta? cuentaUsuario = null;
         //Hacemos un foreach para ver si alguna cuenta coincide con los datos de registro
-        foreach(Cuenta cuenta in SistemaCentral.cuentasEnMemoria)
+        foreach(Cuenta cuenta in SistemaCentral.Cuentas.cuentasEnMemoria)
         {
             // Validamos si los nombres de usuario y las contraseñas coinciden
             if(txtNombreUsuario.Text == cuenta.NombreUsuario && cuenta.CompararContraseña(txtContraseña.Text))
@@ -103,7 +103,7 @@ public partial class InicioDeSesion : Form
                     );
                 // Sobreescribimos directamente en el sistema central
                 // Buscamos si existe el registro en la memoria
-                if(SistemaCentral.IndiceEnMemoria(cuentaUsuario) == -1)
+                if(SistemaCentral.Cuentas.CuentaEnMemoria(cuentaUsuario) == -1)
                 {
                     // Si no, mandamos un mensajito de error
                     MessageBox.Show($"No se pudo encontrar la cuenta referenciada, id: {cuentaUsuario.Id}", "Error",
@@ -111,16 +111,19 @@ public partial class InicioDeSesion : Form
                     return;
                 }
                 // Si si, entonces sobreescribimos
-                SistemaCentral.cuentasEnMemoria[SistemaCentral.IndiceEnMemoria(cuentaUsuario)]
-                    = cuentaUsuario;
+                SistemaCentral.Cuentas.RefrezcarCuenta(cuentaUsuario);
                 // Guardamos los cambios
-                SistemaCentral.GuardarCuentas();
+                SistemaCentral.Cuentas.GuardarCuentas();
             }
-            // Variable 'nombreDeUsuario' deprecada en favor a 'sistemaCentral.cuentaEnSesion'
+            // Variable 'nombreDeUsuario' deprecada en favor a 'SistemaCentral.Cuentas.cuentaEnSesion'
             /* -- Program.nombreDeUsuario = cuentaUsuario.NombreDisplay; */
             // Establecemos la cuenta en sesión como la cuenta registrada del usuario
-            SistemaCentral.cuentaEnSesion =
-                SistemaCentral.cuentasEnMemoria[SistemaCentral.IndiceEnMemoria(cuentaUsuario)];
+            SistemaCentral.Cuentas.cuentaEnSesion =
+                SistemaCentral.Cuentas.cuentasEnMemoria[SistemaCentral.Cuentas.CuentaEnMemoria(cuentaUsuario)];
+            // Añadimos el acceso a la memoria
+            SistemaCentral.Accesos.accesosEnMemoria.Add(new Acceso(cuentaUsuario.Id, DateTime.Now, TipoDeAcceso.ENTRADA));
+            // Guardamos los accesos
+            SistemaCentral.Accesos.GuardarAccesos();
             // Ocultamos este form
             this.Hide();
             // Creamos un form de Menu Principal
