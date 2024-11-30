@@ -2,7 +2,9 @@ using FactuCrossing.Estructuras;
 using FactuCrossing.Formularios;
 using FactuCrossing.Formularios.Utilidades;
 using FactuCrossing.Servicios;
+using Microsoft.Reporting.WinForms;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing.Text;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -249,8 +251,21 @@ namespace FactuCrossing
                 SistemaCentral.Cuentas.AñadirCuenta(adminDefault);
             }
 
-            //if(Program.mFont is not null) Application.SetDefaultFont(new Font(Program.mFont, 9));
-            Application.Run(new InicioDeSesion());
+            // Creamos el DataTable (lit no hay necesidad de crear una clase)
+            DataTable dt = new DataTable();
+            // Creamos las columnas (deben tener el mismo nombre de los atributos en el DataSet)
+            dt.Columns.AddRange(new DataColumn[] { new("Nombre"), new("Proveedor"),
+                new("Cantidad"), new("PrecioUnitario"), new("PrecioTotal") });
+            // Agregamos los datos
+            dt.Rows.Add(new object[] { "CocaCola", "Manantial", 5, (decimal)76.5, (decimal)(5 * 76.5) });
+            // Creamos el DataSource
+            ReportDataSource rds = new ReportDataSource("DsVenta", dt);
+            // Damos la locación del RDLC
+            string embedLocation = "FactuCrossing.Reportes.RptFactura.rdlc";
+            // Creamos el reporte
+            Report reporteFactura = new Report(embedLocation, [rds]);
+            // Corremos el formulario con el reporte creado
+            Application.Run(new VistaPreviaReporte(reporteFactura));
         }
     }
 

@@ -27,7 +27,7 @@ namespace FactuCrossing.Servicios
             HASH,
             HABILITADA,
             CONTRASENATEMPORAL,
-            ROL
+            ROL,
         }
 
         /// <summary> Función para guardar una lista de cuentas (<paramref name="cuentas"/>) en un archivo (<paramref name="rutaArchivo"/>) 

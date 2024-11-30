@@ -168,7 +168,7 @@ namespace FactuCrossing.Estructuras
         // Método para comparar una contraseña con otra
         public bool CompararContraseña(string _comparativa)
         {
-            // Mandamos un error si el string dado esta vacío o es nulo.
+           // Mandamos u n error si el string dado esta vacío o es nulo.
             if (string.IsNullOrEmpty(_comparativa))
                 throw new ArgumentException("La comparación no se puede dar con un string vacío.", nameof(_comparativa));
             // Ahora solo creamos un HashSalt con el salt de nuestra contraseña y el string comparativo

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>FactuCrossing</id>
+    <version>1.0.0</version>
+    <authors>FactuCrossing</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="652b5d34d7921f0476bd719a52ac41253b7ffac3" />
+    <dependencies>
+      <group targetFramework="net7.0-windows7.0" />
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net7.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\bin\Debug\net7.0-windows\FactuCrossing.runtimeconfig.json" target="lib\net7.0-windows7.0\FactuCrossing.runtimeconfig.json" />
+    <file src="D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\bin\Debug\net7.0-windows\FactuCrossing.dll" target="lib\net7.0-windows7.0\FactuCrossing.dll" />
+  </files>
+</package>

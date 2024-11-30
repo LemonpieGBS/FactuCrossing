@@ -5,25 +5,35 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Properties\Resources\332wArtboard 1 %281%29.ico" />
     <None Remove="Properties\Resources\disabledcrown.png" />
     <None Remove="Properties\Resources\Rubik-VariableFont_wght.ttf" />
+    <None Remove="Reportes\RptFactura.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources\332wArtboard 1 (1).ico" />
     <EmbeddedResource Include="Properties\Resources\Rubik-VariableFont_wght.ttf" />
+    <EmbeddedResource Include="Reportes\RptFactura.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Reportes\" />
+    <PackageReference Include="Microsoft.SqlServer.Server" Version="1.0.0" />
+    <PackageReference Include="Microsoft.SqlServer.Types" Version="160.1000.6" />
+    <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.25" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.25" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="DataSets\DsVenta.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DsVenta.xsd</DependentUpon>
+    </Compile>
     <Compile Update="Formularios\Facturación\EditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -47,10 +57,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="DataSets\DsVenta.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsVenta.Designer.cs</LastGenOutput>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SqlServerTypes\" />
   </ItemGroup>
 
 </Project>
