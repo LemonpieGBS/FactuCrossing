@@ -110,42 +110,75 @@ namespace FactuCrossing.Estructuras
         }
     }
 
-    // La clase donde esta toda la información de las cuentas :3
+    /// <summary>
+    /// La clase donde está toda la información de las cuentas
+    /// </summary>
     public class Cuenta
     {
-        // Propiedad de ID, la llave primaria, siempre bueno tener una
+        /// <summary>
+        /// Propiedad de ID, la llave primaria, siempre bueno tener una
+        /// </summary>
         [Key]
         public int Id { get; init; }
 
-        // Nombre de Usuario, la credencial que se usa para iniciar sesión
+        /// <summary>
+        /// Nombre de Usuario, la credencial que se usa para iniciar sesión
+        /// </summary>
         public string NombreUsuario { get; private set; }
 
-        // El nombre del Empleado, diferente al de Usuario
+        /// <summary>
+        /// El nombre del Empleado, diferente al de Usuario
+        /// </summary>
         public string NombreDisplay { get; private set; }
 
-        // Rol en la empresa, ver el enumerador de arriba
+        /// <summary>
+        /// Rol en la empresa, ver el enumerador de arriba
+        /// </summary>
         public Roles Rol { get; set; }
 
-        // Marca si la contraseña del usuario es temporal o no
+        /// <summary>
+        /// Marca si la contraseña del usuario es temporal o no
+        /// </summary>
         public bool ContraseñaTemporal { get; set; } = false;
 
-        // Marca si la cuenta está activa
+        /// <summary>
+        /// Marca si la cuenta está activa
+        /// </summary>
         public bool Habilitada { get; set; } = true;
 
-        // Marca si el usuario ha iniciado sesión alguna vez
+        /// <summary>
+        /// Marca si el usuario ha iniciado sesión alguna vez
+        /// </summary>
         public bool SesionIniciada { get; set; } = true;
 
-        // Contraseña :]
+        /// <summary>
+        /// Contraseña
+        /// </summary>
         public HashSalt Contraseña { get; private set; }
 
-        // Cuenta por default
+        /// <summary>
+        /// Propiedad para llevar cuenta del tiempo de sesión
+        /// </summary>
+        public TiempoSesion TiempoSesion { get; private set; }
+
+        /// <summary>
+        /// Cuenta por default
+        /// </summary>
         public static Cuenta CuentaDefault =
             new Cuenta(9999, "def", "def", Roles.ADMINISTRADOR, new HashSalt("1234"));
 
-        // Constructor principal y único (por ahora)
+        /// <summary>
+        /// Constructor principal y único
+        /// </summary>
+        /// <param name="_id">ID de la cuenta</param>
+        /// <param name="_nombre">Nombre de usuario</param>
+        /// <param name="_nombredisplay">Nombre del empleado</param>
+        /// <param name="_rol">Rol en la empresa</param>
+        /// <param name="_contraseña">Contraseña</param>
+        /// <exception cref="ArgumentException">Lanzada si algún argumento es inválido</exception>
         public Cuenta(int _id, string _nombre, string _nombredisplay, Roles _rol, HashSalt _contraseña)
         {
-            // Si alguno de los argumentos esta vacío o es nulo, entonces mandamos un error
+            // Si alguno de los argumentos está vacío o es nulo, entonces mandamos un error
             if (_id < 0)
                 throw new ArgumentException("ID no puede ser negativo.", nameof(_id));
             if (string.IsNullOrEmpty(_nombre))
@@ -157,24 +190,65 @@ namespace FactuCrossing.Estructuras
             Id = _id;
             Rol = _rol;
             Contraseña = _contraseña;
+            TiempoSesion = new TiempoSesion(new Dictionary<DateTime, double>());
         }
 
-        // Método para cambiar la contraseña
+        /// <summary>
+        /// Constructor con tiempoSesion
+        /// </summary>
+        /// <param name="_id">ID de la cuenta</param>
+        /// <param name="_nombre">Nombre de usuario</param>
+        /// <param name="_nombredisplay">Nombre del empleado</param>
+        /// <param name="_rol">Rol en la empresa</param>
+        /// <param name="_contraseña">Contraseña</param>
+        /// <param name="_tiempoSesion">Tiempo de Sesión</param>
+        /// <exception cref="ArgumentException">Lanzada si algún argumento es inválido</exception>
+        public Cuenta(int _id, string _nombre, string _nombredisplay, Roles _rol, HashSalt _contraseña, TiempoSesion _tiempoSesion)
+            : this(_id, _nombre, _nombredisplay, _rol, _contraseña)
+        {
+            // Asignamos la propiedad
+            TiempoSesion = _tiempoSesion;
+        }
+
+        /// <summary>
+        /// Método para cambiar la contraseña
+        /// </summary>
+        /// <param name="_nuevaContraseña">Nueva contraseña</param>
         public void CambiarContraseña(HashSalt _nuevaContraseña)
         {
             Contraseña = _nuevaContraseña;
         }
 
-        // Método para comparar una contraseña con otra
+        /// <summary>
+        /// Método para comparar una contraseña con otra
+        /// </summary>
+        /// <param name="_comparativa">Contraseña a comparar</param>
+        /// <returns>True si las contraseñas coinciden, False en caso contrario</returns>
+        /// <exception cref="ArgumentException">Lanzada si el string dado está vacío o es nulo</exception>
         public bool CompararContraseña(string _comparativa)
         {
-           // Mandamos u n error si el string dado esta vacío o es nulo.
+            // Mandamos un error si el string dado está vacío o es nulo.
             if (string.IsNullOrEmpty(_comparativa))
                 throw new ArgumentException("La comparación no se puede dar con un string vacío.", nameof(_comparativa));
             // Ahora solo creamos un HashSalt con el salt de nuestra contraseña y el string comparativo
             HashSalt comparación = new HashSalt(_comparativa, Contraseña.Salt);
             // Si los hashes son iguales, será validado
             return Contraseña.Equals(comparación);
+        }
+
+        /// <summary>
+        /// Método para añadir tiempo al usuario
+        /// </summary>
+        public double TiempoEnFecha(DateTime fechaBuscar)
+        {
+            // Obtenemos la fecha sin hora
+            DateTime fechaSinHora = fechaBuscar.Date;
+            // Obtenemos el valor en segundos
+            double segundos = 0;
+            // Tratamos de conseguir el valor (si no hay será 0)
+            TiempoSesion.tiempoPorDia.TryGetValue(fechaSinHora, out segundos);
+            // Retornamos el valor
+            return segundos;
         }
     }
 }

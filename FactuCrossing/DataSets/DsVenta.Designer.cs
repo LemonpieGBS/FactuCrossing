@@ -403,7 +403,7 @@ namespace FactuCrossing.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DtVentaRow AddDtVentaRow(string Nombre, string Proveedor, int Cantidad, decimal PrecioUnitario, decimal PrecioTotal) {
+            public DtVentaRow AddDtVentaRow(string Nombre, string Proveedor, string Cantidad, string PrecioUnitario, string PrecioTotal) {
                 DtVentaRow rowDtVentaRow = ((DtVentaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Nombre,
@@ -447,11 +447,11 @@ namespace FactuCrossing.DataSets {
                 base.Columns.Add(this.columnNombre);
                 this.columnProveedor = new global::System.Data.DataColumn("Proveedor", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProveedor);
-                this.columnCantidad = new global::System.Data.DataColumn("Cantidad", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnCantidad = new global::System.Data.DataColumn("Cantidad", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCantidad);
-                this.columnPrecioUnitario = new global::System.Data.DataColumn("PrecioUnitario", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnPrecioUnitario = new global::System.Data.DataColumn("PrecioUnitario", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrecioUnitario);
-                this.columnPrecioTotal = new global::System.Data.DataColumn("PrecioTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnPrecioTotal = new global::System.Data.DataColumn("PrecioTotal", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrecioTotal);
             }
             
@@ -627,10 +627,10 @@ namespace FactuCrossing.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Cantidad {
+            public string Cantidad {
                 get {
                     try {
-                        return ((int)(this[this.tableDtVenta.CantidadColumn]));
+                        return ((string)(this[this.tableDtVenta.CantidadColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Cantidad\' in table \'DtVenta\' is DBNull.", e);
@@ -643,10 +643,10 @@ namespace FactuCrossing.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal PrecioUnitario {
+            public string PrecioUnitario {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDtVenta.PrecioUnitarioColumn]));
+                        return ((string)(this[this.tableDtVenta.PrecioUnitarioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'PrecioUnitario\' in table \'DtVenta\' is DBNull.", e);
@@ -659,10 +659,10 @@ namespace FactuCrossing.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal PrecioTotal {
+            public string PrecioTotal {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDtVenta.PrecioTotalColumn]));
+                        return ((string)(this[this.tableDtVenta.PrecioTotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'PrecioTotal\' in table \'DtVenta\' is DBNull.", e);

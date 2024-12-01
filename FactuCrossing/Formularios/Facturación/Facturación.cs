@@ -1,4 +1,5 @@
 ﻿using FactuCrossing.Estructuras;
+using Microsoft.Reporting.WinForms;
 using System.Data;
 
 namespace FactuCrossing.Formularios.Facturación
@@ -30,7 +31,7 @@ namespace FactuCrossing.Formularios.Facturación
             // Aplicamos el estilo de fuente del programa
             if (Program.mFont is not null) Program.ApplyFont(Program.mFont, this);
             // Actualizamos el nombre del facturador
-            lblFacturador.Text = $"Facturador: {Program.nombreDeUsuario}";
+            lblFacturador.Text = $"Facturador: {SistemaCentral.Cuentas.cuentaEnSesion.NombreDisplay}";
             // Actualizamos la fecha actual
             ActualizarDataGrid();
             // Actualizamos los totales
@@ -48,8 +49,8 @@ namespace FactuCrossing.Formularios.Facturación
             // Creamos un DataTable
             DataTable dt = new();
             // Añadimos las columnas
-            dt.Columns.AddRange(new DataColumn[]{ new("cantidad"), new("Nombre"), new("Proveedor"), new("Descripción"),
-                new("Precio"), new("Total")});
+            dt.Columns.AddRange(new DataColumn[]{ new("Cantidad"), new("Nombre"), new("Proveedor"), new("Descripción"),
+                new("Precio"), new("Subtotal")});
             // Añadimos las filas
             foreach (Tuple<Producto, int> pareja in productosFacturados)
             {
@@ -58,7 +59,7 @@ namespace FactuCrossing.Formularios.Facturación
                 // Obtenemos la cantidad
                 int cantidad = pareja.Item2;
                 // Añadimos la fila
-                dt.Rows.Add(new object[]{ $"x{cantidad}", producto.Nombre, producto.Proveedor, producto.Descripcion,
+                dt.Rows.Add(new object[]{ $"{cantidad}", producto.Nombre, producto.Proveedor, producto.Descripcion,
                     $"{producto.Precio:0.00}$", $"{producto.Precio * cantidad:0.00}$"});
             }
             // Asignamos el DataTable al DataGrid
@@ -194,22 +195,39 @@ namespace FactuCrossing.Formularios.Facturación
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Validamos los campos
-            string TodosProductos = "";
-            // Mostramos los productos facturados
-            foreach (Tuple<Producto, int> pareja in productosFacturados)
+
+            // Creamos el reporte
+            // Creamos el DataTable (lit no hay necesidad de crear una clase)
+            DataTable dt = new DataTable();
+            // Creamos las columnas (deben tener el mismo nombre de los atributos en el DataSet)
+            dt.Columns.AddRange(new DataColumn[] { new("Nombre"), new("Proveedor"),
+                new("Cantidad"), new("PrecioUnitario"), new("PrecioTotal") });
+            // Foreach para llenar el DataTable
+            foreach(Tuple<Producto, int> pareja in productosFacturados)
             {
-                // Añadimos el producto a la lista
-                TodosProductos += $"\n{pareja.Item1.Nombre}-(x{pareja.Item2})-----------S:{pareja.Item1.Precio}--T:{pareja.Item1.Precio * pareja.Item2:0.00}";
+                Producto producto = pareja.Item1;
+                int cantidad = pareja.Item2;
+                // Agregamos los datos
+                dt.Rows.Add(new object[] { producto.Nombre, producto.Proveedor, cantidad,
+                    $"{producto.Precio:0.00}$", $"{producto.Precio * cantidad:0.00}$"});
             }
-            // Mostramos un mensaje con los productos facturados
-            MessageBox.Show($"NOMBRE: {txtNombreUsuario.Text}" +
-                $"\nSUCURSAL: {txtSede.Text}" +
-                $"\nFECHA: {(rdbFechaActual.Checked ? DateTime.Now.ToString("yyyy-MM-dd") : dtpFecha.Value.ToString("yyyy-MM-dd"))}" +
-                $"{TodosProductos}" +
-                $"\nSUBTOTAL: {Subtotal:0.00}$" +
-                $"\nDESCUENTO: {Descuento:0.00}%" +
-                $"\nTOTAL: {Total:0.00}$");
+            // Creamos el DataSource
+            ReportDataSource rds = new ReportDataSource("DsVenta", dt);
+            // Damos la locación del RDLC
+            string embedLocation = "FactuCrossing.Reportes.RptFactura.rdlc";
+            // Parametros
+            List<ReportParameter> listaParametros = new List<ReportParameter>()
+            {
+                new ReportParameter("FechaFactura", dtpFecha.Value.ToString("dd/MM/yyyy") ),
+                new ReportParameter("Total", $"{Total:0.00}$"),
+                new ReportParameter("NombreFactura", txtNombreUsuario.Text),
+                new ReportParameter("SucursalFactura", txtSede.Text),
+                new ReportParameter("NumeroFactura", $"{1:00000000}")
+            };
+            // Creamos el reporte
+            Report reporteFactura = new Report(embedLocation, [rds], listaParametros);
+            // Abrimos el dialogo
+            new VistaPreviaReporte(reporteFactura).ShowDialog();
         }
         private void groupBox2_Enter(object sender, EventArgs e)
         {

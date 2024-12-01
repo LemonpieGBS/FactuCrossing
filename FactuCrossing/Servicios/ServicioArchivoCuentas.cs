@@ -19,15 +19,16 @@ namespace FactuCrossing.Servicios
         /// </summary>
         private enum IDAtributos
         {
-            ATRIBUTOFIN,
-            ID,
-            NOMBREUSUARIO,
-            NOMBREDISPLAY,
-            SALT,
-            HASH,
-            HABILITADA,
-            CONTRASENATEMPORAL,
-            ROL,
+            ATRIBUTOFIN = 0,
+            ID = 1,
+            NOMBREUSUARIO = 2,
+            NOMBREDISPLAY = 3,
+            SALT = 4,
+            HASH = 5,
+            HABILITADA = 6,
+            CONTRASENATEMPORAL = 7,
+            ROL = 8,
+            TIEMPOSESION = 9
         }
 
         /// <summary> Función para guardar una lista de cuentas (<paramref name="cuentas"/>) en un archivo (<paramref name="rutaArchivo"/>) 
@@ -131,6 +132,16 @@ namespace FactuCrossing.Servicios
             foreach (Byte b in cuenta.Contraseña.Hash) bWriter.Write(b);
             Program.Log($"-- Atributo Escrito [HASH] con tamaño {cuenta.Contraseña.Hash.Length}");
 
+            // Escribir el atributo TIEMPO DE SESIÓN
+            bWriter.Write((Int32)IDAtributos.TIEMPOSESION);
+            bWriter.Write(cuenta.TiempoSesion.tiempoPorDia.Count);
+            foreach (var kvp in cuenta.TiempoSesion.tiempoPorDia)
+            {
+                bWriter.Write(kvp.Key.ToBinary());
+                bWriter.Write(kvp.Value);
+            }
+            Program.Log($"-- Atributo Escrito [TIEMPOSESION] con {cuenta.TiempoSesion.tiempoPorDia.Count} entradas");
+
             // Escribimos el atributo FIN para marcar el fin de la escritura
             bWriter.Write((Int32)IDAtributos.ATRIBUTOFIN);
             Program.Log($"-- Atributo Escrito [ATRIBUTOFIN]");
@@ -210,6 +221,7 @@ namespace FactuCrossing.Servicios
             bool? contrasenaTemporal = null;
             string? saltLeido = null;
             byte[]? hashLeido = null;
+            Dictionary<DateTime, double>? tiempoSesionLeido = null;
             // Iniciamos un bucle para leer los atributos de la cuenta hasta encontrar el atributo de fin
             do
             {
@@ -308,6 +320,21 @@ namespace FactuCrossing.Servicios
                             hashLeido = buffer;
                             break;
                         }
+                    // Caso para el atributo TIEMPO DE SESIÓN
+                    case IDAtributos.TIEMPOSESION:
+                        {
+                            // Leemos la cantidad de entradas de tiempo de sesión
+                            int count = bReader.ReadInt32();
+                            tiempoSesionLeido = new Dictionary<DateTime, double>();
+                            for (int j = 0; j < count; j++)
+                            {
+                                DateTime key = DateTime.FromBinary(bReader.ReadInt64());
+                                double value = bReader.ReadDouble();
+                                tiempoSesionLeido.Add(key, value);
+                            }
+                            Program.Log($"-- Tiempo de sesión leído con {count} entradas");
+                            break;
+                        }
                 }
             // Continuamos el bucle hasta encontrar el atributo de fin
             } while (atributoLeido != IDAtributos.ATRIBUTOFIN);
@@ -316,23 +343,22 @@ namespace FactuCrossing.Servicios
             // Advertimos si nombreDisplay es nulo o vacío
             if (string.IsNullOrEmpty(nombreDisplay))
             {
-                // Mandamos un mensajito para que el usuario sepa que pasó
-                MessageBox.Show("El parametro nombreDisplay no se encontró, se reemplazará por nombreUsuario", "Advertencia",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Program.Log("El parametro NombreDisplay no se encontró, se reemplazará por el nombre de usuario");
             }
             // Advertimos si 'habilitada' es nulo o vacío
             if (habilitada is null)
             {
-                // Mandamos un mensajito para que el usuario sepa que pasó
-                MessageBox.Show("El parametro Habilitada no se encontró, se reemplazará por true", "Advertencia",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Program.Log("El parametro Habilitada no se encontró, se reemplazará por true");
             }
             // Advertimos si 'contraseñaTemporal' es nulo o vacío
             if (contrasenaTemporal is null)
             {
-                // Mandamos un mensajito para que el usuario sepa que pasó
-                MessageBox.Show("El parametro contraseñaTemporal no se encontró, se reemplazará por false", "Advertencia",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Program.Log("El parametro contraseñaTemporal no se encontró, se reemplazará por false");
+            }
+            // Advertimos si 'tiempoSesion' es nulo o vacío
+            if (contrasenaTemporal is null)
+            {
+                Program.Log("El parametro tiempoSesion no se encontró, se reemplazará por una lista vacía");
             }
 
             // Creamos nuestra variable para almacenar la cuenta
@@ -353,7 +379,9 @@ namespace FactuCrossing.Servicios
                     hashLeido ?? throw new ArgumentNullException("[requerido] El parametro Hash no se encontró"),
                     // Si el salt es nulo, tirar una excepción ya que es un parametro obligatorio
                     saltLeido ?? throw new ArgumentNullException("[requerido] El parametro Salt no se encontró")
-                    )
+                    ),
+                // Si el tiempo de sesion no se leyó, creamos una lista vacía
+                _tiempoSesion: new TiempoSesion(tiempoSesionLeido ?? new Dictionary<DateTime, double>())
                 );
             // Ahora asignamos las propiedades que no se asignan en el constructor
             // Si habilitada es nulo, asignamos el valor por default (true)
@@ -364,4 +392,6 @@ namespace FactuCrossing.Servicios
             return nuevaCuenta;
         }
     }
+
+
 }

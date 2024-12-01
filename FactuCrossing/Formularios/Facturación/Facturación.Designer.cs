@@ -91,7 +91,7 @@
             // 
             // label1
             // 
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 9F);
             label1.Location = new Point(19, 34);
             label1.Name = "label1";
             label1.Size = new Size(165, 18);
@@ -107,7 +107,7 @@
             // 
             // label2
             // 
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 9F);
             label2.Location = new Point(19, 102);
             label2.Name = "label2";
             label2.Size = new Size(165, 18);
@@ -142,7 +142,7 @@
             // 
             // lblFacturador
             // 
-            lblFacturador.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFacturador.Font = new Font("Segoe UI", 14.25F);
             lblFacturador.Location = new Point(19, 289);
             lblFacturador.Name = "lblFacturador";
             lblFacturador.Size = new Size(291, 33);
@@ -182,7 +182,7 @@
             // 
             // label3
             // 
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Segoe UI", 9F);
             label3.Location = new Point(19, 164);
             label3.Name = "label3";
             label3.Size = new Size(165, 18);
@@ -232,17 +232,17 @@
             // 
             // lblTotal
             // 
-            lblTotal.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTotal.Location = new Point(153, 63);
+            lblTotal.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold);
+            lblTotal.Location = new Point(6, 63);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(202, 55);
+            lblTotal.Size = new Size(489, 55);
             lblTotal.TabIndex = 18;
             lblTotal.Text = "Total: {Total}";
             lblTotal.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblDescuento
             // 
-            lblDescuento.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDescuento.Font = new Font("Segoe UI", 9F);
             lblDescuento.ForeColor = Color.IndianRed;
             lblDescuento.Location = new Point(153, 45);
             lblDescuento.Name = "lblDescuento";
@@ -253,7 +253,7 @@
             // 
             // lblSubtotal
             // 
-            lblSubtotal.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSubtotal.Font = new Font("Segoe UI", 9F);
             lblSubtotal.Location = new Point(153, 27);
             lblSubtotal.Name = "lblSubtotal";
             lblSubtotal.Size = new Size(202, 18);
@@ -285,7 +285,7 @@
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox3);
-            Icon = (Icon)Properties.Resources.AppIcon;
+            Icon = Properties.Resources.AppIcon;
             Name = "Facturación";
             Text = "Facturación";
             groupBox1.ResumeLayout(false);

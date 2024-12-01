@@ -70,8 +70,8 @@ namespace FactuCrossing.Formularios
             }
             else
             {
-                // Añadimos el acceso de salida a la memoria
-                SistemaCentral.Accesos.accesosEnMemoria.Add(new Acceso(cuentaEnSesion.Id, DateTime.Now, TipoDeAcceso.SALIDA));
+                // Añadimos el acceso de salida a la memoria [DEPRECADO]
+                // SistemaCentral.Accesos.accesosEnMemoria.Add(new Acceso(cuentaEnSesion.Id, DateTime.Now, TipoDeAcceso.SALIDA));
                 // Guardamos los accesos
                 SistemaCentral.Accesos.GuardarAccesos();
             }
@@ -98,6 +98,8 @@ namespace FactuCrossing.Formularios
             lblHola.Text = $"Hola, {cuentaEnSesion.NombreDisplay}";
             // Mostramos el formulario
             this.Show();
+            // Actualizamos la sesión
+            SistemaCentral.Cuentas.CalcularTiempoDeSesion();
         }
 
         /// <summary>

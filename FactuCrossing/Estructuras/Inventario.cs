@@ -41,8 +41,6 @@ namespace FactuCrossing.Estructuras
                 throw new ArgumentException("ID no puede ser negativo.", nameof(_id));
             if (string.IsNullOrEmpty(_nombre))
                 throw new ArgumentException("Nombre no puede ser nulo o vacío.", nameof(_nombre));
-            if (string.IsNullOrEmpty(_descripcion))
-                throw new ArgumentException("Descripción no puede ser nula o vacía.", nameof(_descripcion));
             if (_precio < 0)
                 throw new ArgumentException("Precio no puede ser negativo.", nameof(_precio));
             if (_stock < 0)

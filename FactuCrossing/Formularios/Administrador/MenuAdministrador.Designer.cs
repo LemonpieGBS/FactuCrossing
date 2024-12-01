@@ -35,18 +35,18 @@
             btnGenerar = new Button();
             btnAdministrar = new Button();
             btnResetear = new Button();
-            button1 = new Button();
-            label1 = new Label();
-            button2 = new Button();
+            lblMes = new Label();
             groupBox3 = new GroupBox();
-            label4 = new Label();
+            lblPersonal = new Label();
             label5 = new Label();
-            label3 = new Label();
+            lblAccesos = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
             dateTimePicker1 = new DateTimePicker();
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
+            btnDerecha = new Button();
+            btnIzquierda = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAccesos).BeginInit();
             groupBox2.SuspendLayout();
@@ -129,47 +129,21 @@
             btnResetear.UseVisualStyleBackColor = false;
             btnResetear.Click += btnResetear_Click;
             // 
-            // button1
+            // lblMes
             // 
-            button1.BackColor = Color.FromArgb(83, 96, 171);
-            button1.Cursor = Cursors.Hand;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(12, 255);
-            button1.Name = "button1";
-            button1.Size = new Size(37, 40);
-            button1.TabIndex = 7;
-            button1.Text = "<";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(55, 246);
-            label1.Name = "label1";
-            label1.Size = new Size(263, 40);
-            label1.TabIndex = 8;
-            label1.Text = "Noviembre 2024";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.FromArgb(83, 96, 171);
-            button2.Cursor = Cursors.Hand;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(324, 255);
-            button2.Name = "button2";
-            button2.Size = new Size(37, 40);
-            button2.TabIndex = 9;
-            button2.Text = ">";
-            button2.UseVisualStyleBackColor = false;
+            lblMes.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMes.Location = new Point(55, 254);
+            lblMes.Name = "lblMes";
+            lblMes.Size = new Size(263, 40);
+            lblMes.TabIndex = 8;
+            lblMes.Text = "Noviembre 2024";
+            lblMes.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(label4);
+            groupBox3.Controls.Add(lblPersonal);
             groupBox3.Controls.Add(label5);
-            groupBox3.Controls.Add(label3);
+            groupBox3.Controls.Add(lblAccesos);
             groupBox3.Controls.Add(label2);
             groupBox3.Location = new Point(12, 311);
             groupBox3.Name = "groupBox3";
@@ -178,15 +152,15 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Datos del Mes";
             // 
-            // label4
+            // lblPersonal
             // 
-            label4.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(188, 58);
-            label4.Name = "label4";
-            label4.Size = new Size(144, 48);
-            label4.TabIndex = 5;
-            label4.Text = "12";
-            label4.TextAlign = ContentAlignment.MiddleLeft;
+            lblPersonal.Font = new Font("Segoe UI", 24F);
+            lblPersonal.Location = new Point(188, 58);
+            lblPersonal.Name = "lblPersonal";
+            lblPersonal.Size = new Size(144, 48);
+            lblPersonal.TabIndex = 5;
+            lblPersonal.Text = "12";
+            lblPersonal.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label5
             // 
@@ -197,15 +171,15 @@
             label5.Text = "Empleados";
             label5.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // lblAccesos
             // 
-            label3.Font = new Font("Segoe UI", 27.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(23, 58);
-            label3.Name = "label3";
-            label3.Size = new Size(175, 48);
-            label3.TabIndex = 3;
-            label3.Text = "65";
-            label3.TextAlign = ContentAlignment.MiddleLeft;
+            lblAccesos.Font = new Font("Segoe UI", 27.75F);
+            lblAccesos.Location = new Point(23, 58);
+            lblAccesos.Name = "lblAccesos";
+            lblAccesos.Size = new Size(175, 48);
+            lblAccesos.TabIndex = 3;
+            lblAccesos.Text = "65";
+            lblAccesos.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
@@ -256,6 +230,34 @@
             radioButton1.Text = "Fecha Actual: {fecha}";
             radioButton1.UseVisualStyleBackColor = true;
             // 
+            // btnDerecha
+            // 
+            btnDerecha.BackColor = Color.FromArgb(83, 96, 171);
+            btnDerecha.Cursor = Cursors.Hand;
+            btnDerecha.FlatStyle = FlatStyle.Flat;
+            btnDerecha.ForeColor = Color.White;
+            btnDerecha.Location = new Point(324, 255);
+            btnDerecha.Name = "btnDerecha";
+            btnDerecha.Size = new Size(37, 40);
+            btnDerecha.TabIndex = 9;
+            btnDerecha.Text = ">";
+            btnDerecha.UseVisualStyleBackColor = false;
+            btnDerecha.Click += btnDerecha_Click;
+            // 
+            // btnIzquierda
+            // 
+            btnIzquierda.BackColor = Color.FromArgb(83, 96, 171);
+            btnIzquierda.Cursor = Cursors.Hand;
+            btnIzquierda.FlatStyle = FlatStyle.Flat;
+            btnIzquierda.ForeColor = Color.White;
+            btnIzquierda.Location = new Point(12, 255);
+            btnIzquierda.Name = "btnIzquierda";
+            btnIzquierda.Size = new Size(37, 40);
+            btnIzquierda.TabIndex = 7;
+            btnIzquierda.Text = "<";
+            btnIzquierda.UseVisualStyleBackColor = false;
+            btnIzquierda.Click += btnIzquierda_Click;
+            // 
             // MenuAdministrador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -266,9 +268,9 @@
             Controls.Add(radioButton2);
             Controls.Add(radioButton1);
             Controls.Add(groupBox3);
-            Controls.Add(button2);
-            Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(btnDerecha);
+            Controls.Add(lblMes);
+            Controls.Add(btnIzquierda);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Icon = Properties.Resources.AppIcon;
@@ -288,20 +290,20 @@
         private GroupBox groupBox1;
         private DataGridView dgvAccesos;
         private GroupBox groupBox2;
-        private Button button1;
-        private Label label1;
-        private Button button2;
+        private Label lblMes;
         private Button btnGenerar;
         private Button btnAdministrar;
         private Button btnResetear;
         private GroupBox groupBox3;
-        private Label label4;
+        private Label lblPersonal;
         private Label label5;
-        private Label label3;
+        private Label lblAccesos;
         private Label label2;
         private PictureBox pictureBox1;
         private DateTimePicker dateTimePicker1;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
+        private Button btnDerecha;
+        private Button btnIzquierda;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Reporting.WinForms;
+﻿using FactuCrossing.Properties;
+using Microsoft.Reporting.WinForms;
 
 namespace FactuCrossing
 {
@@ -18,17 +19,23 @@ namespace FactuCrossing
         /// <summary>
         /// Ubicación del recurso incrustado del reporte
         /// </summary>
-        public string embedLocation;
+        private string embedLocation;
 
         /// <summary>
         /// Lista de fuentes de datos del reporte
         /// </summary>
-        public List<ReportDataSource> dataSources;
+        private List<ReportDataSource> dataSources;
 
         /// <summary>
         /// Lista de parámetros del reporte
         /// </summary>
-        public List<ReportParameter>? reportParameters;
+        private List<ReportParameter>? reportParameters;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string? Nombre { get; set; }
+
 
         /// <summary>
         /// Constructor que inicializa un nuevo reporte con parámetros
@@ -75,6 +82,8 @@ namespace FactuCrossing
             foreach (ReportDataSource ds in dataSources) report.DataSources.Add(ds);
             // Si hay parámetros del reporte, los establece en el reporte
             if (reportParameters is not null) report.SetParameters(reportParameters.ToArray());
+            // Asignar nombre
+            if (Nombre is not null) report.DisplayName = Nombre;
         }
     }
 
@@ -95,13 +104,17 @@ namespace FactuCrossing
             // Establece el título del formulario
             Text = "Vista Previa";
             // Establece el estado de la ventana a maximizado
-            WindowState = FormWindowState.Maximized;
+            // WindowState = FormWindowState.Maximized;
             // Crea una nueva instancia de ReportViewer
             reportViewer = new ReportViewer();
             // Establece el acoplamiento del ReportViewer para llenar el formulario
             reportViewer.Dock = DockStyle.Fill;
             // Establece el color de fondo del ReportViewer
             reportViewer.BackColor = Color.LightGray;
+            // Establecemos el tamaño del formulario
+            this.Size = new Size(800, 600);
+            // Establecemos el icono
+            this.Icon = (Icon)Resources.AppIcon;
             // Asigna el reporte pasado al formulario
             passedReport = reportToLoad;
             // Añade el ReportViewer a los controles del formulario

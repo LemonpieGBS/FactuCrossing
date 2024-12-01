@@ -40,9 +40,6 @@
     <Compile Update="Formularios\Utilidades\DebugLog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formularios\Utilidades\VisualizacionReporte.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Update="DataSets\DsVenta.xsd">

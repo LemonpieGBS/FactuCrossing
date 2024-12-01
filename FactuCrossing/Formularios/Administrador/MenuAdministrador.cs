@@ -1,6 +1,6 @@
 ﻿using FactuCrossing.Estructuras;
 using System.Data;
-using static FactuCrossing.SistemaCentral;
+using System.Globalization;
 
 namespace FactuCrossing.Formularios.Administrador
 {
@@ -10,6 +10,12 @@ namespace FactuCrossing.Formularios.Administrador
         /// Lista de accesos por cuenta
         /// </summary>
         private List<Tuple<int, int, DateTime>> accesosPorCuenta = new List<Tuple<int, int, DateTime>>() { };
+
+        /// <summary>
+        /// Información de fecha
+        /// </summary>
+        private int mes = DateTime.Now.Month;
+        private int año = DateTime.Now.Year;
 
         /// <summary>
         /// Constructor de la clase
@@ -22,6 +28,8 @@ namespace FactuCrossing.Formularios.Administrador
             if (Program.mFont is not null) Program.ApplyFont(Program.mFont, this);
             // Actualizamos el data grid
             ActualizarDataGrid();
+            // Actualizamos los labels
+            ActualizarLabels();
         }
 
         /// <summary>
@@ -32,12 +40,13 @@ namespace FactuCrossing.Formularios.Administrador
             // Limpiamos la lista
             accesosPorCuenta.Clear();
             // Recorremos los accesos
-            foreach(Acceso acceso in SistemaCentral.Accesos.accesosEnMemoria)
+            foreach (Acceso acceso in SistemaCentral.Accesos.accesosEnMemoria)
             {
                 // Variable por si encontramos el índice
                 bool indiceEncontrado = false;
                 // Buscamos si la cuenta ya está en la lista
-                for(int i = accesosPorCuenta.Count - 1; i >= 0; i--) {
+                for (int i = accesosPorCuenta.Count - 1; i >= 0; i--)
+                {
                     // Variable para hacer todo más ameno
                     Tuple<int, int, DateTime> tupleIdAcceso = accesosPorCuenta[i];
                     // Si si está, actualizamos el indice a editar
@@ -104,7 +113,7 @@ namespace FactuCrossing.Formularios.Administrador
             // Añadimos las columnas
             dt.Columns.AddRange(new DataColumn[] { new("Usuario"), new("# de Accesos"), new("Ultimo Acceso (Fecha)"), new("Ultimo Acceso (Hora)") });
             // Añadimos las filas
-            foreach(Tuple<int, int, DateTime> trioDeAtributos in accesosPorCuenta)
+            foreach (Tuple<int, int, DateTime> trioDeAtributos in accesosPorCuenta)
             {
                 // Cargamos la fecha
                 DateTime ultimoAcceso = trioDeAtributos.Item3;
@@ -175,7 +184,7 @@ namespace FactuCrossing.Formularios.Administrador
         /// <param name="e"></param>
         private void btnAdministrar_Click(object sender, EventArgs e)
         {
-            
+
             AbrirDeshabilitarDelegar(new Administrador.AdministrarPersonal());
         }
 
@@ -187,6 +196,69 @@ namespace FactuCrossing.Formularios.Administrador
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             AbrirDeshabilitarDelegar(new Administrador.Generador_de_Reportes());
+        }
+
+        private void btnDerecha_Click(object sender, EventArgs e)
+        {
+            // Si la fecha es mayor a la actual, retornar
+            if (mes >= DateTime.Now.Month && año >= DateTime.Now.Year) return;
+
+            // Si estamos en Diciembre pasamos a Enero del proximo año
+            if (mes == 12) { mes = 1; año++; }
+            // Si no, simplemente aumentamos el mes
+            else mes++;
+
+            // Actualizamos los labels
+            ActualizarLabels();
+        }
+
+        private void btnIzquierda_Click(object sender, EventArgs e)
+        {
+            // Si estamos en Enero pasamos a Diciembre del año pasado
+            if (mes == 1) { mes = 12; año--; }
+            // Si no, simplemente aumentamos el mes
+            else mes--;
+
+            // Actualizamos los labels
+            ActualizarLabels();
+        }
+        private void ActualizarLabels()
+        {
+            // Gracias a Darin Dimitrov en StackOverflow
+            // https://stackoverflow.com/questions/3184121/get-month-name-from-month-number
+
+            // Conseguimos el nombre del mes
+            string fullMonthName = new DateTime(año, mes, 1).ToString("MMMM", CultureInfo.CreateSpecificCulture("es"));
+            // Actualizamos el label
+            lblMes.Text = $"{StringHelper.PrimeraLetraMayuscula(fullMonthName)} {año}";
+
+            // Listar al personal contado
+            List<int> personalConAcceso = new List<int>();
+
+            // # de Accesos
+            int accesos = 0;
+
+            // Buscamos los accesos en el mes
+            foreach (Acceso acceso in SistemaCentral.Accesos.accesosEnMemoria)
+            {
+                // Si el acceso tiene el mismo mes y año que 
+                if ((acceso.TiempoDeAcceso.Month, acceso.TiempoDeAcceso.Year) == (mes, año))
+                {
+                    // Si el personal no se ha visto
+                    if (!personalConAcceso.Contains(acceso.IdDeCuenta))
+                    {
+                        // Lo agregamos
+                        personalConAcceso.Add(acceso.IdDeCuenta);
+                    }
+                    // Agregamos al numero de accesos
+                    accesos++;
+                }
+            }
+
+            // Actualizamos el label de accesos
+            lblAccesos.Text = accesos.ToString();
+            // Actualizamos el label de personal
+            lblPersonal.Text = personalConAcceso.Count.ToString();
         }
     }
 }

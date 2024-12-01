@@ -122,6 +122,8 @@ public partial class InicioDeSesion : Form
                 SistemaCentral.Cuentas.cuentasEnMemoria[SistemaCentral.Cuentas.CuentaEnMemoria(cuentaUsuario)];
             // Añadimos el acceso a la memoria
             SistemaCentral.Accesos.accesosEnMemoria.Add(new Acceso(cuentaUsuario.Id, DateTime.Now, TipoDeAcceso.ENTRADA));
+            // Refrezcamos cuando se inició sesión
+            SistemaCentral.Cuentas.RefrezcarInicioDeSesion();
             // Guardamos los accesos
             SistemaCentral.Accesos.GuardarAccesos();
             // Ocultamos este form
