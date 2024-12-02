@@ -17,6 +17,10 @@ namespace FactuCrossing.Formularios.Facturación
         /// Lista de descuentos aplicados
         /// </summary>
         List<Descuento> descuentosAplicados = new List<Descuento>() { };
+        /// <summary>
+        /// Descuento global
+        /// </summary>
+        Descuento? descuentoGlobal = null;
         // Variables para los totales
         /// <summary>Subtotal de la factura</summary>
         double Subtotal = 0;
@@ -101,13 +105,10 @@ namespace FactuCrossing.Formularios.Facturación
                 totalDescuento += descuentoProducto;
             }
 
-            // Aplicamos descuentos que aplican a todos los productos
-            foreach (Descuento descuento in descuentosAplicados)
+            // Aplicamos el descuento global
+            if(descuentoGlobal is not null)
             {
-                if (descuento.ProductoAplicable == -1)
-                {
-                    totalDescuento += Subtotal * (descuento.Porcentaje / 100);
-                }
+                totalDescuento += Subtotal * (descuentoGlobal.Porcentaje / 100);
             }
 
             // Calculamos el total después de aplicar los descuentos
@@ -293,7 +294,9 @@ namespace FactuCrossing.Formularios.Facturación
                 new ReportParameter("NombreFactura", txtNombreUsuario.Text),
                 new ReportParameter("SucursalFactura", txtSede.Text),
                 new ReportParameter("NumeroFactura", $"F{1:0000000}"),
-                new ReportParameter("Facturista", SistemaCentral.Cuentas.cuentaEnSesion?.NombreDisplay)
+                new ReportParameter("Facturista", SistemaCentral.Cuentas.cuentaEnSesion?.NombreDisplay),
+                new ReportParameter("Subtotal", $"{Subtotal:0.00}$"),
+                new ReportParameter("Descuento", $"{Descuento:0.00}$")
             };
             // Creamos el reporte
             Report reporteFactura = new Report(embedLocation, [rds], listaParametros);
@@ -370,7 +373,29 @@ namespace FactuCrossing.Formularios.Facturación
                     return;
                 }
                 // Añadimos el descuento a la lista de descuentos aplicados
-                descuentosAplicados.Add(frm.descuentoAplicado);
+                if(frm.descuentoAplicado.ProductoAplicable == -1)
+                {
+                    if(descuentoGlobal is not null)
+                    {
+                        // Preguntamos al usuario si quiere sobreescribir el descuento global
+                        DialogResult dialogResult = MessageBox.Show("Ya hay un descuento global aplicado, ¿desea sobreescribirlo?",
+                            "Descuento Global", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes) descuentoGlobal = frm.descuentoAplicado;
+                        else return;
+                    } else descuentoGlobal = frm.descuentoAplicado;
+                } else
+                {
+                    if(descuentosAplicados.Any(d => d.ProductoAplicable == frm.descuentoAplicado.ProductoAplicable))
+                    {
+                        // Le preguntamos al usuario si quiere sobreescribir el descuento
+                        DialogResult dialogResult = MessageBox.Show("Ya hay un descuento aplicado a este producto, ¿desea sobreescribirlo?", "Advertencia",
+                            MessageBoxButtons.YesNo);
+
+                        if (dialogResult == DialogResult.Yes)
+                            descuentosAplicados.Add(frm.descuentoAplicado);
+                        else return;
+                    } else descuentosAplicados.Add(frm.descuentoAplicado);
+                }
                 // Refrezcamos los totales
                 RefrezcarTotales();
             }

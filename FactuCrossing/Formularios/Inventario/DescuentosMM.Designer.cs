@@ -45,6 +45,7 @@
             radioButton1 = new RadioButton();
             dgvDescuentos = new DataGridView();
             Gb = new GroupBox();
+            chkPermanente = new CheckBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudPorcentaje).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDescuentos).BeginInit();
@@ -77,6 +78,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(chkPermanente);
             groupBox1.Controls.Add(dtpFin);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(dtpInicio);
@@ -99,7 +101,7 @@
             // 
             // dtpFin
             // 
-            dtpFin.Location = new Point(29, 294);
+            dtpFin.Location = new Point(29, 303);
             dtpFin.Name = "dtpFin";
             dtpFin.Size = new Size(288, 23);
             dtpFin.TabIndex = 34;
@@ -107,7 +109,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(29, 276);
+            label6.Location = new Point(29, 285);
             label6.Name = "label6";
             label6.Size = new Size(66, 15);
             label6.TabIndex = 33;
@@ -115,7 +117,7 @@
             // 
             // dtpInicio
             // 
-            dtpInicio.Location = new Point(29, 239);
+            dtpInicio.Location = new Point(29, 248);
             dtpInicio.Name = "dtpInicio";
             dtpInicio.Size = new Size(288, 23);
             dtpInicio.TabIndex = 32;
@@ -123,7 +125,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(29, 221);
+            label5.Location = new Point(29, 230);
             label5.Name = "label5";
             label5.Size = new Size(86, 15);
             label5.TabIndex = 31;
@@ -226,6 +228,17 @@
             Gb.TabStop = false;
             Gb.Text = "Descuentos";
             // 
+            // chkPermanente
+            // 
+            chkPermanente.AutoSize = true;
+            chkPermanente.Location = new Point(29, 341);
+            chkPermanente.Name = "chkPermanente";
+            chkPermanente.Size = new Size(90, 19);
+            chkPermanente.TabIndex = 35;
+            chkPermanente.Text = "Permanente";
+            chkPermanente.UseVisualStyleBackColor = true;
+            chkPermanente.CheckedChanged += chkPermanente_CheckedChanged;
+            // 
             // DescuentosMM
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -263,5 +276,6 @@
         private Label label4;
         private DataGridView dgvDescuentos;
         private GroupBox Gb;
+        private CheckBox chkPermanente;
     }
 }

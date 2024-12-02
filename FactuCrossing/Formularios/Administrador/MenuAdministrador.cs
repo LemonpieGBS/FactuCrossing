@@ -404,13 +404,14 @@ namespace FactuCrossing.Formularios.Administrador
         {
             // Calculamos los accesos por cuenta
             // CalcularAccesosPorCuenta();
-            // Limpiamos el DataGrid
-            dgvAccesos.DataSource = null;
+
             // Creamos un DataTable
             DataTable dt = new();
             // Conseguimos las acciones filtradas
             List<Acceso> accesosFiltrados = FiltrarAccesos();
             List<Accion> accionesFiltradas = FiltrarAcciones();
+            ReportDataSource rds = new ReportDataSource();
+            string embeddedPath = "";
 
             if (ordenDeFiltro == Orden.RESUMEN)
             {
@@ -447,9 +448,73 @@ namespace FactuCrossing.Formularios.Administrador
                     dt.Rows.Add(new object[] { cuenta.NombreDisplay, accesosDeCuenta, tiempo, acciones,
                         ultimoAcceso.ToString("yyyy-MM-dd"), ultimoAcceso.ToString("hh:mm tt")});
                 }
+                embeddedPath = "FactuCrossing.Reportes.rptAdmin1.rdlc";
+                rds = new ReportDataSource("DsInfo", dt);
+
+            } else if(ordenDeFiltro == Orden.CRONOLOGICO)
+            {
+                // Añadimos las columnas
+                dt.Columns.AddRange(new DataColumn[] { new("Tiempo"), new("Usuario"), new("Fecha"), new("Hora"), new("Evento"), new("Detalle") });
+
+                List<EventoGenerico> eventosCronologicos = new List<EventoGenerico>();
+
+                // Combinamos accesos, acciones y tiempos de sesión en una lista de eventos
+                foreach (Cuenta cuenta in SistemaCentral.Cuentas.cuentasEnMemoria)
+                {
+                    // Saltamos si hay un filtro de personal y esta cuenta no es el personal seleccionado
+                    if (filtroPersonal is not null) { if (cuenta.Id != filtroPersonal.Id) continue; }
+
+                    // Añadimos los timespans
+                    foreach (KeyValuePair<DateTime, double> pareja in FiltrarTiemposDeSesion(cuenta).tiempoPorDia)
+                    {
+                        eventosCronologicos.Add(new EventoGenerico(cuenta.NombreDisplay, pareja.Key,
+                            "Tiempo de Sesión", "", (TimeSpan.FromSeconds(pareja.Value)).ToString(@"hh\:mm\:ss")));
+                    }
+                }
+
+                // Si hay un filtro personal filtramos los accesos y las acciones
+                if (filtroPersonal is not null)
+                {
+                    accesosFiltrados = accesosFiltrados.Where(a => a.IdDeCuenta == filtroPersonal.Id).ToList();
+                    accionesFiltradas = accionesFiltradas.Where(a => a.IdDeCuenta == filtroPersonal.Id).ToList();
+                }
+
+                // Ahora los agregamos a los eventos genericos
+                foreach (Acceso acceso in accesosFiltrados)
+                {
+                    Cuenta? cuentaAcceso = SistemaCentral.Cuentas.ObtenerCuentaPorId(acceso.IdDeCuenta);
+                    if (cuentaAcceso is null)
+                    {
+                        eventosCronologicos.Add(new EventoGenerico("Desconocido", acceso.TiempoDeAcceso, "Acceso", "El usuario entró", ""));
+                        continue;
+                    }
+                    eventosCronologicos.Add(new EventoGenerico(cuentaAcceso.NombreDisplay, acceso.TiempoDeAcceso, "Acceso", "El usuario entró", ""));
+                }
+
+                foreach (Accion accion in accionesFiltradas)
+                {
+                    Cuenta? cuentaAccion = SistemaCentral.Cuentas.ObtenerCuentaPorId(accion.IdDeCuenta);
+                    if (cuentaAccion is null)
+                    {
+                        eventosCronologicos.Add(new EventoGenerico("Desconocido", accion.TiempoDeAccion, "Accion", accion.Mensaje, ""));
+                        continue;
+                    }
+                    eventosCronologicos.Add(new EventoGenerico(cuentaAccion.NombreDisplay, accion.TiempoDeAccion, "Accion", accion.Mensaje, ""));
+                }
+
+                // Ahora ordenamos
+                eventosCronologicos = eventosCronologicos.OrderBy(e => e.Tiempo).ToList();
+
+                // Y ahora lo añadimos al DataTable
+                foreach (EventoGenerico evento in eventosCronologicos)
+                {
+                    dt.Rows.Add(new object[] { evento.TiempoSesion, evento.Accionario, evento.Tiempo.ToString("yyyy-MM-dd"), evento.Tiempo.ToString("hh:mm tt"),
+                        evento.Tipo, evento.Mensaje });
+                }
+                embeddedPath = "FactuCrossing.Reportes.rptAdmin2.rdlc";
+                rds = new ReportDataSource("DsCrono", dt);
             }
 
-            ReportDataSource rds = new ReportDataSource("DsInfo", dt);
             List<ReportParameter> parametros = new();
             parametros.Add(new ReportParameter("Generador", SistemaCentral.Cuentas.cuentaEnSesion?.NombreDisplay));
 
@@ -476,7 +541,7 @@ namespace FactuCrossing.Formularios.Administrador
                     break;
             }
 
-            Report report = new Report("FactuCrossing.Reportes.rptAdmin1.rdlc", [rds], parametros);
+            Report report = new Report(embeddedPath, new List<ReportDataSource>(){ rds }, parametros);
 
             // Abrimos el dialogo
             new VistaPreviaReporte(report).ShowDialog();

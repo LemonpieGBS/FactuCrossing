@@ -38,9 +38,14 @@ namespace FactuCrossing.Formularios.Inventario
                 new("Fecha de Fin"), new("Producto Aplicable")});
             foreach (Descuento descuento in SistemaCentral.Descuentos.descuentosEnMemoria)
             {
+                Producto? producto = SistemaCentral.Inventario.EncontrarProductoPorNombre(cmbProductos.Text);
+                if (producto is null)
+                {
+                    throw new Exception("Producto no encontrado");
+                }
                 dt.Rows.Add(new object[]{ descuento.Id, descuento.Nombre, $"{descuento.Porcentaje:00.0}%",
                     descuento.FechaInicio.ToString("yyyy-MM-dd"), descuento.FechaFin.ToString("yyyy-MM-dd"),
-                    descuento.ProductoAplicable == -1 ? "Todos" : SistemaCentral.Inventario.ObtenerProductoPorId(descuento.ProductoAplicable).Nombre});
+                    descuento.ProductoAplicable == -1 ? "Todos" : producto.Nombre});
             }
             dgvDescuentos.DataSource = dt;
         }
@@ -52,7 +57,7 @@ namespace FactuCrossing.Formularios.Inventario
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if(txtNombre.Text == string.Empty)
+            if (txtNombre.Text == string.Empty)
             {
                 MessageBox.Show("Por favor ingrese un nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -62,23 +67,21 @@ namespace FactuCrossing.Formularios.Inventario
                 MessageBox.Show("El porcentaje de descuento no puede ser 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            // Agregamos el descuento a memoria
-            if (radioButton1.Checked)
+
+            Producto? producto = SistemaCentral.Inventario.EncontrarProductoPorNombre(cmbProductos.Text);
+
+            if (producto is null && radioButton2.Checked)
             {
-                SistemaCentral.Descuentos.descuentosEnMemoria.Add(new Descuento(SistemaCentral.Descuentos.descuentosEnMemoria.Count,
-                    txtNombre.Text, (double)(nudPorcentaje.Value), dtpInicio.Value, dtpFin.Value, -1));
+                MessageBox.Show("Por favor seleccione un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                if (cmbProductos.SelectedItem is null || cmbProductos.Text == string.Empty)
-                {
-                    MessageBox.Show("Por favor seleccione un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                SistemaCentral.Descuentos.descuentosEnMemoria.Add(new Descuento(SistemaCentral.Descuentos.descuentosEnMemoria.Count,
-                    txtNombre.Text, (double)(nudPorcentaje.Value), dtpInicio.Value, dtpFin.Value,
-                    (SistemaCentral.Inventario.EncontrarProductoPorNombre(cmbProductos.Text)).Id));
-            }
+
+            int id = (radioButton1.Checked) ? -1 : producto.Id;
+            DateTime fechaInicio = (chkPermanente.Checked) ? DateTime.Now : dtpInicio.Value;
+            DateTime fechaFinal = (chkPermanente.Checked) ? DateTime.Now : dtpFin.Value;
+
+            SistemaCentral.Descuentos.descuentosEnMemoria.Add(new Descuento(SistemaCentral.Descuentos.descuentosEnMemoria.Count, txtNombre.Text, (double) nudPorcentaje.Value, fechaInicio, fechaFinal, id));
+
             // Actualizar el DataGridView
             ActualizarDataGrid();
             // Reiniciamos los campos
@@ -110,12 +113,23 @@ namespace FactuCrossing.Formularios.Inventario
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 SistemaCentral.Descuentos.descuentosEnMemoria.RemoveAll(descuento => descuento.Id == descuentoSeleccionado);
+                // Reordenar los IDs
+                for (int i = 0; i < SistemaCentral.Descuentos.descuentosEnMemoria.Count; i++)
+                {
+                    SistemaCentral.Descuentos.descuentosEnMemoria[i].Id = i;
+                }
             }
 
             // Actualizar el DataGridView
             ActualizarDataGrid();
             // Hoa
             SistemaCentral.Descuentos.GuardarDescuentos();
+        }
+
+        private void chkPermanente_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpFin.Enabled = !chkPermanente.Checked;
+            dtpInicio.Enabled = !chkPermanente.Checked;
         }
     }
 }
