@@ -31,7 +31,8 @@ namespace FactuCrossing.Servicios
             PRECIO,
             CANTIDADENSTOCK,
             PROVEEDOR,
-            FECHAINGRESO
+            FECHAINGRESO,
+            DESCONTINUADO
         }
 
         /// <summary> Función para guardar una lista de productos (<paramref name="productos"/>) en un archivo (<paramref name="rutaArchivo"/>) 
@@ -125,6 +126,11 @@ namespace FactuCrossing.Servicios
             bWriter.Write(producto.FechaIngreso.ToBinary());
             Program.Log($"-- Atributo Escrito [FECHAINGRESO]: {producto.FechaIngreso}");
 
+            // Escribir el atributo FECHA DE INGRESO
+            bWriter.Write((Int32)IDAtributos.DESCONTINUADO);
+            bWriter.Write(producto.Descontinuado);
+            Program.Log($"-- Atributo Escrito [DESCONTINUADO]: {producto.Descontinuado}");
+
             // Escribimos el atributo FIN para marcar el fin de la escritura
             bWriter.Write((Int32)IDAtributos.ATRIBUTOFIN);
             Program.Log($"-- Atributo Escrito [ATRIBUTOFIN]");
@@ -203,6 +209,7 @@ namespace FactuCrossing.Servicios
             int? cantidadEnStock = null;
             string? proveedor = null;
             DateTime? fechaIngreso = null;
+            bool? descontinuado = null;
             // Iniciamos un bucle para leer los atributos del producto hasta encontrar el atributo de fin
             do
             {
@@ -281,6 +288,15 @@ namespace FactuCrossing.Servicios
                             fechaIngreso = buffer;
                             break;
                         }
+                    // Caso para el atributo DESCONTINUADO
+                    case IDAtributos.DESCONTINUADO:
+                        {
+                            // Leemos el valor de descontinuado y lo almacenamos
+                            bool buffer = bReader.ReadBoolean();
+                            Program.Log($"-- Descontinuado leido: {buffer}");
+                            descontinuado = buffer;
+                            break;
+                        }
                 }
                 // Continuamos el bucle hasta encontrar el atributo de fin
             } while (atributoLeido != IDAtributos.ATRIBUTOFIN);
@@ -295,13 +311,13 @@ namespace FactuCrossing.Servicios
                 nombre = "Desconocido";
             }
             // Advertimos si descripcion es nulo o vacío
-            if (string.IsNullOrEmpty(descripcion))
+            /*if (string.IsNullOrEmpty(descripcion))
             {
                 // Mandamos un mensajito para que el usuario sepa que pasó
                 MessageBox.Show("El parametro descripcion no se encontró, se reemplazará por 'Sin descripción'", "Advertencia",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 descripcion = "Sin descripción";
-            }
+            }*/
             // Advertimos si proveedor es nulo o vacío
             if (string.IsNullOrEmpty(proveedor))
             {
@@ -328,7 +344,7 @@ namespace FactuCrossing.Servicios
                 // Si el nombre es nulo, asignarlo a 'Desconocido' (parametro opcional)
                 _nombre: nombre,
                 // Si la descripcion es nulo, asignarlo a 'Sin descripción' (parametro opcional)
-                _descripcion: descripcion,
+                _descripcion: descripcion ?? "",
                 // Si el precio es nulo, tirar una excepción ya que es un parametro obligatorio
                 _precio: precio ?? throw new ArgumentNullException("[requerido] El parametro Precio no se encontró"),
                 // Si la cantidad en stock es nulo, tirar una excepción ya que es un parametro obligatorio
@@ -338,6 +354,8 @@ namespace FactuCrossing.Servicios
                 // Si la fecha de ingreso es nulo, asignarlo a la fecha actual (parametro opcional)
                 _fechaIngreso: fechaIngreso ?? DateTime.Now
                 );
+            // Si descontinuado es nulo, asignarlo a false (parametro opcional)
+            nuevoProducto.MarcarDescontinuado(descontinuado ?? false);
             // Retornamos el producto creado
             return nuevoProducto;
         }

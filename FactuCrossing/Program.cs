@@ -91,8 +91,8 @@ namespace FactuCrossing
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            logForm = new DebugLog();
-            logForm.Show();
+            //logForm = new DebugLog();
+            //logForm.Show();
 
             // Si el directorio de datos no existe, lo creamos
             if(!Directory.Exists(FileHelper.SaveDataPath))
@@ -105,9 +105,11 @@ namespace FactuCrossing
             SistemaCentral.Cuentas.CargarCuentas();
             SistemaCentral.Inventario.CargarProductos();
             SistemaCentral.Accesos.CargarAccesos();
+            SistemaCentral.Acciones.CargarAcciones();
+            SistemaCentral.Descuentos.CargarDescuentos();
 
             // Creamos una cuenta de administrador si no hay nignuna cuenta existente
-            if(SistemaCentral.Cuentas.cuentasEnMemoria.Count == 0)
+            if (SistemaCentral.Cuentas.cuentasEnMemoria.Count == 0)
             {
                 Cuenta adminDefault = new Cuenta(
                     _id: 0,

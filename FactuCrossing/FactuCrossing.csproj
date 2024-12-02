@@ -12,12 +12,15 @@
     <None Remove="Properties\Resources\332wArtboard 1 %281%29.ico" />
     <None Remove="Properties\Resources\disabledcrown.png" />
     <None Remove="Properties\Resources\Rubik-VariableFont_wght.ttf" />
+    <None Remove="Reportes\rptAdmin1.rdlc" />
     <None Remove="Reportes\RptFactura.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources\332wArtboard 1 (1).ico" />
     <EmbeddedResource Include="Properties\Resources\Rubik-VariableFont_wght.ttf" />
+    <EmbeddedResource Include="Reportes\rptAdmin2.rdlc" />
+    <EmbeddedResource Include="Reportes\rptAdmin1.rdlc" />
     <EmbeddedResource Include="Reportes\RptFactura.rdlc" />
   </ItemGroup>
 
@@ -29,6 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="DataSets\DsResumen.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DsResumen.xsd</DependentUpon>
+    </Compile>
     <Compile Update="DataSets\DsVenta.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -57,6 +65,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="DataSets\DsResumen.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsResumen.Designer.cs</LastGenOutput>
+    </None>
     <None Update="DataSets\DsVenta.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DsVenta.Designer.cs</LastGenOutput>

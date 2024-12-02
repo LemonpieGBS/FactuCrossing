@@ -235,7 +235,9 @@ namespace FactuCrossing
         public static class Inventario
         {
             /// <summary> Lista de productos en memoria </summary>
-            public static List<Producto> productosEnMemoria = new();
+            private static List<Producto> _IproductosEnMemoria = new();
+            /// <summary> Lista PÚBLICA de productos en memoria </summary>
+            public static IReadOnlyList<Producto> productosEnMemoria => _IproductosEnMemoria.AsReadOnly();
             /// <summary> String que contiene la ruta de archivo en donde se almacenan los productos </summary>
             public static string archivoProductos = FileHelper.SaveDataPath + "productosInventario.bin";
 
@@ -247,7 +249,7 @@ namespace FactuCrossing
                 // Se crea una instancia del servicio de archivo para productos
                 ServicioArchivoInventario sai = new ServicioArchivoInventario();
                 // Se llama la función para guardar
-                sai.EscribirProductos(productosEnMemoria, archivoProductos);
+                sai.EscribirProductos(_IproductosEnMemoria, archivoProductos);
             }
 
             /// <summary>
@@ -268,9 +270,61 @@ namespace FactuCrossing
                 List<Producto> productosCargados = sai.LeerProductos(archivoProductos);
                 // Si no se cargaron productos se mantiene la lista original vacía
                 if (productosCargados.Count != 0)
-                    productosEnMemoria = productosCargados;
+                    _IproductosEnMemoria = productosCargados;
                 else
                     Program.Log($"El archivo {archivoProductos} no contiene datos o no se pudo leer, se iniciará sin productos previos.");
+            }
+
+            /// <summary>
+            /// Refrezcar cuenta en memoria
+            /// </summary>
+            public static void RefrezcarProducto(Producto producto)
+            {
+                // Se busca el índice de la cuenta
+                int indice = ProductoEnMemoria(producto);
+                // Si no se encuentra, tira un error
+                if (indice == -1) throw new Exception("La cuenta no se encuentra en memoria");
+                // Si se encuentra, se establece
+                else _IproductosEnMemoria[indice] = producto;
+            }
+
+            /// <summary>
+            /// Función para establecer un producto en memoria en un índice específico
+            /// </summary>
+            /// <param name="indice">Índice en el que se establecerá el producto</param>
+            /// <param name="nuevoProducto">Nuevo producto a establecer</param>
+            public static void EstablecerIndice(int indice, Producto nuevoProducto)
+            {
+                // Si el ID o el nombre del producto ya existen en la lista, lanzar una excepción
+                if (_IproductosEnMemoria.Any(p => p.Id == nuevoProducto.Id || p.Nombre == nuevoProducto.Nombre))
+                {
+                    throw new Exception("El ID o el nombre del producto ya existen en la lista de productos");
+                }
+
+                // Si el índice está fuera de rango, lanzar una excepción
+                if (indice < 0 || indice >= _IproductosEnMemoria.Count)
+                {
+                    throw new Exception("El índice está fuera de rango");
+                }
+
+                // Establecer el producto en el índice especificado
+                _IproductosEnMemoria[indice] = nuevoProducto;
+            }
+
+            /// <summary>
+            /// Función para añadir un producto a memoria
+            /// </summary>
+            /// <param name="nuevoProducto">Nuevo producto a añadir</param>
+            public static void AñadirProducto(Producto nuevoProducto)
+            {
+                // Si el ID o el nombre del producto ya existen en la lista, lanzar una excepción
+                if (_IproductosEnMemoria.Any(p => p.Id == nuevoProducto.Id || p.Nombre == nuevoProducto.Nombre))
+                {
+                    throw new Exception("El ID o el nombre del producto ya existen en la lista de productos");
+                }
+
+                // Añadir el producto a la lista
+                _IproductosEnMemoria.Add(nuevoProducto);
             }
 
             /// <summary>
@@ -282,10 +336,10 @@ namespace FactuCrossing
             public static int ProductoEnMemoria(int _id)
             {
                 // Se busca en un for todos los productos en memoria
-                for (int i = 0; i < productosEnMemoria.Count; i++)
+                for (int i = 0; i < _IproductosEnMemoria.Count; i++)
                 {
                     // Si el id de alguno coincide, se retorna el índice actual
-                    if (productosEnMemoria[i].Id == _id) return i;
+                    if (_IproductosEnMemoria[i].Id == _id) return i;
                 }
                 // Si no se encuentra, se retorna -1
                 return -1;
@@ -312,13 +366,22 @@ namespace FactuCrossing
             public static Producto? ObtenerProductoPorId(int _id)
             {
                 // Se busca en un for todos los productos en memoria
-                for (int i = 0; i < productosEnMemoria.Count; i++)
+                for (int i = 0; i < _IproductosEnMemoria.Count; i++)
                 {
                     // Si el id de alguno coincide, se retorna el producto actual
-                    if (productosEnMemoria[i].Id == _id) return productosEnMemoria[i];
+                    if (_IproductosEnMemoria[i].Id == _id) return _IproductosEnMemoria[i];
                 }
                 // Si no se encuentra, se retorna null
                 return null;
+            }
+
+            /// <summary>
+            /// Función para obtener un producto en memoria dado su nombre,
+            /// </summary>
+            /// <returns>Producto encontrado o nulo</returns>
+            public static Producto? EncontrarProductoPorNombre(string nombre)
+            {
+                return _IproductosEnMemoria.Find(p => p.Nombre == nombre);
             }
         }
 
@@ -364,6 +427,96 @@ namespace FactuCrossing
                     accesosEnMemoria = accesosCargados;
                 else
                     Program.Log($"El archivo {archivoAccesos} no contiene datos o no se pudo leer, se iniciará sin accesos previos.");
+            }
+        }
+
+        /// <summary>
+        /// Módulo del sistema central donde se almacena y maneja todo lo relacionado con las acciones
+        /// </summary>
+        public class Acciones
+        {
+            /// <summary> Lista de acciones en memoria </summary>
+            public static List<Accion> accionesEnMemoria = new();
+            /// <summary> String que contiene la ruta de archivo en donde se almacenan las acciones </summary>
+            public static string archivoAcciones = FileHelper.SaveDataPath + "todasAcciones.bin";
+
+            /// <summary>
+            /// Función para guardar las acciones en memoria en archivoAcciones
+            /// </summary>
+            public static void GuardarAcciones()
+            {
+                // Se crea una instancia del servicio de archivo para acciones
+                ServicioArchivoAcciones saa = new ServicioArchivoAcciones();
+                // Se llama la función para guardar
+                saa.EscribirAcciones(accionesEnMemoria, archivoAcciones);
+            }
+
+            /// <summary>
+            /// Función para cargar las acciones a memoria del archivo archivoAcciones
+            /// </summary>
+            public static void CargarAcciones()
+            {
+                // Si el archivo no existe, se retorna
+                if (!File.Exists(archivoAcciones))
+                {
+                    // Mensaje de log
+                    Program.Log($"El archivo {archivoAcciones} no existe, se iniciará sin acciones previas.");
+                    return;
+                }
+                // Se crea una instancia del servicio de archivo para acciones
+                ServicioArchivoAcciones saa = new ServicioArchivoAcciones();
+                // Se llama la función para cargar
+                List<Accion> accionesCargadas = saa.LeerAcciones(archivoAcciones);
+                // Si no se cargaron acciones se mantiene la lista original vacía
+                if (accionesCargadas.Count != 0)
+                    accionesEnMemoria = accionesCargadas;
+                else
+                    Program.Log($"El archivo {archivoAcciones} no contiene datos o no se pudo leer, se iniciará sin acciones previas.");
+            }
+        }
+
+        /// <summary>
+        /// Módulo del sistema central donde se almacena y maneja todo lo relacionado con los descuentos
+        /// </summary>
+        public static class Descuentos
+        {
+            /// <summary> Lista de descuentos en memoria </summary>
+            public static List<Descuento> descuentosEnMemoria = new();
+            /// <summary> String que contiene la ruta de archivo en donde se almacenan los descuentos </summary>
+            public static string archivoDescuentos = FileHelper.SaveDataPath + "todosDescuentos.bin";
+
+            /// <summary>
+            /// Función para guardar los descuentos en memoria en archivoDescuentos
+            /// </summary>
+            public static void GuardarDescuentos()
+            {
+                // Se crea una instancia del servicio de archivo para descuentos
+                ServicioArchivoDescuentos sad = new ServicioArchivoDescuentos();
+                // Se llama la función para guardar
+                sad.EscribirDescuentos(descuentosEnMemoria, archivoDescuentos);
+            }
+
+            /// <summary>
+            /// Función para cargar los descuentos a memoria del archivo archivoDescuentos
+            /// </summary>
+            public static void CargarDescuentos()
+            {
+                // Si el archivo no existe, se retorna
+                if (!File.Exists(archivoDescuentos))
+                {
+                    // Mensaje de log
+                    Program.Log($"El archivo {archivoDescuentos} no existe, se iniciará sin descuentos previos.");
+                    return;
+                }
+                // Se crea una instancia del servicio de archivo para descuentos
+                ServicioArchivoDescuentos sad = new ServicioArchivoDescuentos();
+                // Se llama la función para cargar
+                List<Descuento> descuentosCargados = sad.LeerDescuentos(archivoDescuentos);
+                // Si no se cargaron descuentos se mantiene la lista original vacía
+                if (descuentosCargados.Count != 0)
+                    descuentosEnMemoria = descuentosCargados;
+                else
+                    Program.Log($"El archivo {archivoDescuentos} no contiene datos o no se pudo leer, se iniciará sin descuentos previos.");
             }
         }
     }

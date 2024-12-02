@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FactuCrossing.Estructuras
 {
-    // Enumerador que define los tipos de acceso posibles
+    // Enumerador que define los tipos de acceso posibles [DEPRECADO]
     public enum TipoDeAcceso
     {
         ENTRADA, // Representa un acceso de entrada
@@ -23,15 +23,34 @@ namespace FactuCrossing.Estructuras
         // Propiedad que almacena el tiempo del acceso
         public DateTime TiempoDeAcceso { get; set; }
 
-        // Propiedad que almacena el tipo de acceso (entrada o salida)
+        // Propiedad que almacena el tipo de acceso (entrada o salida) [DEPRECADO]
         public TipoDeAcceso Tipo { get; set; }
 
-        // Constructor principal que inicializa las propiedades
+        /// <summary>
+        /// Constructor principal que inicializa las propiedades y el tipo de acceso [DEPRECADO]
+        /// </summary>
+        /// <param name="idDeCuenta">Id de la Cuenta que hizo el acceso</param>
+        /// <param name="tiempoDeAcceso">Tiempo donde se dio el acceso</param>
+        /// <param name="tipo">Tipo de Acceso [DEPRECADO]</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public Acceso(int idDeCuenta, DateTime tiempoDeAcceso, TipoDeAcceso tipo)
         {
             IdDeCuenta = (idDeCuenta >= 0) ? idDeCuenta : throw new ArgumentOutOfRangeException(nameof(idDeCuenta));
             TiempoDeAcceso = tiempoDeAcceso;
             Tipo = tipo;
+        }
+
+        /// <summary>
+        /// Constructor principal que inicializa las propiedades
+        /// </summary>
+        /// <param name="idDeCuenta">Id de la Cuenta que hizo el acceso</param>
+        /// <param name="tiempoDeAcceso">Tiempo donde se dio el acceso</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public Acceso(int idDeCuenta, DateTime tiempoDeAcceso)
+        {
+            IdDeCuenta = (idDeCuenta >= 0) ? idDeCuenta : throw new ArgumentOutOfRangeException(nameof(idDeCuenta));
+            TiempoDeAcceso = tiempoDeAcceso;
+            Tipo = TipoDeAcceso.ENTRADA;
         }
     }
 
@@ -58,7 +77,6 @@ namespace FactuCrossing.Estructuras
         public string Mensaje { get; set; }
         public DateTime TiempoDeAccion { get; set; }
 
-
     }
 
     /// <summary>
@@ -84,6 +102,14 @@ namespace FactuCrossing.Estructuras
         }
 
         /// <summary>
+        /// Constructor vacío de la clase
+        /// </summary>
+        public TiempoSesion()
+        {
+            tiempoPorDia = new Dictionary<DateTime, double>();
+        }
+
+        /// <summary>
         /// Función para agregar tiempo al usuario
         /// </summary>
         /// <param name="sesionIniciada"></param>
@@ -93,13 +119,14 @@ namespace FactuCrossing.Estructuras
             DateTime fecha0 = sesionIniciada.Date;
 
             // Buscamos si ya existe el tuple con la fecha
-            if(tiempoPorDia.ContainsKey(fecha0))
+            if (tiempoPorDia.ContainsKey(fecha0))
             {
                 // Añadimos los segundos
                 tiempoPorDia[fecha0] += segundos;
                 // Retornamos
                 return;
-            } else
+            }
+            else
             {
                 // Si llegamos aca es porque no se encontró una fecha
                 KeyValuePair<DateTime, double> nuevoValor = new KeyValuePair<DateTime, double>
@@ -108,5 +135,111 @@ namespace FactuCrossing.Estructuras
                 tiempoPorDia.Add(nuevoValor.Key, nuevoValor.Value);
             }
         }
+
+        /// <summary>
+        /// Función para obtener el tiempo total de acceso
+        /// </summary>
+        /// <returns>La cantidad de tiempo en segundos (double)</returns>
+        public double ObtenerTiempo()
+        {
+            double segundos = 0;
+            foreach (KeyValuePair<DateTime, double> keyValuePair in tiempoPorDia)
+            { segundos += keyValuePair.Value; }
+
+            return segundos;
+        }
+
+        /// <summary>
+        /// Función para obtener el tiempo de acceso en una fecha específica
+        /// </summary>
+        /// <param name="fecha"></param>
+        /// <returns>La cantidad de tiempo en segundos (double)</returns>
+        public double ObtenerTiempo(DateTime fecha)
+        {
+            // El diccionario solo funciona con fechas en 00:00
+            DateTime fecha0 = fecha.Date;
+
+            // Valor
+            double value = 0;
+
+            // Buscamos si ya existe el tuple con la fecha
+            if (tiempoPorDia.TryGetValue(fecha0, out value)) return value;
+            else return value;
+        }
+
+        /// <summary>
+        /// Función para obtener el tiempo de acceso entre dos fechas
+        /// </summary>
+        /// <param name="inicio"></param>
+        /// <param name="final"></param>
+        /// <returns></returns>
+        public double ObtenerTiempo(DateTime inicio, DateTime final)
+        {
+            // Segundos
+            double segundos = 0;
+
+            // La función traduce automáticamente las fechas a 00:00
+            foreach (DateTime fecha
+                in DateHelper.GetDates(inicio, final))
+            {
+                // Si se encuentra
+                if (tiempoPorDia.TryGetValue(fecha, out double value))
+                {
+                    // Sumamos el valor encontrado a los segundos totales
+                    segundos += value;
+                }
+            }
+
+            // Retornamos los segundos
+            return segundos;
+        }
+
+        /// <summary>
+        /// Overload para obtener el tiempo de acceso en un mes específico
+        /// </summary>
+        /// <param name="año"></param>
+        /// <param name="mes"></param>
+        /// <returns></returns>
+        public double ObtenerTiempo(int año, int mes)
+        {
+            // Segundos
+            double segundos = 0;
+
+            // La función traduce automáticamente las fechas a 00:00
+            foreach (DateTime fecha
+                in DateHelper.GetDates(año, mes))
+            {
+                // Si se encuentra
+                if (tiempoPorDia.TryGetValue(fecha, out double value))
+                {
+                    // Sumamos el valor encontrado a los segundos totales
+                    segundos += value;
+                }
+            }
+
+            // Retornamos los segundos
+            return segundos;
+        }
+    }
+
+    /// <summary>
+    /// Clae evento genérico para unificar a la hora de ordenarlas cronológicamente
+    /// </summary>
+    public class EventoGenerico
+    {
+        public EventoGenerico(string accionario, DateTime tiempo, string tipo, string mensaje, string tiemposesion)
+        {
+            Tiempo = tiempo;
+            Tipo = tipo;
+            Mensaje = mensaje;
+            Accionario = accionario;
+            TiempoSesion = tiemposesion;
+        }
+
+        public string TiempoSesion { get; set; }
+        public DateTime Tiempo { get; set; }
+        public string Tipo { get; set; }
+        public string Mensaje { get; set; }
+        public string Accionario { get; set; }
     }
 }

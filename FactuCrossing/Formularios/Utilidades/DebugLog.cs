@@ -19,5 +19,10 @@ namespace FactuCrossing.Formularios.Utilidades
             InitializeComponent();
             listContainer = richTextBox1;
         }
+
+        private void btnResetear_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "";
+        }
     }
 }

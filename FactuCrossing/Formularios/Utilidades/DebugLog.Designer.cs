@@ -30,6 +30,7 @@
         {
             richTextBox1 = new RichTextBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            btnResetear = new Button();
             SuspendLayout();
             // 
             // richTextBox1
@@ -41,11 +42,26 @@
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
             // 
+            // btnResetear
+            // 
+            btnResetear.BackColor = Color.FromArgb(83, 96, 171);
+            btnResetear.Cursor = Cursors.Hand;
+            btnResetear.FlatStyle = FlatStyle.Flat;
+            btnResetear.ForeColor = Color.White;
+            btnResetear.Location = new Point(12, 631);
+            btnResetear.Name = "btnResetear";
+            btnResetear.Size = new Size(502, 40);
+            btnResetear.TabIndex = 12;
+            btnResetear.Text = "Borrar Pantalla";
+            btnResetear.UseVisualStyleBackColor = false;
+            btnResetear.Click += btnResetear_Click;
+            // 
             // DebugLog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(523, 635);
+            ClientSize = new Size(523, 681);
+            Controls.Add(btnResetear);
             Controls.Add(richTextBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "DebugLog";
@@ -59,5 +75,6 @@
 
         private RichTextBox richTextBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Button btnResetear;
     }
 }

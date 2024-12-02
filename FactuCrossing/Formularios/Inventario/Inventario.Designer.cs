@@ -31,10 +31,11 @@
             groupBox1 = new GroupBox();
             dgvInventario = new DataGridView();
             groupBox2 = new GroupBox();
+            txtProveedor = new ComboBox();
+            label4 = new Label();
             txtPrecio = new TextBox();
             rtxtDescripcion = new RichTextBox();
             label3 = new Label();
-            txtProveedor = new TextBox();
             label2 = new Label();
             nudStock = new NumericUpDown();
             txtNombre = new TextBox();
@@ -42,13 +43,17 @@
             label1 = new Label();
             label6 = new Label();
             btnAgregar = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            label4 = new Label();
+            btnEditar = new Button();
+            btnDescontinuar = new Button();
+            strSeleccion = new StatusStrip();
+            strLabel = new ToolStripStatusLabel();
+            chbDescontinuado = new CheckBox();
+            btnDescuentos = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudStock).BeginInit();
+            strSeleccion.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -56,7 +61,7 @@
             groupBox1.Controls.Add(dgvInventario);
             groupBox1.Location = new Point(321, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(421, 553);
+            groupBox1.Size = new Size(617, 503);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Inventario";
@@ -69,16 +74,17 @@
             dgvInventario.Location = new Point(6, 22);
             dgvInventario.Name = "dgvInventario";
             dgvInventario.ReadOnly = true;
-            dgvInventario.Size = new Size(409, 525);
+            dgvInventario.Size = new Size(605, 475);
             dgvInventario.TabIndex = 0;
+            dgvInventario.CellDoubleClick += dgvInventario_CellDoubleClick;
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(txtProveedor);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(txtPrecio);
             groupBox2.Controls.Add(rtxtDescripcion);
             groupBox2.Controls.Add(label3);
-            groupBox2.Controls.Add(txtProveedor);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(nudStock);
             groupBox2.Controls.Add(txtNombre);
@@ -91,6 +97,25 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Información del Producto";
+            // 
+            // txtProveedor
+            // 
+            txtProveedor.FormattingEnabled = true;
+            txtProveedor.Location = new Point(15, 112);
+            txtProveedor.Name = "txtProveedor";
+            txtProveedor.Size = new Size(271, 23);
+            txtProveedor.TabIndex = 21;
+            // 
+            // label4
+            // 
+            label4.BackColor = SystemColors.Window;
+            label4.BorderStyle = BorderStyle.Fixed3D;
+            label4.Location = new Point(266, 169);
+            label4.Name = "label4";
+            label4.Size = new Size(20, 23);
+            label4.TabIndex = 20;
+            label4.Text = "$";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtPrecio
             // 
@@ -116,13 +141,6 @@
             label3.Size = new Size(72, 15);
             label3.TabIndex = 17;
             label3.Text = "Descripción:";
-            // 
-            // txtProveedor
-            // 
-            txtProveedor.Location = new Point(15, 112);
-            txtProveedor.Name = "txtProveedor";
-            txtProveedor.Size = new Size(271, 23);
-            txtProveedor.TabIndex = 16;
             // 
             // label2
             // 
@@ -189,50 +207,84 @@
             btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
-            // button2
+            // btnEditar
             // 
-            button2.BackColor = Color.FromArgb(83, 96, 171);
-            button2.Cursor = Cursors.Hand;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(12, 471);
-            button2.Name = "button2";
-            button2.Size = new Size(303, 44);
-            button2.TabIndex = 24;
-            button2.Text = "Editar";
-            button2.UseVisualStyleBackColor = false;
+            btnEditar.BackColor = Color.FromArgb(83, 96, 171);
+            btnEditar.Cursor = Cursors.Hand;
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.ForeColor = Color.White;
+            btnEditar.Location = new Point(12, 471);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(303, 44);
+            btnEditar.TabIndex = 24;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
             // 
-            // button3
+            // btnDescontinuar
             // 
-            button3.BackColor = Color.FromArgb(83, 96, 171);
-            button3.Cursor = Cursors.Hand;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(12, 521);
-            button3.Name = "button3";
-            button3.Size = new Size(303, 44);
-            button3.TabIndex = 25;
-            button3.Text = "Marcar/Desmarcar como Descontinuado";
-            button3.UseVisualStyleBackColor = false;
+            btnDescontinuar.BackColor = Color.FromArgb(83, 96, 171);
+            btnDescontinuar.Cursor = Cursors.Hand;
+            btnDescontinuar.FlatStyle = FlatStyle.Flat;
+            btnDescontinuar.ForeColor = Color.White;
+            btnDescontinuar.Location = new Point(12, 521);
+            btnDescontinuar.Name = "btnDescontinuar";
+            btnDescontinuar.Size = new Size(303, 44);
+            btnDescontinuar.TabIndex = 25;
+            btnDescontinuar.Text = "Descontinuar / Recontinuar";
+            btnDescontinuar.UseVisualStyleBackColor = false;
+            btnDescontinuar.Click += btnDescontinuar_Click;
             // 
-            // label4
+            // strSeleccion
             // 
-            label4.BackColor = SystemColors.Window;
-            label4.BorderStyle = BorderStyle.Fixed3D;
-            label4.Location = new Point(266, 169);
-            label4.Name = "label4";
-            label4.Size = new Size(20, 23);
-            label4.TabIndex = 20;
-            label4.Text = "$";
-            label4.TextAlign = ContentAlignment.MiddleCenter;
+            strSeleccion.Items.AddRange(new ToolStripItem[] { strLabel });
+            strSeleccion.Location = new Point(0, 572);
+            strSeleccion.Name = "strSeleccion";
+            strSeleccion.Size = new Size(950, 22);
+            strSeleccion.TabIndex = 26;
+            strSeleccion.Text = "statusStrip1";
+            // 
+            // strLabel
+            // 
+            strLabel.Name = "strLabel";
+            strLabel.Size = new Size(118, 17);
+            strLabel.Text = "toolStripStatusLabel1";
+            // 
+            // chbDescontinuado
+            // 
+            chbDescontinuado.AutoSize = true;
+            chbDescontinuado.Location = new Point(321, 521);
+            chbDescontinuado.Name = "chbDescontinuado";
+            chbDescontinuado.Size = new Size(155, 19);
+            chbDescontinuado.TabIndex = 27;
+            chbDescontinuado.Text = "Mostrar Descontinuados";
+            chbDescontinuado.UseVisualStyleBackColor = true;
+            chbDescontinuado.CheckedChanged += chbDescontinuado_CheckedChanged;
+            // 
+            // btnDescuentos
+            // 
+            btnDescuentos.BackColor = Color.FromArgb(83, 96, 171);
+            btnDescuentos.Cursor = Cursors.Hand;
+            btnDescuentos.FlatStyle = FlatStyle.Flat;
+            btnDescuentos.ForeColor = Color.White;
+            btnDescuentos.Location = new Point(770, 521);
+            btnDescuentos.Name = "btnDescuentos";
+            btnDescuentos.Size = new Size(162, 44);
+            btnDescuentos.TabIndex = 28;
+            btnDescuentos.Text = "Menu de Descuentos...";
+            btnDescuentos.UseVisualStyleBackColor = false;
+            btnDescuentos.Click += btnDescuentos_Click;
             // 
             // Inventario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(756, 577);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            ClientSize = new Size(950, 594);
+            Controls.Add(btnDescuentos);
+            Controls.Add(btnDescontinuar);
+            Controls.Add(chbDescontinuado);
+            Controls.Add(strSeleccion);
+            Controls.Add(btnEditar);
             Controls.Add(btnAgregar);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -244,7 +296,10 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nudStock).EndInit();
+            strSeleccion.ResumeLayout(false);
+            strSeleccion.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -258,13 +313,17 @@
         private Label label1;
         private Label label6;
         private Button btnAgregar;
-        private Button button2;
-        private Button button3;
+        private Button btnEditar;
+        private Button btnDescontinuar;
         private Label label3;
-        private TextBox txtProveedor;
         private Label label2;
         private RichTextBox rtxtDescripcion;
         private TextBox txtPrecio;
         private Label label4;
+        private StatusStrip strSeleccion;
+        private ComboBox txtProveedor;
+        private ToolStripStatusLabel strLabel;
+        private CheckBox chbDescontinuado;
+        private Button btnDescuentos;
     }
 }

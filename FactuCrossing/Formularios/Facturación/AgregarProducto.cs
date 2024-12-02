@@ -34,6 +34,8 @@ namespace FactuCrossing.Formularios.Facturación
 
             foreach (Producto producto in SistemaCentral.Inventario.productosEnMemoria)
             {
+                if (producto.Descontinuado) continue;
+
                 dt.Rows.Add(new object[]{ producto.Id, producto.Nombre, producto.Proveedor, producto.Descripcion,
                     $"{producto.Precio:00}$", producto.CantidadEnStock, producto.FechaIngreso.ToString("yyyy-MM-dd")});
             }

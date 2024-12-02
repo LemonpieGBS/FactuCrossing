@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            label2 = new Label();
+            lblNombre = new Label();
             groupBox1 = new GroupBox();
-            label7 = new Label();
+            lblStock = new Label();
             label8 = new Label();
-            label5 = new Label();
+            lblPrecio = new Label();
             label6 = new Label();
-            label3 = new Label();
+            lblCodigo = new Label();
             label4 = new Label();
             numericUpDown1 = new NumericUpDown();
             label9 = new Label();
             btnAgregar = new Button();
             btnCancelar = new Button();
-            button1 = new Button();
+            btnAplicar = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
@@ -55,25 +55,25 @@
             label1.TabIndex = 0;
             label1.Text = "Nombre del Producto:";
             // 
-            // label2
+            // lblNombre
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(24, 51);
-            label2.Name = "label2";
-            label2.Size = new Size(212, 32);
-            label2.TabIndex = 1;
-            label2.Text = "{NombreProducto}";
+            lblNombre.AutoSize = true;
+            lblNombre.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNombre.Location = new Point(24, 51);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(212, 32);
+            lblNombre.TabIndex = 1;
+            lblNombre.Text = "{NombreProducto}";
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(lblStock);
             groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(lblPrecio);
             groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(lblCodigo);
             groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(lblNombre);
             groupBox1.Controls.Add(label1);
             groupBox1.Location = new Point(15, 13);
             groupBox1.Name = "groupBox1";
@@ -82,15 +82,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Información del Producto";
             // 
-            // label7
+            // lblStock
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(24, 257);
-            label7.Name = "label7";
-            label7.Size = new Size(189, 32);
-            label7.TabIndex = 7;
-            label7.Text = "{Stock} unidades";
+            lblStock.AutoSize = true;
+            lblStock.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblStock.Location = new Point(24, 257);
+            lblStock.Name = "lblStock";
+            lblStock.Size = new Size(189, 32);
+            lblStock.TabIndex = 7;
+            lblStock.Text = "{Stock} unidades";
             // 
             // label8
             // 
@@ -101,15 +101,15 @@
             label8.TabIndex = 6;
             label8.Text = "Cantidad en Stock";
             // 
-            // label5
+            // lblPrecio
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(24, 190);
-            label5.Name = "label5";
-            label5.Size = new Size(106, 32);
-            label5.TabIndex = 5;
-            label5.Text = "{Precio}$";
+            lblPrecio.AutoSize = true;
+            lblPrecio.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPrecio.Location = new Point(24, 190);
+            lblPrecio.Name = "lblPrecio";
+            lblPrecio.Size = new Size(106, 32);
+            lblPrecio.TabIndex = 5;
+            lblPrecio.Text = "{Precio}$";
             // 
             // label6
             // 
@@ -120,24 +120,24 @@
             label6.TabIndex = 4;
             label6.Text = "Precio";
             // 
-            // label3
+            // lblCodigo
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(24, 120);
-            label3.Name = "label3";
-            label3.Size = new Size(105, 32);
-            label3.TabIndex = 3;
-            label3.Text = "{Código}";
+            lblCodigo.AutoSize = true;
+            lblCodigo.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCodigo.Location = new Point(24, 120);
+            lblCodigo.Name = "lblCodigo";
+            lblCodigo.Size = new Size(105, 32);
+            lblCodigo.TabIndex = 3;
+            lblCodigo.Text = "{Código}";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Location = new Point(24, 105);
             label4.Name = "label4";
-            label4.Size = new Size(49, 15);
+            label4.Size = new Size(64, 15);
             label4.TabIndex = 2;
-            label4.Text = "Código:";
+            label4.Text = "Proveedor:";
             // 
             // numericUpDown1
             // 
@@ -183,33 +183,33 @@
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // button1
+            // btnAplicar
             // 
-            button1.BackColor = Color.FromArgb(83, 96, 171);
-            button1.Cursor = Cursors.Hand;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(257, 479);
-            button1.Name = "button1";
-            button1.Size = new Size(125, 44);
-            button1.TabIndex = 22;
-            button1.Text = "Aplicar";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnAplicar.BackColor = Color.FromArgb(83, 96, 171);
+            btnAplicar.Cursor = Cursors.Hand;
+            btnAplicar.FlatStyle = FlatStyle.Flat;
+            btnAplicar.ForeColor = Color.White;
+            btnAplicar.Location = new Point(257, 479);
+            btnAplicar.Name = "btnAplicar";
+            btnAplicar.Size = new Size(125, 44);
+            btnAplicar.TabIndex = 22;
+            btnAplicar.Text = "Aplicar";
+            btnAplicar.UseVisualStyleBackColor = false;
+            btnAplicar.Click += button1_Click;
             // 
             // EditarProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(398, 535);
-            Controls.Add(button1);
+            Controls.Add(btnAplicar);
             Controls.Add(btnCancelar);
             Controls.Add(btnAgregar);
             Controls.Add(label9);
             Controls.Add(numericUpDown1);
             Controls.Add(groupBox1);
+            Icon = Properties.Resources.AppIcon;
             Name = "EditarProducto";
-            Icon = (Icon)Properties.Resources.AppIcon;
             Text = "Editar Producto";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -221,18 +221,18 @@
         #endregion
 
         private Label label1;
-        private Label label2;
+        private Label lblNombre;
         private GroupBox groupBox1;
-        private Label label7;
+        private Label lblStock;
         private Label label8;
-        private Label label5;
+        private Label lblPrecio;
         private Label label6;
-        private Label label3;
+        private Label lblCodigo;
         private Label label4;
         private NumericUpDown numericUpDown1;
         private Label label9;
         private Button btnAgregar;
         private Button btnCancelar;
-        private Button button1;
+        private Button btnAplicar;
     }
 }

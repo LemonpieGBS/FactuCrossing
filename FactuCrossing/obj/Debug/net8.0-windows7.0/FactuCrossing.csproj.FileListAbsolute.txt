@@ -114,3 +114,6 @@ D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows
 D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows7.0\FactuCrossing.pdb
 D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows7.0\FactuCrossing.genruntimeconfig.cache
 D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows7.0\ref\FactuCrossing.dll
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows7.0\FactuCrossing.Formularios.Inventario.Descuentos.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows7.0\FactuCrossing.Formularios.Inventario.DescuentosMM.resources
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows7.0\FactuCrossing.Formularios.Facturación.AplicarDescuento.resources

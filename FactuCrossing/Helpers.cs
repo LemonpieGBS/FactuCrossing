@@ -150,12 +150,26 @@ namespace FactuCrossing
         // https://stackoverflow.com/questions/3849975/how-to-get-all-dates-in-a-given-month-in-c-sharp
         public static List<DateTime> GetDates(int year, int month)
         {
+            if(month < 1 || month > 12) throw new ArgumentOutOfRangeException("month", $"Month must be between 1 and 12 but got {month}");
+
             var dates = new List<DateTime>();
 
             // Loop from the first day of the month until we hit the next month, moving forward a day at a time
             for (var date = new DateTime(year, month, 1); date.Month == month; date = date.AddDays(1))
             {
                 dates.Add(date);
+            }
+
+            return dates;
+        }
+
+        // Función para obtener fechas entre dos fechas
+        public static List<DateTime> GetDates(DateTime inicio, DateTime final)
+        {
+            var dates = new List<DateTime>();
+            for (DateTime dt = inicio.Date; dt <= final.Date; dt = dt.AddDays(1))
+            {
+                dates.Add(dt.Date);
             }
 
             return dates;
