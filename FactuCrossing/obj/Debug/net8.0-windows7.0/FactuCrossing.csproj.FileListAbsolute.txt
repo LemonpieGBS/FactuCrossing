@@ -236,3 +236,4 @@ C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows7
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows7.0\FactuCrossing.pdb
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows7.0\FactuCrossing.genruntimeconfig.cache
 C:\Users\labc202\Documents\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows7.0\ref\FactuCrossing.dll
+D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\obj\Debug\net8.0-windows7.0\FactuCrossing.Formularios.Inventario.HistorialFacturas.resources

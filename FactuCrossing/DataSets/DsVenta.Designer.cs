@@ -289,6 +289,10 @@ namespace FactuCrossing.DataSets {
             
             private global::System.Data.DataColumn columnPrecioUnitario;
             
+            private global::System.Data.DataColumn columnSubtotal;
+            
+            private global::System.Data.DataColumn columnDescuento;
+            
             private global::System.Data.DataColumn columnPrecioTotal;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -360,6 +364,22 @@ namespace FactuCrossing.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SubtotalColumn {
+                get {
+                    return this.columnSubtotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DescuentoColumn {
+                get {
+                    return this.columnDescuento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn PrecioTotalColumn {
                 get {
                     return this.columnPrecioTotal;
@@ -403,13 +423,15 @@ namespace FactuCrossing.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DtVentaRow AddDtVentaRow(string Nombre, string Proveedor, string Cantidad, string PrecioUnitario, string PrecioTotal) {
+            public DtVentaRow AddDtVentaRow(string Nombre, string Proveedor, int Cantidad, double PrecioUnitario, double Subtotal, double Descuento, double PrecioTotal) {
                 DtVentaRow rowDtVentaRow = ((DtVentaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Nombre,
                         Proveedor,
                         Cantidad,
                         PrecioUnitario,
+                        Subtotal,
+                        Descuento,
                         PrecioTotal};
                 rowDtVentaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDtVentaRow);
@@ -437,6 +459,8 @@ namespace FactuCrossing.DataSets {
                 this.columnProveedor = base.Columns["Proveedor"];
                 this.columnCantidad = base.Columns["Cantidad"];
                 this.columnPrecioUnitario = base.Columns["PrecioUnitario"];
+                this.columnSubtotal = base.Columns["Subtotal"];
+                this.columnDescuento = base.Columns["Descuento"];
                 this.columnPrecioTotal = base.Columns["PrecioTotal"];
             }
             
@@ -447,11 +471,15 @@ namespace FactuCrossing.DataSets {
                 base.Columns.Add(this.columnNombre);
                 this.columnProveedor = new global::System.Data.DataColumn("Proveedor", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProveedor);
-                this.columnCantidad = new global::System.Data.DataColumn("Cantidad", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnCantidad = new global::System.Data.DataColumn("Cantidad", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCantidad);
-                this.columnPrecioUnitario = new global::System.Data.DataColumn("PrecioUnitario", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnPrecioUnitario = new global::System.Data.DataColumn("PrecioUnitario", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrecioUnitario);
-                this.columnPrecioTotal = new global::System.Data.DataColumn("PrecioTotal", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSubtotal = new global::System.Data.DataColumn("Subtotal", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSubtotal);
+                this.columnDescuento = new global::System.Data.DataColumn("Descuento", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescuento);
+                this.columnPrecioTotal = new global::System.Data.DataColumn("PrecioTotal", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrecioTotal);
             }
             
@@ -627,10 +655,10 @@ namespace FactuCrossing.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Cantidad {
+            public int Cantidad {
                 get {
                     try {
-                        return ((string)(this[this.tableDtVenta.CantidadColumn]));
+                        return ((int)(this[this.tableDtVenta.CantidadColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Cantidad\' in table \'DtVenta\' is DBNull.", e);
@@ -643,10 +671,10 @@ namespace FactuCrossing.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string PrecioUnitario {
+            public double PrecioUnitario {
                 get {
                     try {
-                        return ((string)(this[this.tableDtVenta.PrecioUnitarioColumn]));
+                        return ((double)(this[this.tableDtVenta.PrecioUnitarioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'PrecioUnitario\' in table \'DtVenta\' is DBNull.", e);
@@ -659,10 +687,42 @@ namespace FactuCrossing.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string PrecioTotal {
+            public double Subtotal {
                 get {
                     try {
-                        return ((string)(this[this.tableDtVenta.PrecioTotalColumn]));
+                        return ((double)(this[this.tableDtVenta.SubtotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Subtotal\' in table \'DtVenta\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtVenta.SubtotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Descuento {
+                get {
+                    try {
+                        return ((double)(this[this.tableDtVenta.DescuentoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Descuento\' in table \'DtVenta\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDtVenta.DescuentoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double PrecioTotal {
+                get {
+                    try {
+                        return ((double)(this[this.tableDtVenta.PrecioTotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'PrecioTotal\' in table \'DtVenta\' is DBNull.", e);
@@ -719,6 +779,30 @@ namespace FactuCrossing.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetPrecioUnitarioNull() {
                 this[this.tableDtVenta.PrecioUnitarioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSubtotalNull() {
+                return this.IsNull(this.tableDtVenta.SubtotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSubtotalNull() {
+                this[this.tableDtVenta.SubtotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsDescuentoNull() {
+                return this.IsNull(this.tableDtVenta.DescuentoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetDescuentoNull() {
+                this[this.tableDtVenta.DescuentoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

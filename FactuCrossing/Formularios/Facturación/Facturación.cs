@@ -10,17 +10,13 @@ namespace FactuCrossing.Formularios.Facturación
     public partial class Facturación : Form
     {
         /// <summary>
+        /// Cuenta Activa
+        /// </summary>
+        Cuenta cuentaActiva;
+        /// <summary>
         /// Lista de productos facturados
         /// </summary>
-        List<Tuple<Producto, int>> productosFacturados = new List<Tuple<Producto, int>>() { };
-        /// <summary>
-        /// Lista de descuentos aplicados
-        /// </summary>
-        List<Descuento> descuentosAplicados = new List<Descuento>() { };
-        /// <summary>
-        /// Descuento global
-        /// </summary>
-        Descuento? descuentoGlobal = null;
+        Factura facturaActiva;
         // Variables para los totales
         /// <summary>Subtotal de la factura</summary>
         double Subtotal = 0;
@@ -36,6 +32,20 @@ namespace FactuCrossing.Formularios.Facturación
         /// </summary>
         public Facturación()
         {
+            // Si la cuenta en sesion es nula mandar un mensaje de error de autenticación
+            if (SistemaCentral.Cuentas.cuentaEnSesion is null)
+            {
+                // Mostramos un mensaje diciendo que hubo un problema de autenticación
+                MessageBox.Show("Hubo un problema de autenticación, por favor inicie sesión de nuevo", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Cerramos el formulario
+                this.Close();
+                // Nothing
+                cuentaActiva = Cuenta.CuentaDefault;
+                // Asignamos la cuenta default
+                facturaActiva = new Factura(1, Cuenta.CuentaDefault, null, null);
+                return;
+            } else cuentaActiva = SistemaCentral.Cuentas.cuentaEnSesion;
             // Inicializamos los componentes del formulario
             InitializeComponent();
             // Aplicamos el estilo de fuente del programa
@@ -43,13 +53,15 @@ namespace FactuCrossing.Formularios.Facturación
             // Actualizamos el nombre del facturador
             lblFacturador.Text = $"Facturador: {SistemaCentral.Cuentas.cuentaEnSesion?.NombreDisplay}";
             // Actualizamos la fecha actual
-            ActualizarDataGrid();
-            // Actualizamos los totales
-            RefrezcarTotales();
-            // Actualizamos la fecha actual
             rdbFechaActual.Text = $"Fecha Actual: {DateTime.Now.ToString("yyyy-MM-dd")}";
             // Valor default del statusStripLabel
             strLabel.Text = "No hay ningun producto seleccionado.";
+            // Asignar factura a nueva factura
+            facturaActiva = new Factura(SistemaCentral.Facturas.GenerarId(), cuentaActiva, null, null);
+            // Actualizamos la fecha actual
+            ActualizarDataGrid();
+            // Actualizamos los totales
+            RefrezcarTotales();
         }
         /// <summary>
         /// Método para actualizar el DataGrid con los productos facturados
@@ -58,66 +70,21 @@ namespace FactuCrossing.Formularios.Facturación
         {
             // Limpiamos el DataGrid
             dgvFacturado.DataSource = null;
-            // Creamos un DataTable
-            DataTable dt = new();
-            // Añadimos las columnas
-            dt.Columns.AddRange(new DataColumn[]{ new("Cantidad"), new("Nombre"), new("Proveedor"), new("Descripción"),
-                new("Precio"), new("Subtotal")});
-            // Añadimos las filas
-            foreach (Tuple<Producto, int> pareja in productosFacturados)
-            {
-                // Obtenemos los valores de la pareja
-                Producto producto = pareja.Item1;
-                // Obtenemos la cantidad
-                int cantidad = pareja.Item2;
-                // Añadimos la fila
-                dt.Rows.Add(new object[]{ $"{cantidad}", producto.Nombre, producto.Proveedor, producto.Descripcion,
-                    $"{producto.Precio:0.00}$", $"{producto.Precio * cantidad:0.00}$"});
-            }
             // Asignamos el DataTable al DataGrid
-            dgvFacturado.DataSource = dt;
+            dgvFacturado.DataSource = facturaActiva.ToDataTable();
         }
         /// <summary>
         /// Método para refrescar los totales de la factura
         /// </summary>
         private void RefrezcarTotales()
         {
+            // Mandamos a refrezcar los totales
+            facturaActiva.CalcularTotales();
             // Inicializamos los totales
-            Subtotal = 0;
-            Total = 0;
-            double totalDescuento = 0;
+            Subtotal = facturaActiva.Subtotal;
+            Total = facturaActiva.Total;
+            Descuento = facturaActiva.Descuento;
 
-            // Calculamos el subtotal
-            foreach (Tuple<Producto, int> pareja in productosFacturados)
-            {
-                double precioProducto = (double)pareja.Item1.Precio * pareja.Item2;
-                Subtotal += precioProducto;
-
-                // Aplicamos descuentos específicos del producto
-                double descuentoProducto = 0;
-                foreach (Descuento descuento in descuentosAplicados)
-                {
-                    if (descuento.ProductoAplicable == pareja.Item1.Id)
-                    {
-                        descuentoProducto += precioProducto * (descuento.Porcentaje / 100);
-                    }
-                }
-                totalDescuento += descuentoProducto;
-            }
-
-            // Aplicamos el descuento global
-            if(descuentoGlobal is not null)
-            {
-                totalDescuento += Subtotal * (descuentoGlobal.Porcentaje / 100);
-            }
-
-            // Calculamos el total después de aplicar los descuentos
-            Total = Subtotal - totalDescuento;
-
-            // Calculamos el descuento total
-            Descuento = totalDescuento;
-
-            // Actualizamos los labels
             lblSubtotal.Text = $"Subtotal: {Subtotal:0.00}$";
             lblDescuento.Text = $"Descuento: {Descuento:0.00}$";
             lblTotal.Text = $"Total: {Total:0.00}$";
@@ -156,22 +123,8 @@ namespace FactuCrossing.Formularios.Facturación
         /// <param name="cantidad"></param>
         private void procesarProducto(Producto producto, int cantidad)
         {
-            // Buscamos si el producto ya esta facturado
-            for (int i = 0; i < productosFacturados.Count; i++)
-            {
-                // Obtenemos la pareja
-                Tuple<Producto, int> pareja = productosFacturados[i];
-                // Si el producto ya esta facturado
-                if (pareja.Item1.Id == producto.Id)
-                {
-                    // Actualizamos la cantidad
-                    productosFacturados[i] = new Tuple<Producto, int>(producto, cantidad);
-                    // Salimos del método
-                    return;
-                }
-            }
-            // Añadimos el producto a la lista de productos facturados
-            productosFacturados.Add(new Tuple<Producto, int>(producto, cantidad));
+            // Añadimos el producto a la factura
+            facturaActiva.AgregarProductoFacturado(producto, cantidad);
         }
         /// <summary>
         /// Método para eliminar un producto de la factura
@@ -199,7 +152,7 @@ namespace FactuCrossing.Formularios.Facturación
             if (frm.eliminar)
             {
                 // Eliminamos el producto de la lista de productos facturados
-                productosFacturados.RemoveAll(p => p.Item1.Id == productoSeleccionado);
+                facturaActiva.RemoverProductoFacturado(productoSeleccionado);
                 // Actualizamos el DataGrid
                 ActualizarDataGrid();
                 // Refrezcamos los totales
@@ -250,6 +203,7 @@ namespace FactuCrossing.Formularios.Facturación
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            facturaActiva.NombreFactura = txtNombreUsuario.Text;
             // Validamos los campos
             if (txtSede.Text == string.Empty)
             {
@@ -258,8 +212,10 @@ namespace FactuCrossing.Formularios.Facturación
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            facturaActiva.Sucursal = txtSede.Text;
+            facturaActiva.FechaFactura = rdbFechaActual.Checked ? DateTime.Now : dtpFecha.Value;
             // Validamos los campos
-            if (productosFacturados.Count == 0)
+            if (facturaActiva.ProductosFacturados.Count == 0)
             {
                 // Mostramos un mensaje de error
                 MessageBox.Show("No hay productos facturados!", "Error",
@@ -269,19 +225,7 @@ namespace FactuCrossing.Formularios.Facturación
 
             // Creamos el reporte
             // Creamos el DataTable (lit no hay necesidad de crear una clase)
-            DataTable dt = new DataTable();
-            // Creamos las columnas (deben tener el mismo nombre de los atributos en el DataSet)
-            dt.Columns.AddRange(new DataColumn[] { new("Nombre"), new("Proveedor"),
-                new("Cantidad"), new("PrecioUnitario"), new("PrecioTotal") });
-            // Foreach para llenar el DataTable
-            foreach (Tuple<Producto, int> pareja in productosFacturados)
-            {
-                Producto producto = pareja.Item1;
-                int cantidad = pareja.Item2;
-                // Agregamos los datos
-                dt.Rows.Add(new object[] { producto.Nombre, producto.Proveedor, cantidad,
-                    $"{producto.Precio:0.00}$", $"{producto.Precio * cantidad:0.00}$"});
-            }
+            DataTable dt = facturaActiva.ToReportDataTable();
             // Creamos el DataSource
             ReportDataSource rds = new ReportDataSource("DsVenta", dt);
             // Damos la locación del RDLC
@@ -289,35 +233,29 @@ namespace FactuCrossing.Formularios.Facturación
             // Parametros
             List<ReportParameter> listaParametros = new List<ReportParameter>()
             {
-                new ReportParameter("FechaFactura", dtpFecha.Value.ToString("dd/MM/yyyy") ),
-                new ReportParameter("Total", $"{Total:0.00}$"),
-                new ReportParameter("NombreFactura", txtNombreUsuario.Text),
-                new ReportParameter("SucursalFactura", txtSede.Text),
-                new ReportParameter("NumeroFactura", $"F{1:0000000}"),
-                new ReportParameter("Facturista", SistemaCentral.Cuentas.cuentaEnSesion?.NombreDisplay),
-                new ReportParameter("Subtotal", $"{Subtotal:0.00}$"),
-                new ReportParameter("Descuento", $"{Descuento:0.00}$")
+                new ReportParameter("FechaFactura", facturaActiva.FechaFactura.ToString("dd/MM/yyyy") ),
+                new ReportParameter("Total", $"{facturaActiva.Total:0.00}$"),
+                new ReportParameter("NombreFactura", facturaActiva.NombreFactura),
+                new ReportParameter("SucursalFactura", facturaActiva.Sucursal),
+                new ReportParameter("NumeroFactura", $"F{facturaActiva.NumFactura:0000000}"),
+                new ReportParameter("Facturista", facturaActiva.Facturista),
+                new ReportParameter("Subtotal", $"{facturaActiva.Subtotal:0.00}$"),
+                new ReportParameter("Descuento", $"{facturaActiva.Descuento:0.00}$")
             };
+
+            if(facturaActiva.DescuentoGlobal is not null)
+                listaParametros.Add(new ReportParameter("DescuentoGlobal", $"{facturaActiva.DescuentoGlobal.Nombre}, {facturaActiva.DescuentoGlobal.Porcentaje}%"));
             // Creamos el reporte
             Report reporteFactura = new Report(embedLocation, [rds], listaParametros);
             // Abrimos el dialogo
             new VistaPreviaReporte(reporteFactura).ShowDialog();
             // Aplicamos los cambios a los stock de los productos
-            foreach (Tuple<Producto, int> pareja in productosFacturados)
+            foreach (ProductoFacturado producto in facturaActiva.ProductosFacturados)
             {
-                Producto producto = pareja.Item1;
-                int cantidad = pareja.Item2;
-                producto.CantidadEnStock -= cantidad;
+                Producto productoEnInventario = SistemaCentral.Inventario.ObtenerProductoPorId(producto.IDenInventario)
+                    ?? throw new ArgumentNullException("El producto seleccionado no se detectó como uno válido");
+                productoEnInventario.CantidadEnStock -= producto.Cantidad;
             }
-
-            // Limpiamos los productos facturados
-            productosFacturados.Clear();
-            // Limpiamos los descuentos aplicados
-            descuentosAplicados.Clear();
-            // Actualizamos el DataGrid
-            ActualizarDataGrid();
-            // Refrezcamos los totales
-            RefrezcarTotales();
             // Valor default del statusStripLabel
             strLabel.Text = "No hay ningun producto seleccionado.";
             // Reseteamos el producto seleccionado
@@ -326,8 +264,22 @@ namespace FactuCrossing.Formularios.Facturación
             txtNombreUsuario.Text = string.Empty;
             // Guardamos
             SistemaCentral.Inventario.GuardarProductos();
-            // Cerramos despues de que el dialogo se cierre
-            this.Close();
+            // Agregamos la factura a memoria
+            SistemaCentral.Facturas.AñadirFactura(facturaActiva);
+            // Guardamos
+            SistemaCentral.Facturas.GuardarFacturas();
+            // REgistrar la acción
+            Accion accion = new Accion(cuentaActiva.Id, $"Facturó {facturaActiva.ProductosFacturados.Count} productos, ID: {facturaActiva.NumFactura}", DateTime.Now);
+            // Agregar a la lista
+            SistemaCentral.Acciones.accionesEnMemoria.Add(accion);
+            // Guardar a disco
+            SistemaCentral.Acciones.GuardarAcciones();
+            // Limpiamos la factura
+            facturaActiva = new Factura(SistemaCentral.Facturas.GenerarId(), cuentaActiva, null, null);
+            // Actualizamos el DataGrid
+            ActualizarDataGrid();
+            // Refrezcamos los totales
+            RefrezcarTotales();
         }
         private void groupBox2_Enter(object sender, EventArgs e)
         {
@@ -364,40 +316,41 @@ namespace FactuCrossing.Formularios.Facturación
             // Si se selecciona un descuento
             if (frm.descuentoAplicado is not null)
             {
-                // Si el descuento ya está no hacemos nada
-                if (descuentosAplicados.Contains(frm.descuentoAplicado))
+                // Ahora reescribiremos el codigo haciendo uso de la clase Factura
+                if(facturaActiva.DescuentosAplicados.Any(c => c.Id == frm.descuentoAplicado.Id))
                 {
                     // Mostramos un mensaje de error
                     MessageBox.Show("El descuento ya ha sido aplicado", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                // Añadimos el descuento a la lista de descuentos aplicados
-                if(frm.descuentoAplicado.ProductoAplicable == -1)
+                // Si el descuento no es global vemos si ya existe el producto al que se aplica
+                if (facturaActiva.DescuentosAplicados.Any(c => c.ProductoAplicable == frm.descuentoAplicado.ProductoAplicable))
                 {
-                    if(descuentoGlobal is not null)
+                    // Preguntamos al usuario si desea sobreescribir el descuento del producto
+                    DialogResult dialogResult = MessageBox.Show("Ya hay un descuento aplicado a este producto, ¿desea sobreescribirlo?", "Advertencia",
+                        MessageBoxButtons.YesNo);
+                    // Si el usuario dice que sí, sobreescribimos el descuento
+                    if (dialogResult == DialogResult.Yes)
+                        facturaActiva.DescuentosAplicados.Add(frm.descuentoAplicado);
+                } else if(frm.descuentoAplicado.ProductoAplicable != -1) facturaActiva.DescuentosAplicados.Add(frm.descuentoAplicado);
+
+                // Ahora vemos si sobreescribimos el global
+                if (frm.descuentoAplicado.ProductoAplicable == -1)
+                {
+                    // Preguntamos al usuario si desea sobreescribir el descuento global
+                    if(facturaActiva.DescuentoGlobal is not null)
                     {
-                        // Preguntamos al usuario si quiere sobreescribir el descuento global
                         DialogResult dialogResult = MessageBox.Show("Ya hay un descuento global aplicado, ¿desea sobreescribirlo?",
                             "Descuento Global", MessageBoxButtons.YesNo);
-                        if (dialogResult == DialogResult.Yes) descuentoGlobal = frm.descuentoAplicado;
-                        else return;
-                    } else descuentoGlobal = frm.descuentoAplicado;
-                } else
-                {
-                    if(descuentosAplicados.Any(d => d.ProductoAplicable == frm.descuentoAplicado.ProductoAplicable))
-                    {
-                        // Le preguntamos al usuario si quiere sobreescribir el descuento
-                        DialogResult dialogResult = MessageBox.Show("Ya hay un descuento aplicado a este producto, ¿desea sobreescribirlo?", "Advertencia",
-                            MessageBoxButtons.YesNo);
-
-                        if (dialogResult == DialogResult.Yes)
-                            descuentosAplicados.Add(frm.descuentoAplicado);
-                        else return;
-                    } else descuentosAplicados.Add(frm.descuentoAplicado);
+                        if (dialogResult == DialogResult.Yes) facturaActiva.EstablecerDescuentoGlobal(frm.descuentoAplicado);
+                    } else facturaActiva.EstablecerDescuentoGlobal(frm.descuentoAplicado);
                 }
+
                 // Refrezcamos los totales
                 RefrezcarTotales();
+                // Actualizamos el DataGrid
+                ActualizarDataGrid();
             }
         }
     }

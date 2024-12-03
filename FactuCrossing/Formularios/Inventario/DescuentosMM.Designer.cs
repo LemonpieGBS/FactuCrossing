@@ -31,6 +31,7 @@
             btnAgregar = new Button();
             cmbProductos = new ComboBox();
             groupBox1 = new GroupBox();
+            chkPermanente = new CheckBox();
             dtpFin = new DateTimePicker();
             label6 = new Label();
             dtpInicio = new DateTimePicker();
@@ -45,7 +46,6 @@
             radioButton1 = new RadioButton();
             dgvDescuentos = new DataGridView();
             Gb = new GroupBox();
-            chkPermanente = new CheckBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudPorcentaje).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDescuentos).BeginInit();
@@ -98,6 +98,17 @@
             groupBox1.TabIndex = 23;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos del Descuento";
+            // 
+            // chkPermanente
+            // 
+            chkPermanente.AutoSize = true;
+            chkPermanente.Location = new Point(29, 341);
+            chkPermanente.Name = "chkPermanente";
+            chkPermanente.Size = new Size(90, 19);
+            chkPermanente.TabIndex = 35;
+            chkPermanente.Text = "Permanente";
+            chkPermanente.UseVisualStyleBackColor = true;
+            chkPermanente.CheckedChanged += chkPermanente_CheckedChanged;
             // 
             // dtpFin
             // 
@@ -190,7 +201,6 @@
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(129, 19);
             radioButton2.TabIndex = 24;
-            radioButton2.TabStop = true;
             radioButton2.Text = "Producto Aplicable:";
             radioButton2.UseVisualStyleBackColor = true;
             radioButton2.CheckedChanged += radioButton2_CheckedChanged;
@@ -198,6 +208,7 @@
             // radioButton1
             // 
             radioButton1.AutoSize = true;
+            radioButton1.Checked = true;
             radioButton1.Location = new Point(29, 163);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(131, 19);
@@ -227,17 +238,6 @@
             Gb.TabIndex = 36;
             Gb.TabStop = false;
             Gb.Text = "Descuentos";
-            // 
-            // chkPermanente
-            // 
-            chkPermanente.AutoSize = true;
-            chkPermanente.Location = new Point(29, 341);
-            chkPermanente.Name = "chkPermanente";
-            chkPermanente.Size = new Size(90, 19);
-            chkPermanente.TabIndex = 35;
-            chkPermanente.Text = "Permanente";
-            chkPermanente.UseVisualStyleBackColor = true;
-            chkPermanente.CheckedChanged += chkPermanente_CheckedChanged;
             // 
             // DescuentosMM
             // 

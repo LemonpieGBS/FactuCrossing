@@ -49,6 +49,8 @@
             strLabel = new ToolStripStatusLabel();
             chbDescontinuado = new CheckBox();
             btnDescuentos = new Button();
+            btnExportar = new Button();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
             groupBox2.SuspendLayout();
@@ -84,6 +86,7 @@
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(txtPrecio);
             groupBox2.Controls.Add(rtxtDescripcion);
+            groupBox2.Controls.Add(chbDescontinuado);
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(nudStock);
@@ -93,7 +96,7 @@
             groupBox2.Controls.Add(label6);
             groupBox2.Location = new Point(12, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(303, 391);
+            groupBox2.Size = new Size(303, 403);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Información del Producto";
@@ -253,7 +256,7 @@
             // chbDescontinuado
             // 
             chbDescontinuado.AutoSize = true;
-            chbDescontinuado.Location = new Point(321, 521);
+            chbDescontinuado.Location = new Point(15, 378);
             chbDescontinuado.Name = "chbDescontinuado";
             chbDescontinuado.Size = new Size(155, 19);
             chbDescontinuado.TabIndex = 27;
@@ -275,14 +278,43 @@
             btnDescuentos.UseVisualStyleBackColor = false;
             btnDescuentos.Click += btnDescuentos_Click;
             // 
+            // btnExportar
+            // 
+            btnExportar.BackColor = Color.FromArgb(83, 96, 171);
+            btnExportar.Cursor = Cursors.Hand;
+            btnExportar.FlatStyle = FlatStyle.Flat;
+            btnExportar.ForeColor = Color.White;
+            btnExportar.Location = new Point(602, 521);
+            btnExportar.Name = "btnExportar";
+            btnExportar.Size = new Size(162, 44);
+            btnExportar.TabIndex = 29;
+            btnExportar.Text = "Exportar...";
+            btnExportar.UseVisualStyleBackColor = false;
+            btnExportar.Click += btnExportar_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(83, 96, 171);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(434, 521);
+            button1.Name = "button1";
+            button1.Size = new Size(162, 44);
+            button1.TabIndex = 30;
+            button1.Text = "Historial de Facturación";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // Inventario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(950, 594);
+            Controls.Add(button1);
+            Controls.Add(btnExportar);
             Controls.Add(btnDescuentos);
             Controls.Add(btnDescontinuar);
-            Controls.Add(chbDescontinuado);
             Controls.Add(strSeleccion);
             Controls.Add(btnEditar);
             Controls.Add(btnAgregar);
@@ -325,5 +357,7 @@
         private ToolStripStatusLabel strLabel;
         private CheckBox chbDescontinuado;
         private Button btnDescuentos;
+        private Button btnExportar;
+        private Button button1;
     }
 }

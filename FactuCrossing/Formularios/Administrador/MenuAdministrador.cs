@@ -39,6 +39,12 @@ namespace FactuCrossing.Formularios.Administrador
         private int año = DateTime.Now.Year;
 
         /// <summary>
+        /// Valores de fechas
+        /// </summary>
+        DateTime viejoInicio;
+        DateTime viejoFinal;
+
+        /// <summary>
         /// Constructor de la clase
         /// </summary>
         public MenuAdministrador()
@@ -55,6 +61,13 @@ namespace FactuCrossing.Formularios.Administrador
             SistemaCentral.Cuentas.CalcularTiempoDeSesion();
             // Actualizamos combobox
             ActualizarComboBox();
+            // Actualizamos las fechas
+            dtpEspecifica.Value = DateTime.Now.Date;
+            dtpFecha1.Value = DateTime.Now.Date;
+            dtpFecha2.Value = DateTime.Now.Date;
+            // Actualizamos los valores de las fechas
+            viejoInicio = dtpFecha1.Value;
+            viejoFinal = dtpFecha2.Value;
         }
 
         /// <summary>
@@ -415,13 +428,18 @@ namespace FactuCrossing.Formularios.Administrador
 
             if (ordenDeFiltro == Orden.RESUMEN)
             {
+                DataSets.DsResumen.DtResumenDataTable dsResumen = new DataSets.DsResumen.DtResumenDataTable();
+
                 // Generamos el data table
                 // Añadimos las columnas
+
                 dt.Columns.AddRange(new DataColumn[] { new("Usuario"), new("Accesos"), new("TiempoSesion"), new DataColumn("Acciones"),
                 new("UltimaFecha"), new("UltimaHora") });
                 // Añadimos las filas
                 foreach (Cuenta cuenta in SistemaCentral.Cuentas.cuentasEnMemoria)
                 {
+                    DataSets.DsResumen.DtResumenRow row;
+
                     // Saltamos si hay un filtro de personal y esta cuenta no es el personal seleccionado
                     if (filtroPersonal is not null) { if (cuenta.Id != filtroPersonal.Id) continue; }
 
@@ -444,12 +462,14 @@ namespace FactuCrossing.Formularios.Administrador
                     TimeSpan tiempo = TimeSpan.FromSeconds(segundos);
                     // # de Acciones
                     int acciones = accionesFiltradas.Where(a => a.IdDeCuenta == cuenta.Id).Count();
+                    // Si no hay datos no mostramos nada
+                    if (accesosDeCuenta == 0 && acciones == 0 && segundos == 0) continue;
                     // Añadimos la fila
-                    dt.Rows.Add(new object[] { cuenta.NombreDisplay, accesosDeCuenta, tiempo, acciones,
-                        ultimoAcceso.ToString("yyyy-MM-dd"), ultimoAcceso.ToString("hh:mm tt")});
+                    dsResumen.AddDtResumenRow(cuenta.NombreDisplay, accesosDeCuenta, tiempo.ToString(@"hh\:mm\:ss"), segundos, acciones,
+                        ultimoAcceso.ToString("yyyy-MM-dd"), ultimoAcceso.ToString("hh:mm tt"));
                 }
                 embeddedPath = "FactuCrossing.Reportes.rptAdmin1.rdlc";
-                rds = new ReportDataSource("DsInfo", dt);
+                rds = new ReportDataSource("DsInfo", (DataTable) dsResumen);
 
             } else if(ordenDeFiltro == Orden.CRONOLOGICO)
             {
@@ -540,6 +560,9 @@ namespace FactuCrossing.Formularios.Administrador
                     parametros.Add(new ReportParameter("RangoFecha1", $"Histórico"));
                     break;
             }
+
+            if(filtroPersonal is null) parametros.Add(new ReportParameter("Target", "Evaluación de todo el personal"));
+            else parametros.Add(new ReportParameter("Target", "Evaluación de " + filtroPersonal.NombreDisplay));
 
             Report report = new Report(embeddedPath, new List<ReportDataSource>(){ rds }, parametros);
 
@@ -719,6 +742,13 @@ namespace FactuCrossing.Formularios.Administrador
 
         private void dtpFecha1_ValueChanged(object sender, EventArgs e)
         {
+            // Si la fecha 1 es mayor a la fecha 2, intercambiarlas
+            if (dtpFecha1.Value > dtpFecha2.Value)
+            {
+                MessageBox.Show("La fecha de inicio no puede ser mayor a la fecha de fin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpFecha1.Value = viejoInicio;
+            }
+            // Actualizar el data grid
             ActualizarDataGrid();
         }
 
@@ -773,6 +803,13 @@ namespace FactuCrossing.Formularios.Administrador
 
         private void dtpFecha2_ValueChanged(object sender, EventArgs e)
         {
+            // Si la fecha 1 es mayor a la fecha 2, intercambiarlas
+            if (dtpFecha1.Value > dtpFecha2.Value)
+            {
+                MessageBox.Show("La fecha de inicio no puede ser mayor a la fecha de fin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpFecha2.Value = viejoFinal;
+            }
+            // Actualizar el data grid
             ActualizarDataGrid();
         }
 

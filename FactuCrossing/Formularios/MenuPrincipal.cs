@@ -75,6 +75,8 @@ namespace FactuCrossing.Formularios
                 // Guardamos los accesos
                 SistemaCentral.Accesos.GuardarAccesos();
             }
+            // Actualizamos la sesión
+            SistemaCentral.Cuentas.CalcularTiempoDeSesion();
         }
 
         /// <summary>
@@ -129,6 +131,11 @@ namespace FactuCrossing.Formularios
         /// </summary>
         private void btnInventario_Click(object sender, EventArgs e)
         {
+            if(cuentaEnSesion.Rol < Roles.GESTORDEINVENTARIO)
+            {
+                MessageBox.Show("No tienes permisos para acceder a esta sección", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             AbrirOcultarDelegar(new Inventario.Inventario());
         }
 
@@ -145,6 +152,11 @@ namespace FactuCrossing.Formularios
         /// </summary>
         private void btnAdministradores_Click(object sender, EventArgs e)
         {
+            if (cuentaEnSesion.Rol < Roles.ADMINISTRADOR)
+            {
+                MessageBox.Show("No tienes permisos para acceder a esta sección", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             AbrirOcultarDelegar(new Administrador.MenuAdministrador());
         }
 

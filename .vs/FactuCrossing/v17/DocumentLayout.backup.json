@@ -1,22 +1,70 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\labc202\\Documents\\FactuCrossing\\",
+  "WorkspaceRootPath": "D:\\Documents\\Workspace - C#\\FactuCrossing\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|c:\\users\\labc202\\documents\\factucrossing\\factucrossing\\formularios\\inventario\\descuentosmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\inventario\\descuentosmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|c:\\users\\labc202\\documents\\factucrossing\\factucrossing\\formularios\\inventario\\descuentosmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\inventario\\descuentosmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\menuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|c:\\users\\labc202\\documents\\factucrossing\\factucrossing\\formularios\\facturaci\u00F3n\\facturaci\u00F3n.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\facturaci\u00F3n\\facturaci\u00F3n.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\facturaci\u00F3n\\facturaci\u00F3n.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\estructuras\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\estructuras\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\inventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\inventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\inventario\\historialfacturas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\inventario\\historialfacturas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\inventario\\historialfacturas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\inventario\\historialfacturas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\facturaci\u00F3n\\facturaci\u00F3n.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\facturaci\u00F3n\\facturaci\u00F3n.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|c:\\users\\labc202\\documents\\factucrossing\\factucrossing\\estructuras\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\estructuras\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\estructuras\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\inventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\inventario\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\formularios\\inventario\\descuentosmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\formularios\\inventario\\descuentosmm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\servicios\\servicioarchivoinventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\servicios\\servicioarchivoinventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\reportes\\rptinventario.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\reportes\\rptinventario.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\servicios\\servicioarchivofacturas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\servicios\\servicioarchivofacturas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|d:\\documents\\workspace - c#\\factucrossing\\factucrossing\\reportes\\rptfactura.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}",
+      "RelativeMoniker": "D:0:0:{E9F113B0-0EBD-4010-A34C-402103F245EB}|FactuCrossing\\FactuCrossing.csproj|solutionrelative:factucrossing\\reportes\\rptfactura.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,11 +74,213 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 0,
           "Children": [
             {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MenuPrincipal.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\MenuPrincipal.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\MenuPrincipal.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\MenuPrincipal.cs",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\MenuPrincipal.cs",
+              "ViewState": "AgIAAH8AAAAAAAAAAADwv5oAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T18:08:54.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MenuPrincipal.cs [Design]",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\MenuPrincipal.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\MenuPrincipal.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\MenuPrincipal.cs [Design]",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\MenuPrincipal.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T18:07:21.628Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Inventario.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
+              "ViewState": "AgIAAO8AAAAAAAAAAAAqwJkBAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T18:02:02.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HistorialFacturas.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\HistorialFacturas.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Inventario\\HistorialFacturas.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\HistorialFacturas.cs",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\Inventario\\HistorialFacturas.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAwwHIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T17:54:58.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HistorialFacturas.cs [Design]",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\HistorialFacturas.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Inventario\\HistorialFacturas.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\HistorialFacturas.cs [Design]",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\Inventario\\HistorialFacturas.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T17:49:48.939Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Inventario.cs [Design]",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Inventario\\Inventario.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\Inventario.cs [Design]",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\Inventario\\Inventario.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T17:48:36.601Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Inventario.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Estructuras\\Inventario.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Estructuras\\Inventario.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Estructuras\\Inventario.cs",
+              "RelativeToolTip": "FactuCrossing\\Estructuras\\Inventario.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T17:46:00.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Facturaci\u00F3n.cs [Design]",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs [Design]",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T17:45:39.754Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Factura.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Estructuras\\Factura.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Estructuras\\Factura.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Estructuras\\Factura.cs",
+              "RelativeToolTip": "FactuCrossing\\Estructuras\\Factura.cs",
+              "ViewState": "AgIAAGoBAAAAAAAAAAA0wIEAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T17:34:28.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DescuentosMM.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAYwH4AAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T17:29:59.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Facturaci\u00F3n.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs",
+              "RelativeToolTip": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAywPsAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T12:32:14.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Program.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Program.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Program.cs",
+              "RelativeToolTip": "FactuCrossing\\Program.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAmwGwAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T17:30:54.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RptFactura.rdlc [Design]",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Reportes\\RptFactura.rdlc",
+              "RelativeDocumentMoniker": "FactuCrossing\\Reportes\\RptFactura.rdlc",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Reportes\\RptFactura.rdlc [Design]",
+              "RelativeToolTip": "FactuCrossing\\Reportes\\RptFactura.rdlc [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001755|",
+              "WhenOpened": "2024-12-03T17:23:41.828Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RptInventario.rdlc [Design]",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Reportes\\RptInventario.rdlc",
+              "RelativeDocumentMoniker": "FactuCrossing\\Reportes\\RptInventario.rdlc",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Reportes\\RptInventario.rdlc [Design]",
+              "RelativeToolTip": "FactuCrossing\\Reportes\\RptInventario.rdlc [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001755|",
+              "WhenOpened": "2024-12-03T17:23:37.05Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ServicioArchivoFacturas.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Servicios\\ServicioArchivoFacturas.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Servicios\\ServicioArchivoFacturas.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Servicios\\ServicioArchivoFacturas.cs",
+              "RelativeToolTip": "FactuCrossing\\Servicios\\ServicioArchivoFacturas.cs",
+              "ViewState": "AgIAAM4BAAAAAAAAAAAqwHgBAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T16:19:42.685Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ServicioArchivoInventario.cs",
+              "DocumentMoniker": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Servicios\\ServicioArchivoInventario.cs",
+              "RelativeDocumentMoniker": "FactuCrossing\\Servicios\\ServicioArchivoInventario.cs",
+              "ToolTip": "D:\\Documents\\Workspace - C#\\FactuCrossing\\FactuCrossing\\Servicios\\ServicioArchivoInventario.cs",
+              "RelativeToolTip": "FactuCrossing\\Servicios\\ServicioArchivoInventario.cs",
+              "ViewState": "AgIAAAwBAAAAAAAAAAAUwCQBAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T16:15:16.324Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
-              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
               "$type": "Bookmark",
@@ -50,62 +300,11 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DescuentosMM.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\labc202\\Documents\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs",
-              "ToolTip": "C:\\Users\\labc202\\Documents\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs [Dise\u00F1o]",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:20:05.519Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DescuentosMM.cs",
-              "DocumentMoniker": "C:\\Users\\labc202\\Documents\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs",
-              "ToolTip": "C:\\Users\\labc202\\Documents\\FactuCrossing\\FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Inventario\\DescuentosMM.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T14:16:43.287Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Facturaci\u00F3n.cs",
-              "DocumentMoniker": "C:\\Users\\labc202\\Documents\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs",
-              "ToolTip": "C:\\Users\\labc202\\Documents\\FactuCrossing\\FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs",
-              "RelativeToolTip": "FactuCrossing\\Formularios\\Facturaci\u00F3n\\Facturaci\u00F3n.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAqwGsAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T13:36:16.139Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Factura.cs",
-              "DocumentMoniker": "C:\\Users\\labc202\\Documents\\FactuCrossing\\FactuCrossing\\Estructuras\\Factura.cs",
-              "RelativeDocumentMoniker": "FactuCrossing\\Estructuras\\Factura.cs",
-              "ToolTip": "C:\\Users\\labc202\\Documents\\FactuCrossing\\FactuCrossing\\Estructuras\\Factura.cs",
-              "RelativeToolTip": "FactuCrossing\\Estructuras\\Factura.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwwAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T13:34:18.639Z",
-              "EditorCaption": ""
             }
           ]
         }

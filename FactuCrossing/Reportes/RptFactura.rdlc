@@ -27,20 +27,28 @@
         </Field>
         <Field Name="Cantidad">
           <DataField>Cantidad</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="PrecioUnitario">
           <DataField>PrecioUnitario</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Subtotal">
+          <DataField>Subtotal</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Descuento">
+          <DataField>Descuento</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="PrecioTotal">
           <DataField>PrecioTotal</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DsVenta</rd:DataSetName>
-        <rd:SchemaPath>D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\Data Sets\DsVenta.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\Documents\Workspace - C#\FactuCrossing\FactuCrossing\DataSets\DsVenta.xsd</rd:SchemaPath>
         <rd:TableName>DtVenta</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
@@ -56,16 +64,22 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>7.69119cm</Width>
+                  <Width>7.36613cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.23201cm</Width>
+                  <Width>2.20014cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.15264cm</Width>
+                  <Width>2.34061cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.0027cm</Width>
+                  <Width>2.35951cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.55292cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.29651cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -84,8 +98,9 @@
                                   <Value>CONCEPTO</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Inter</FontFamily>
+                                    <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>Underline</TextDecoration>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -118,7 +133,7 @@
                               <Style>None</Style>
                               <Width>3pt</Width>
                             </RightBorder>
-                            <BackgroundColor>RoyalBlue</BackgroundColor>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -139,8 +154,9 @@
                                   <Value>CANTIDAD</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Inter</FontFamily>
+                                    <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>Underline</TextDecoration>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -175,7 +191,7 @@
                               <Style>None</Style>
                               <Width>3pt</Width>
                             </RightBorder>
-                            <BackgroundColor>RoyalBlue</BackgroundColor>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -196,8 +212,9 @@
                                   <Value>PRECIO</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Inter</FontFamily>
+                                    <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>Underline</TextDecoration>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -232,7 +249,123 @@
                               <Style>None</Style>
                               <Width>3pt</Width>
                             </RightBorder>
-                            <BackgroundColor>RoyalBlue</BackgroundColor>
+                            <BackgroundColor>Gray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>SUBTOTAL</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>Underline</TextDecoration>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>3pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>None</Style>
+                              <Width>3pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>None</Style>
+                              <Width>3pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>Gray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox6">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>DESCUENTO</Value>
+                                  <Style>
+                                    <FontStyle>Italic</FontStyle>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>Underline</TextDecoration>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>3pt</Width>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Color>Black</Color>
+                              <Style>None</Style>
+                              <Width>3pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Color>Black</Color>
+                              <Style>None</Style>
+                              <Width>3pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -253,8 +386,9 @@
                                   <Value>TOTAL</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
-                                    <FontFamily>Inter</FontFamily>
+                                    <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
+                                    <TextDecoration>Underline</TextDecoration>
                                     <Color>White</Color>
                                   </Style>
                                 </TextRun>
@@ -289,7 +423,7 @@
                               <Style>Solid</Style>
                               <Width>1pt</Width>
                             </RightBorder>
-                            <BackgroundColor>RoyalBlue</BackgroundColor>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -340,12 +474,12 @@
                             </Border>
                             <TopBorder>
                               <Color>Black</Color>
-                              <Style>Solid</Style>
+                              <Style>Dotted</Style>
                               <Width>1pt</Width>
                             </TopBorder>
                             <BottomBorder>
                               <Color>Black</Color>
-                              <Style>Dotted</Style>
+                              <Style>None</Style>
                               <Width>1pt</Width>
                             </BottomBorder>
                             <LeftBorder>
@@ -359,6 +493,7 @@
                               <Width>1pt</Width>
                             </RightBorder>
                             <BackgroundColor>=Iif(RowNumber(Nothing) Mod 2, "#FFFFFF", "#F5F5F5")</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -394,12 +529,12 @@
                             </Border>
                             <TopBorder>
                               <Color>Black</Color>
-                              <Style>Solid</Style>
+                              <Style>Dotted</Style>
                               <Width>1pt</Width>
                             </TopBorder>
                             <BottomBorder>
                               <Color>Black</Color>
-                              <Style>Dotted</Style>
+                              <Style>None</Style>
                               <Width>1pt</Width>
                             </BottomBorder>
                             <LeftBorder>
@@ -413,6 +548,7 @@
                               <Width>3pt</Width>
                             </RightBorder>
                             <BackgroundColor>=Iif(RowNumber(Nothing) Mod 2, "#FFFFFF", "#F5F5F5")</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -433,6 +569,7 @@
                                   <Value>=Fields!PrecioUnitario.Value</Value>
                                   <Style>
                                     <FontFamily>Inter</FontFamily>
+                                    <Format>'$'#,0.00;('$'#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -447,30 +584,128 @@
                               <Style>Solid</Style>
                             </Border>
                             <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
+                              <Style>Dotted</Style>
                             </TopBorder>
                             <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Dotted</Style>
-                              <Width>1pt</Width>
+                              <Style>None</Style>
                             </BottomBorder>
                             <LeftBorder>
-                              <Color>Black</Color>
                               <Style>None</Style>
                               <Width>3pt</Width>
                             </LeftBorder>
                             <RightBorder>
-                              <Color>Black</Color>
                               <Style>None</Style>
                               <Width>3pt</Width>
                             </RightBorder>
                             <BackgroundColor>=Iif(RowNumber(Nothing) Mod 2, "#FFFFFF", "#F5F5F5")</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Subtotal">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Subtotal.Value</Value>
+                                  <Style>
+                                    <FontFamily>Inter</FontFamily>
+                                    <Format>'$'#,0.00;('$'#,0.00);'-'</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Subtotal</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Dotted</Style>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>None</Style>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Style>None</Style>
+                              <Width>3pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>None</Style>
+                              <Width>3pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>=Iif(RowNumber(Nothing) Mod 2, "#FFFFFF", "#F5F5F5")</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Descuento">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Descuento.Value</Value>
+                                  <Style>
+                                    <FontFamily>Inter</FontFamily>
+                                    <Format>'$'#,0.00;('$'#,0.00);'-'</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Descuento</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>Solid</Style>
+                            </Border>
+                            <TopBorder>
+                              <Style>Dotted</Style>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Style>None</Style>
+                            </BottomBorder>
+                            <LeftBorder>
+                              <Style>None</Style>
+                              <Width>3pt</Width>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>None</Style>
+                              <Width>3pt</Width>
+                            </RightBorder>
+                            <BackgroundColor>=Iif(RowNumber(Nothing) Mod 2, "#FFFFFF", "#F5F5F5")</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <rd:FormatSymbolCulture>es-MX</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -487,6 +722,7 @@
                                   <Value>=Fields!PrecioTotal.Value</Value>
                                   <Style>
                                     <FontFamily>Inter</FontFamily>
+                                    <Format>#,0.00;(#,0.00);'-'</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -501,26 +737,17 @@
                               <Style>Solid</Style>
                             </Border>
                             <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
+                              <Style>Dotted</Style>
                             </TopBorder>
                             <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Dotted</Style>
-                              <Width>1pt</Width>
+                              <Style>None</Style>
                             </BottomBorder>
                             <LeftBorder>
-                              <Color>Black</Color>
                               <Style>None</Style>
                               <Width>3pt</Width>
                             </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <BackgroundColor>=Iif(RowNumber(Nothing) Mod 2, "#FFFFFF", "#F5F5F5")</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -535,6 +762,8 @@
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
+                <TablixMember />
+                <TablixMember />
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -554,11 +783,14 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <RepeatRowHeaders>true</RepeatRowHeaders>
+            <FixedRowHeaders>true</FixedRowHeaders>
+            <NoRowsMessage>"No hay productos facturados"</NoRowsMessage>
             <DataSetName>DsVenta</DataSetName>
             <Top>0.68474cm</Top>
             <Left>0.92286cm</Left>
             <Height>2.1525cm</Height>
-            <Width>17.07854cm</Width>
+            <Width>19.11582cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -574,7 +806,7 @@
                   <TextRun>
                     <Value>=Parameters!Total.Value</Value>
                     <Style>
-                      <FontFamily>inter</FontFamily>
+                      <FontFamily>Segoe UI</FontFamily>
                       <FontWeight>Bold</FontWeight>
                       <TextDecoration>Underline</TextDecoration>
                     </Style>
@@ -587,7 +819,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>5.31495cm</Top>
-            <Left>14.9987cm</Left>
+            <Left>17.03597cm</Left>
             <Height>0.78521cm</Height>
             <Width>3.00271cm</Width>
             <ZIndex>1</ZIndex>
@@ -613,7 +845,7 @@
                   <TextRun>
                     <Value>Total:</Value>
                     <Style>
-                      <FontFamily>Inter</FontFamily>
+                      <FontFamily>Segoe UI</FontFamily>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
@@ -624,7 +856,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox13</rd:DefaultName>
             <Top>5.31495cm</Top>
-            <Left>13.46002cm</Left>
+            <Left>15.49729cm</Left>
             <Height>0.78521cm</Height>
             <Width>1.43285cm</Width>
             <ZIndex>2</ZIndex>
@@ -648,7 +880,7 @@
                   <TextRun>
                     <Value>="Facturista: " &amp; Parameters!Facturista.Value</Value>
                     <Style>
-                      <FontFamily>Inter</FontFamily>
+                      <FontFamily>Segoe UI</FontFamily>
                       <FontSize>12pt</FontSize>
                     </Style>
                   </TextRun>
@@ -684,7 +916,7 @@
                   <TextRun>
                     <Value>=Parameters!Descuento.Value</Value>
                     <Style>
-                      <FontFamily>inter</FontFamily>
+                      <FontFamily>Segoe UI</FontFamily>
                       <FontWeight>Bold</FontWeight>
                       <Color>White</Color>
                     </Style>
@@ -697,7 +929,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>4.35335cm</Top>
-            <Left>14.99869cm</Left>
+            <Left>17.03596cm</Left>
             <Height>0.78521cm</Height>
             <Width>3.00271cm</Width>
             <ZIndex>4</ZIndex>
@@ -723,20 +955,22 @@
                   <TextRun>
                     <Value>Subtotal:</Value>
                     <Style>
-                      <FontFamily>Inter</FontFamily>
+                      <FontFamily>Segoe UI</FontFamily>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox13</rd:DefaultName>
             <Top>3.39175cm</Top>
-            <Left>12.66627cm</Left>
+            <Left>0.92286cm</Left>
             <Height>0.78521cm</Height>
-            <Width>2.2266cm</Width>
+            <Width>16.00728cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -758,7 +992,7 @@
                   <TextRun>
                     <Value>=Parameters!Subtotal.Value</Value>
                     <Style>
-                      <FontFamily>inter</FontFamily>
+                      <FontFamily>Segoe UI</FontFamily>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -769,7 +1003,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>3.39175cm</Top>
-            <Left>14.99871cm</Left>
+            <Left>17.03598cm</Left>
             <Height>0.78521cm</Height>
             <Width>3.00271cm</Width>
             <ZIndex>6</ZIndex>
@@ -793,22 +1027,25 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Descuento:</Value>
+                    <Value>=IIf(IsNothing(Parameters!DescuentoGlobal.Value), 
+"Descuento:", "Descuento (" &amp; Parameters!DescuentoGlobal.Value &amp; "):")</Value>
                     <Style>
-                      <FontFamily>Inter</FontFamily>
+                      <FontFamily>Segoe UI</FontFamily>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox13</rd:DefaultName>
             <Top>4.35335cm</Top>
-            <Left>12.16356cm</Left>
+            <Left>0.92286cm</Left>
             <Height>0.78521cm</Height>
-            <Width>2.72932cm</Width>
+            <Width>16.00729cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -827,10 +1064,15 @@
           <Border>
             <Style>None</Style>
           </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
           <BackgroundColor>White</BackgroundColor>
         </Style>
       </Body>
-      <Width>19cm</Width>
+      <Width>21cm</Width>
       <Page>
         <PageHeader>
           <Height>2.91042cm</Height>
@@ -846,7 +1088,7 @@
                     <TextRun>
                       <Value>="Fecha: " &amp; Parameters!FechaFactura.Value</Value>
                       <Style>
-                        <FontFamily>Inter</FontFamily>
+                        <FontFamily>Segoe UI</FontFamily>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -857,9 +1099,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox11</rd:DefaultName>
               <Top>1.09555cm</Top>
-              <Left>13.91391cm</Left>
+              <Left>10.65133cm</Left>
               <Height>0.72637cm</Height>
-              <Width>4.0875cm</Width>
+              <Width>9.38736cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -880,7 +1122,7 @@
                     <TextRun>
                       <Value>="FACTURA #" &amp; Parameters!NumeroFactura.Value</Value>
                       <Style>
-                        <FontFamily>Inter</FontFamily>
+                        <FontFamily>Segoe UI</FontFamily>
                         <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -917,7 +1159,7 @@
                     <TextRun>
                       <Value>=Parameters!NombreFactura.Value</Value>
                       <Style>
-                        <FontFamily>Inter</FontFamily>
+                        <FontFamily>Segoe UI</FontFamily>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -952,7 +1194,7 @@
                     <TextRun>
                       <Value>="Sucursal de " &amp; Parameters!SucursalFactura.Value</Value>
                       <Style>
-                        <FontFamily>Inter</FontFamily>
+                        <FontFamily>Segoe UI</FontFamily>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -963,9 +1205,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox11</rd:DefaultName>
               <Top>1.8572cm</Top>
-              <Left>13.91392cm</Left>
+              <Left>10.65133cm</Left>
               <Height>0.72637cm</Height>
-              <Width>4.0875cm</Width>
+              <Width>9.38737cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -1015,7 +1257,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
               <Top>0.46743cm</Top>
-              <Left>14.9987cm</Left>
+              <Left>17.036cm</Left>
               <Height>0.6cm</Height>
               <Width>3.0027cm</Width>
               <Style>
@@ -1048,15 +1290,20 @@
             <Border>
               <Style>None</Style>
             </Border>
+            <TopBorder>
+              <Color>Black</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </TopBorder>
             <BackgroundColor>White</BackgroundColor>
           </Style>
         </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
-        <LeftMargin>1cm</LeftMargin>
-        <RightMargin>1cm</RightMargin>
-        <TopMargin>1cm</TopMargin>
-        <BottomMargin>1cm</BottomMargin>
+        <LeftMargin>0cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style>
           <BackgroundColor>White</BackgroundColor>
@@ -1097,11 +1344,16 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="DescuentoGlobal">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfRows>3</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -1142,6 +1394,11 @@
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>1</RowIndex>
           <ParameterName>Descuento</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>DescuentoGlobal</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

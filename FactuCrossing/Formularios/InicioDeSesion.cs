@@ -115,6 +115,14 @@ public partial class InicioDeSesion : Form
                 // Guardamos los cambios
                 SistemaCentral.Cuentas.GuardarCuentas();
             }
+            // Si la opción de recordar usuario no está activada
+            if (!checkBox1.Checked)
+            {
+                // Vaciamos los campos de texto
+                txtNombreUsuario.Text = string.Empty;
+                txtContraseña.Text = string.Empty;
+            }
+
             // Variable 'nombreDeUsuario' deprecada en favor a 'SistemaCentral.Cuentas.cuentaEnSesion'
             /* -- Program.nombreDeUsuario = cuentaUsuario.NombreDisplay; */
             // Establecemos la cuenta en sesión como la cuenta registrada del usuario

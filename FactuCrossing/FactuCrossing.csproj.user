@@ -28,6 +28,9 @@
     <Compile Update="Formularios\Inventario\DescuentosMM.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\Inventario\HistorialFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\Inventario\Inventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -51,6 +54,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Update="DataSets\DsProducto.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Update="DataSets\DsResumen.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -107,6 +107,7 @@ namespace FactuCrossing
             SistemaCentral.Accesos.CargarAccesos();
             SistemaCentral.Acciones.CargarAcciones();
             SistemaCentral.Descuentos.CargarDescuentos();
+            SistemaCentral.Facturas.CargarFacturas();
 
             // Creamos una cuenta de administrador si no hay nignuna cuenta existente
             if (SistemaCentral.Cuentas.cuentasEnMemoria.Count == 0)

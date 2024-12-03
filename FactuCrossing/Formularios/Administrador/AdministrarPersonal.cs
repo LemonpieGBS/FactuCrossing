@@ -91,8 +91,15 @@ namespace FactuCrossing.Formularios.Administrador
             // Añadimos las columnas necesarias
             dt.Columns.AddRange(new DataColumn[] { new("ID"), new("Activo/a"), new("Nombre"), new("Usuario"), new("Rol"), new("Temporal") });
 
+            // Las cuentas que se van a mostrar en el DataGridView
+            List<Cuenta> cuentasDisplay = SistemaCentral.Cuentas.cuentasEnMemoria.ToList();
+            // Si no se deben mostrar las cuentas deshabilitadas, filtramos las cuentas
+            if (!mostrarDeshabilitadas) cuentasDisplay = cuentasDisplay.Where(c => c.Habilitada).ToList();
+            // Ordenamos las cuentas por ID
+            cuentasDisplay = cuentasDisplay.OrderBy(c => c.Id).ToList();
+
             // Iteramos por cada cuenta en memoria
-            foreach (Cuenta cuenta in SistemaCentral.Cuentas.cuentasEnMemoria)
+            foreach (Cuenta cuenta in cuentasDisplay)
             {
                 // Inicializamos el rol como "No Reconocido"
                 string stringRol = "No Reconocido";
@@ -101,9 +108,6 @@ namespace FactuCrossing.Formularios.Administrador
                 {
                     if (kp.Value == cuenta.Rol) stringRol = kp.Key;
                 }
-
-                // Si no se deben mostrar las cuentas deshabilitadas y la cuenta está deshabilitada, continuamos
-                if (!mostrarDeshabilitadas && !cuenta.Habilitada) continue;
                 // Añadimos una nueva fila con los datos de la cuenta
                 dt.Rows.Add(new object[] { cuenta.Id, cuenta.Habilitada ? "Si" : "No", cuenta.NombreDisplay,
                 cuenta.NombreUsuario, stringRol, cuenta.ContraseñaTemporal ? "Si" : "No" });
@@ -222,9 +226,24 @@ namespace FactuCrossing.Formularios.Administrador
             // Liberamos los recursos del formulario de input
             iform.Dispose();
 
+            // Conseguimos el id de la cuenta viendo cual es el primer ID sin usar en las cuentas en memoria
+            int id = 0;
+            while (SistemaCentral.Cuentas.cuentasEnMemoria.Any(c => c.Id == id))
+            {
+                id++;
+            }
+
+            // Verificamos que no esté en uso el ID
+            if (SistemaCentral.Cuentas.cuentasEnMemoria.Any(c => c.Id == id))
+            {
+                MessageBox.Show("Hubo un problema al asignar el ID a la cuenta", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             // Creamos una nueva cuenta con los datos ingresados
             Cuenta cuentaNueva = new(
-                    _id: SistemaCentral.Cuentas.cuentasEnMemoria.Count,
+                    _id: id,
                     _nombre: txtNombreUsuario.Text,
                     _nombredisplay: txtNombre.Text,
                     _contraseña: new HashSalt(contrasenaTemporal),
@@ -281,7 +300,15 @@ namespace FactuCrossing.Formularios.Administrador
             }
 
             // Obtenemos la cuenta seleccionada en memoria
-            Cuenta dbi = SistemaCentral.Cuentas.cuentasEnMemoria[idConseguido];
+            Cuenta? dbi = SistemaCentral.Cuentas.ObtenerCuentaPorId(idConseguido);
+            // Si hay un problema con la selección, mostramos un mensaje de error
+            if (dbi == null)
+            {
+                // Si hay un problema con la selección, mostramos un mensaje de error
+                MessageBox.Show("Hubo un problema con la selección", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             // Asignamos el ID seleccionado
             cuentaSeleccionada = dbi.Id;
             // Actualizamos el texto del status label
@@ -365,7 +392,16 @@ namespace FactuCrossing.Formularios.Administrador
             if (cuentaSeleccionada != -1)
             {
                 // Obtenemos la cuenta seleccionada en memoria
-                Cuenta cuenta = SistemaCentral.Cuentas.cuentasEnMemoria[cuentaSeleccionada];
+                Cuenta? cuenta = SistemaCentral.Cuentas.ObtenerCuentaPorId(cuentaSeleccionada);
+                // Verificamos si la cuenta seleccionada no es nula
+                if (cuenta is null)
+                {
+                    // Si no se encuentra la cuenta seleccionada, mostramos un mensaje de error
+                    MessageBox.Show("Hubo un problema con la selección", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Cambiamos el estado de habilitada de la cuenta
                 cuenta.Habilitada = !cuenta.Habilitada;
                 // Actualizamos el DataGrid con las cuentas
@@ -400,13 +436,29 @@ namespace FactuCrossing.Formularios.Administrador
             if (cuentaSeleccionada != -1)
             {
                 // Obtenemos la cuenta seleccionada en memoria
-                Cuenta cuenta = SistemaCentral.Cuentas.cuentasEnMemoria[cuentaSeleccionada];
+                Cuenta? cuenta = SistemaCentral.Cuentas.ObtenerCuentaPorId(cuentaSeleccionada);
 
+                // Verificamos si la cuenta seleccionada no es nula
+                if (cuenta is null)
+                {
+                    // Si no se encuentra la cuenta seleccionada, mostramos un mensaje de error
+                    MessageBox.Show("Hubo un problema con la selección", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 // Validamos los campos del formulario
                 if (!ValidarCampos()) return;
 
                 // Obtenemos el rol seleccionado
                 Roles rol = camposDeAcceso[cmbAcceso.Text];
+
+                // Verificamos que el nombre de usuario no exista
+                if (SistemaCentral.Cuentas.cuentasEnMemoria.Any(c => c.NombreUsuario == txtNombreUsuario.Text && c.Id != cuentaSeleccionada))
+                {
+                    MessageBox.Show("El nombre de usuario ya está en uso", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 // Creamos una nueva cuenta con los datos ingresados
                 Cuenta nuevaCuenta = new Cuenta(

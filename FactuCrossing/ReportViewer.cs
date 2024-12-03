@@ -133,6 +133,9 @@ namespace FactuCrossing
             reportViewer.RefreshReport();
             // Llama al método OnLoad de la clase base
             base.OnLoad(e);
+
+            if(Program.mFont is not null)
+                reportViewer.Font = new Font(Program.mFont, reportViewer.Font.Size, reportViewer.Font.Style);
         }
     }
 }

@@ -14,6 +14,7 @@
     <None Remove="Properties\Resources\Rubik-VariableFont_wght.ttf" />
     <None Remove="Reportes\rptAdmin1.rdlc" />
     <None Remove="Reportes\RptFactura.rdlc" />
+    <None Remove="Reportes\RptInventario.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
     <EmbeddedResource Include="Reportes\rptAdmin2.rdlc" />
     <EmbeddedResource Include="Reportes\rptAdmin1.rdlc" />
     <EmbeddedResource Include="Reportes\RptFactura.rdlc" />
+    <EmbeddedResource Include="Reportes\RptInventario.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +34,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="DataSets\DsProducto.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DsProducto.xsd</DependentUpon>
+    </Compile>
     <Compile Update="DataSets\DsResumen.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -65,6 +72,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="DataSets\DsProducto.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsProducto.Designer.cs</LastGenOutput>
+    </None>
     <None Update="DataSets\DsResumen.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DsResumen.Designer.cs</LastGenOutput>
@@ -77,6 +88,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Formularios\save\" />
   </ItemGroup>
 
 </Project>

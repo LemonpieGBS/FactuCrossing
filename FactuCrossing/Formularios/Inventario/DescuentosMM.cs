@@ -1,13 +1,5 @@
 ﻿using FactuCrossing.Estructuras;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FactuCrossing.Formularios.Inventario
 {
@@ -38,14 +30,18 @@ namespace FactuCrossing.Formularios.Inventario
                 new("Fecha de Fin"), new("Producto Aplicable")});
             foreach (Descuento descuento in SistemaCentral.Descuentos.descuentosEnMemoria)
             {
-                Producto? producto = SistemaCentral.Inventario.EncontrarProductoPorNombre(cmbProductos.Text);
-                if (producto is null)
+                Producto? producto = null;
+                if (descuento.ProductoAplicable != -1)
                 {
-                    throw new Exception("Producto no encontrado");
+                    producto = SistemaCentral.Inventario.ObtenerProductoPorId(descuento.ProductoAplicable);
+                    if (producto is null)
+                    {
+                        throw new Exception("Producto no encontrado");
+                    }
                 }
                 dt.Rows.Add(new object[]{ descuento.Id, descuento.Nombre, $"{descuento.Porcentaje:00.0}%",
                     descuento.FechaInicio.ToString("yyyy-MM-dd"), descuento.FechaFin.ToString("yyyy-MM-dd"),
-                    descuento.ProductoAplicable == -1 ? "Todos" : producto.Nombre});
+                    producto is null ? "Todos" : producto.Nombre});
             }
             dgvDescuentos.DataSource = dt;
         }
@@ -76,11 +72,17 @@ namespace FactuCrossing.Formularios.Inventario
                 return;
             }
 
-            int id = (radioButton1.Checked) ? -1 : producto.Id;
-            DateTime fechaInicio = (chkPermanente.Checked) ? DateTime.Now : dtpInicio.Value;
-            DateTime fechaFinal = (chkPermanente.Checked) ? DateTime.Now : dtpFin.Value;
+            int id = (radioButton1.Checked || producto is null) ? -1 : producto.Id;
+            DateTime fechaInicio = (chkPermanente.Checked) ? DateTime.MinValue : dtpInicio.Value;
+            DateTime fechaFinal = (chkPermanente.Checked) ? DateTime.MaxValue : dtpFin.Value;
 
             SistemaCentral.Descuentos.descuentosEnMemoria.Add(new Descuento(SistemaCentral.Descuentos.descuentosEnMemoria.Count, txtNombre.Text, (double) nudPorcentaje.Value, fechaInicio, fechaFinal, id));
+
+            // Añadir la accion al sistema central
+            Accion accion = new Accion(SistemaCentral.Cuentas.cuentaEnSesion?.Id ?? throw new Exception("ID de cuenta no encontrado")
+                , $"Se agregó un nuevo descuento con nombre {txtNombre.Text}", DateTime.Now);
+            SistemaCentral.Acciones.accionesEnMemoria.Add(accion);
+            SistemaCentral.Acciones.GuardarAcciones();
 
             // Actualizar el DataGridView
             ActualizarDataGrid();
@@ -118,6 +120,12 @@ namespace FactuCrossing.Formularios.Inventario
                 {
                     SistemaCentral.Descuentos.descuentosEnMemoria[i].Id = i;
                 }
+
+                // Agregar la accion al Sistema Central
+                Accion accion = new Accion(SistemaCentral.Cuentas.cuentaEnSesion?.Id ?? throw new Exception("ID de cuenta no encontrado")
+                    , $"Se eliminó el descuento con ID {descuentoSeleccionado}", DateTime.Now);
+                SistemaCentral.Acciones.accionesEnMemoria.Add(accion);
+                SistemaCentral.Acciones.GuardarAcciones();
             }
 
             // Actualizar el DataGridView

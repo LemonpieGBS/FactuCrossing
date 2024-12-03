@@ -89,7 +89,7 @@ namespace FactuCrossing.Servicios
         /// </summary>
         /// <param name="descuento">Descuento a guardar</param>
         /// <param name="bWriter">Escritor binario</param>
-        private void EscribirDescuento(Descuento descuento, BinaryWriter bWriter)
+        public void EscribirDescuento(Descuento descuento, BinaryWriter bWriter)
         {
             // Escribir el atributo ID
             bWriter.Write((Int32)IDAtributos.ID);
@@ -189,7 +189,7 @@ namespace FactuCrossing.Servicios
         /// </summary>
         /// <param name="bReader">Lector binario</param>
         /// <returns>Descuento cargado del archivo</returns>
-        private Descuento LeerDescuento(BinaryReader bReader)
+        public Descuento LeerDescuento(BinaryReader bReader)
         {
             // Declaramos la variable para almacenar el atributo leído
             IDAtributos atributoLeido;

@@ -1,4 +1,5 @@
 ﻿using FactuCrossing.Estructuras;
+using Microsoft.Reporting.WinForms;
 using System.Data;
 
 namespace FactuCrossing.Formularios.Inventario
@@ -36,7 +37,7 @@ namespace FactuCrossing.Formularios.Inventario
             // Si la fuente del programa está cargada, la aplicamos
             if (Program.mFont is not null) Program.ApplyFont(Program.mFont, this);
             // Actualizamos el DataGridView
-            ActualizarDataGrid();
+            ActualizarDataGrid(chbDescontinuado.Checked);
             // Actualizamos el statusStrip
             strLabel.Text = "No hay ningún producto seleccionado";
             // Actualizamos los proveedores del inventario como opciones en el ComboBox
@@ -202,7 +203,7 @@ namespace FactuCrossing.Formularios.Inventario
             }
             SistemaCentral.Acciones.GuardarAcciones();
             // Actualizamos el DataGridView
-            ActualizarDataGrid();
+            ActualizarDataGrid(chbDescontinuado.Checked);
             // Guardamos el inventario
             SistemaCentral.Inventario.GuardarProductos();
             // Limpiamos los campos
@@ -280,7 +281,7 @@ namespace FactuCrossing.Formularios.Inventario
                 // Reemplazamos el producto existente con el nuevo producto
                 SistemaCentral.Inventario.RefrezcarProducto(nuevoProducto);
                 // Actualizamos el DataGridView
-                ActualizarDataGrid();
+                ActualizarDataGrid(chbDescontinuado.Checked);
                 // Guardamos el inventario
                 SistemaCentral.Inventario.GuardarProductos();
                 // Limpiamos los campos
@@ -318,7 +319,7 @@ namespace FactuCrossing.Formularios.Inventario
                 // Refrezcamos el producto
                 SistemaCentral.Inventario.RefrezcarProducto(productoExistente);
                 // Actualizamos el DataGridView
-                ActualizarDataGrid();
+                ActualizarDataGrid(chbDescontinuado.Checked);
                 // Guardamos el inventario
                 SistemaCentral.Inventario.GuardarProductos();
                 // Accion
@@ -350,6 +351,63 @@ namespace FactuCrossing.Formularios.Inventario
             descuentos.ShowDialog();
 
             descuentos.Dispose();
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            // Creamos un DataTable
+            DataTable dt = new();
+            // Agregamos las columnas al DataTable
+            dt.Columns.AddRange(new DataColumn[]
+            {
+                new("ID"),
+                new("Nombre"),
+                new("Proveedor"),
+                new("Descripcion"),
+                new("Precio"),
+                new("Stock"),
+                new("FechaIngreso"),
+                new("Descontinuado")
+            });
+            // Por cada producto en la lista de productos en memoria
+            foreach (Producto producto in SistemaCentral.Inventario.productosEnMemoria)
+            {
+                // Agregamos una fila al DataTable con los datos del producto
+                dt.Rows.Add(new object[]
+                {
+                    producto.Id,
+                    producto.Nombre,
+                    producto.Proveedor,
+                    producto.Descripcion,
+                    producto.Precio,
+                    producto.CantidadEnStock,
+                    producto.FechaIngreso,
+                    producto.Descontinuado
+                });
+            }
+            // Creamos el DataSource
+            ReportDataSource rds = new("DsProductos", dt);
+            // Creamos la lista de parametros
+            List<ReportParameter> parametros = new()
+            {
+                new ReportParameter("FechaGenerado", $"Generado el {DateTime.Now.ToString("yyyy-MM-dd")}")
+            };
+            // Damos la locación del RDLC
+            string embedLocation = "FactuCrossing.Reportes.RptInventario.rdlc";
+            // Creamos el formulario de reporte
+            Report reporte = new(embedLocation, new List<ReportDataSource>() { rds }, parametros);
+            // Mostramos el formulario de reporte
+            VistaPreviaReporte vistaPrevia = new(reporte);
+            // Mostramos el formulario
+            vistaPrevia.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Abrir HistorialFacturas como dialogo
+            HistorialFacturas historialFacturas = new();
+            historialFacturas.ShowDialog();
+            historialFacturas.Dispose();
         }
     }
 }

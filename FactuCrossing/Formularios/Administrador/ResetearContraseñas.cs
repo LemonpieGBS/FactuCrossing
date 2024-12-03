@@ -57,11 +57,16 @@ namespace FactuCrossing.Formularios.Administrador
             // Añadimos las columnas necesarias
             dt.Columns.AddRange(new DataColumn[] { new("ID"), new("Nombre"), new("Usuario"), new("Rol"), new("Contraseña Temporal") });
 
+            // Creamos una lista de cuentas para mostrar
+            List<Cuenta> cuentasDisplay = SistemaCentral.Cuentas.cuentasEnMemoria.ToList();
+            // Filtramos las cuentas que se deben mostrar
+            if (!mostrarDeshabilitadas) cuentasDisplay = cuentasDisplay.Where(c => c.Habilitada).ToList();
+            // Ordenamos las cuentas por ID
+            cuentasDisplay = cuentasDisplay.OrderBy(c => c.Id).ToList();
+
             // Iteramos por cada cuenta en memoria
-            foreach (Cuenta cuenta in SistemaCentral.Cuentas.cuentasEnMemoria)
+            foreach (Cuenta cuenta in cuentasDisplay)
             {
-                // Si no se deben mostrar las cuentas deshabilitadas y la cuenta está deshabilitada, continuamos
-                if (!mostrarDeshabilitadas && !cuenta.Habilitada) continue;
                 // Añadimos una nueva fila con los datos de la cuenta
                 dt.Rows.Add(new object[] { cuenta.Id, $"{cuenta.NombreDisplay}", cuenta.NombreUsuario, cuenta.Rol, cuenta.ContraseñaTemporal ? "Si" : "No" });
             }
